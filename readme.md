@@ -22,4 +22,5 @@
 <img style="height: 180px; width: 200px" src="https://cdn-images-1.medium.com/max/1600/1*0G_7Ab6ZzUMEe-RDJnGjKQ.png">
 <img src="https://cdn-images-1.medium.com/max/800/1*M20GkaLW-OBcz6-ifDAJEg.png">
 <img src="https://fenwaygroup.com/sites/default/files/boostrap.png">
+<img src="https://sakurity.com/img/pusherlogo.png">
 2. Click 'HTML Preview' button.
