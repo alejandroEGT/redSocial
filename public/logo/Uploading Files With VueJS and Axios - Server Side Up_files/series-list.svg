@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="24px" viewBox="0 0 29 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>list</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-0.7%" y="-15.3%" width="101.3%" height="125.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.103543931 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="HD_02.00.00-ServerSideUp_Category" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-26.000000, -2526.000000)">
+        <g id="Series-Toolbar" filter="url(#filter-1)" transform="translate(0.000000, 2502.000000)">
+            <g id="Entire-Series">
+                <g id="list" transform="translate(31.000000, 31.000000)">
+                    <path d="M5,1 L18,1" id="Shape" stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M5,7 L18,7" id="Shape" stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M5,13 L18,13" id="Shape" stroke="#9B9B9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M1,14 C0.44771525,14 0,13.5522847 0,13 C0,12.4477153 0.44771525,12 1,12 C1.55228475,12 2,12.4477153 2,13 C2,13.5522847 1.55228475,14 1,14 Z M1,2 C0.44771525,2 0,1.55228475 0,1 C0,0.44771525 0.44771525,0 1,0 C1.55228475,0 2,0.44771525 2,1 C2,1.55228475 1.55228475,2 1,2 Z M1,8 C0.44771525,8 0,7.55228475 0,7 C0,6.44771525 0.44771525,6 1,6 C1.55228475,6 2,6.44771525 2,7 C2,7.55228475 1.55228475,8 1,8 Z" id="Oval-2-Copy-3" fill="#9B9B9B"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

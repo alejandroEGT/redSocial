@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://serversideup.net/uploading-files-vuejs-axios/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/64db05a314"></script><script src="./Uploading Files With VueJS and Axios - Server Side Up_files/nr-1071.min.js"></script><script async="" src="./Uploading Files With VueJS and Axios - Server Side Up_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./Uploading Files With VueJS and Axios - Server Side Up_files/css" rel="stylesheet">
+
+<title>Uploading Files With VueJS and Axios - Server Side Up</title>
+<meta name="description" content="Handling files is always a task. This tutorial will simplify the process and show you how to upload files with VueJS and Axios through AJAX.">
+<link rel="canonical" href="https://serversideup.net/uploading-files-vuejs-axios/">
+<link rel="publisher" href="https://plus.google.com/ServersideupNet/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uploading Files With VueJS and Axios - Server Side Up">
+<meta property="og:description" content="Handling files is always a task. This tutorial will simplify the process and show you how to upload files with VueJS and Axios through AJAX.">
+<meta property="og:url" content="https://serversideup.net/uploading-files-vuejs-axios/">
+<meta property="og:site_name" content="Server Side Up">
+<meta property="article:publisher" content="http://facebook.com/serversideup">
+<meta property="article:tag" content="api">
+<meta property="article:tag" content="axios">
+<meta property="article:tag" content="vuejs">
+<meta property="article:section" content="Programming">
+<meta property="article:published_time" content="2017-12-13T15:47:19-05:00">
+<meta property="article:modified_time" content="2018-02-15T21:23:59-05:00">
+<meta property="og:updated_time" content="2018-02-15T21:23:59-05:00">
+<meta property="og:image" content="https://serversideup.net/wp-content/uploads/2017/12/files.jpg">
+<meta property="og:image:secure_url" content="https://serversideup.net/wp-content/uploads/2017/12/files.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Handling files is always a task. This tutorial will simplify the process and show you how to upload files with VueJS and Axios through AJAX.">
+<meta name="twitter:title" content="Uploading Files With VueJS and Axios - Server Side Up">
+<meta name="twitter:site" content="@serversideup">
+<meta name="twitter:image" content="https://serversideup.net/wp-content/uploads/2017/12/files.jpg">
+<meta name="twitter:creator" content="@serversideup">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/serversideup.net\/","name":"Server Side Up","potentialAction":{"@type":"SearchAction","target":"https:\/\/serversideup.net\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Organization","url":"https:\/\/serversideup.net\/uploading-files-vuejs-axios\/","sameAs":["http:\/\/facebook.com\/serversideup","https:\/\/plus.google.com\/ServersideupNet\/","https:\/\/www.youtube.com\/user\/serversideupnet","https:\/\/twitter.com\/serversideup"],"@id":"#organization","name":"Server Side Up","logo":"https:\/\/serversideup.net\/wp-content\/uploads\/2014\/03\/ServerSideUp-FacebookOpenGraph.png"}</script>
+
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Server Side Up » Uploading Files With VueJS and Axios Comments Feed" href="https://serversideup.net/uploading-files-vuejs-axios/feed/">
+
+<script type="text/javascript" data-cfasync="false">
+		var disableStr = 'ga-disable-UA-20130511-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-20130511-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('send','pageview');
+</script>
+
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/serversideup.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Uploading Files With VueJS and Axios - Server Side Up_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="ssu-series-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/ssu-series-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssu-foundation-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/foundation.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssu-fluid-box-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/fluid-box.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssu-highlight-css-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/atom-one-dark.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssu-slide-in-bottom-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/slide-in-bottom.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssu-styles-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssu-styles-compiled-css" href="./Uploading Files With VueJS and Axios - Server Side Up_files/styles-compiled.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"https:\/\/serversideup.net","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/frontend.min.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/jquery.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/ssu-series-public.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/foundation.min.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/throttle-debounce.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/fluid-box.min.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/highlight.pack.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/clamp.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var SSUAjax = {"ajaxurl":"https:\/\/serversideup.net\/wp-admin\/admin-ajax.php","loadPostsNonce":"d68df067ca"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/functions.js"></script>
+<link rel="https://api.w.org/" href="https://serversideup.net/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://serversideup.net/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://serversideup.net/wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 4.9.4">
+<link rel="shortlink" href="https://serversideup.net/?p=1805">
+<link rel="alternate" type="application/json+oembed" href="https://serversideup.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fserversideup.net%2Fuploading-files-vuejs-axios%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://serversideup.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fserversideup.net%2Fuploading-files-vuejs-axios%2F&amp;format=xml">
+<script src="./Uploading Files With VueJS and Axios - Server Side Up_files/embed.js" data-timestamp="1522115561808"></script><script async="" type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/count.js"></script><script type="text/javascript" async="" src="./Uploading Files With VueJS and Axios - Server Side Up_files/embed.js"></script><meta class="foundation-mq"><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.a496d6d6fde0a396f8d89e7f51ca6c00.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.774abcf1e2c32f6ee53499b090f48ff0.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.8241ae5fc761eb94635acdc63f5fd29f.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.a496d6d6fde0a396f8d89e7f51ca6c00.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.774abcf1e2c32f6ee53499b090f48ff0.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.8241ae5fc761eb94635acdc63f5fd29f.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"></head>
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+<div class="off-canvas position-right" id="offcanvas-right-menu" data-off-canvas="4d3jys-off-canvas" data-position="right" data-auto-focus="false" aria-hidden="true">
+<a href="https://serversideup.net/">
+<img id="off-canvas-logo" src="./Uploading Files With VueJS and Axios - Server Side Up_files/off-canvas-logo.svg">
+</a>
+<div class="row">
+<div class="large-6 medium-6 small-6 columns">
+<a class="off-canvas-link" href="https://serversideup.net/category/programming">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/off-canvas-programming.svg">
+<span class="link-name">Programming</span>
+</a>
+</div>
+<div class="large-6 medium-6 small-6 columns">
+<a class="off-canvas-link" href="https://serversideup.net/category/devops">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/off-canvas-servers.svg">
+<span class="link-name">DevOps</span>
+</a>
+</div>
+<div class="large-6 medium-6 small-6 end columns">
+<a class="off-canvas-link" href="https://serversideup.net/category/design">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/off-canvas-design.svg">
+<span class="link-name">Design</span>
+</a>
+</div>
+</div>
+<div class="row off-canvas-sign-up">
+<div class="large-12 medium-12 small-12 columns">
+<form action="https://serversideup.us2.list-manage.com/subscribe/post?u=a27137fc57d223f1cc7b986db&amp;id=1276f15943" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required="">
+<input type="submit" value="Get Server Side Up in your inbox" name="subscribe" id="mc-embedded-subscribe" class="button">
+</form>
+</div>
+</div>
+<div class="row">
+<div class="large-12 medium-12 small-12 columns off-canvas-social-container">
+<a href="https://www.facebook.com/serversideup/" class="off-canvas-social-link">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/off-canvas-facebook.svg">
+</a>
+<a href="https://twitter.com/serversideup" class="off-canvas-social-link">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/off-canvas-twitter.svg">
+</a>
+</div>
+</div>
+</div>
+<div class="off-canvas-content" data-off-canvas-content="">
+<style type="text/css">
+    div#post-header-image{
+        background: url('https://serversideup.net/wp-content/uploads/2017/12/files-1200x600.jpg') center center no-repeat no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+<div id="post-header-image">
+<div id="post-header-overlay">
+<div class="container">
+<div class="row">
+<div class="large-7 medium-7 small-8 columns">
+<a href="https://serversideup.net/">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ssu-logo-home.svg" id="header-logo">
+</a>
+</div>
+<div class="large-5 medium-5 small-4 columns">
+<ul id="header-menu" class="show-for-large">
+<li>
+<a href="https://serversideup.net/">Home</a>
+</li>
+<li class="active-link">
+<a href="https://serversideup.net/category/programming">Programming</a>
+</li>
+<li class="">
+<a href="https://serversideup.net/category/devops">DevOps</a>
+</li>
+<li class="">
+<a href="https://serversideup.net/category/design">Design</a>
+</li>
+</ul>
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/hamburger.svg" id="hamburger-menu" class="hide-for-large" data-toggle="offcanvas-right-menu" aria-expanded="false" aria-controls="offcanvas-right-menu">
+</div>
+</div>
+</div>
+<div class="post-header-meta">
+<div class="container">
+<div class="post-header-category-name">
+Programming </div>
+<div class="post-header-post-title">
+Uploading Files With VueJS and Axios </div>
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ad148bc14cd955afaec492b49fa1def1" id="post-header-avatar">
+<div class="post-header-author-information">
+<span class="post-header-author-name">
+Dan Pastori </span>
+<span class="post-header-post-date">
+December 13th, 2017 </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container post-container">
+<div class="row">
+<div class="large-12 medium-12 small-12 columns">
+<div class="post-content">
+<p>VueJS and Axios <a href="https://github.com/axios/axios">GitHub – axios/axios: Promise based HTTP client for the browser and node.js</a> work beautifully together for making HTTP requests. However, uploading files with VueJS and Axios can be a little bit challenging since it requires uploading files through an AJAX type system. I’ll be honest, I hate doing file uploads, but they are a necessity for the majority of applications. This tutorial should be a quick start guide on the process and a few tips I’ve learned when handling file uploads to make your life a little easier.</p>
+<h2>Prerequisites</h2>
+<p>In this tutorial I’m going to be using <em>Axios v0.16.2</em> and <em>VueJS v2.1.0</em> for doing the file uploads. On the back end you can use the framework that you want, or language that you want. I’ll talk about using PHP/Laravel to process files and more or less pseudo-code the backend process. The biggest take aways will be how to do the uploading of the file with VueJS and Axios.</p>
+<p>I’m also going to assume you are using a modern browser that supports the <code>FormData</code> object: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">FormData – Web APIs | MDN</a>. This is what makes the process a whole heck of a lot easier.</p>
+<h2>Uploading a Single File</h2>
+<p>So first, we will start with a single file to get things going. I just built a simple component that contains a file input:</p>
+<pre><code class="hljs javascript">&lt;template&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>File
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">v-on:change</span>=<span class="hljs-string">"handleFileUpload()"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"submitFile()"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<p>If you take a look at the <code>input[type="file"]</code> I added a few attributes. The first is a <code>ref</code> attribute that gives this input a name. We can now access this input from within VueJS which we will in a second.</p>
+<p>The next is the <code>v-on:change="handleFileUpload()"</code> attribute. When the user uploads a file, this gets called and we can handle the file. We will be implementing this method in the next step.</p>
+<p>The last element in the simple form is a button that calls a method <code>submitFile()</code> when clicked. This is where we will submit our file to the server and we will be implementing this method as well.</p>
+<h3>Handle User File Upload</h3>
+<p>The first thing we want to do is add the <code>handleFileUpload()</code> method to our <code>methods</code> object which will give us a starting point for implementation:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    <span class="hljs-attr">methods</span>: {
+      handleFileUpload(){
+
+      }
+    }
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>What we will do in this method is set a local variable to the value of the file uploaded. Now since we are using a modern browser, this will be a <code>FileList</code> object: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileList">FileList – Web APIs | MDN</a> which contains <code>File</code> objects: <a href="https://developer.mozilla.org/en-US/docs/Web/API/File">File – Web APIs | MDN</a>. The <code>FileList</code> is not directly editable by the user for security reasons. However, we can allow users to select and de-select files as needed, which we will go through later in the tutorial.</p>
+<p>Since we are setting a local piece of data, let’s add that right now to our Vue component. In our <code>data()</code> method add:</p>
+<pre><code class="hljs coffeescript">data(){
+  <span class="hljs-keyword">return</span> {
+    file: <span class="hljs-string">''</span>
+  }
+},
+</code></pre>
+<p>Now we have something to set in our <code>handleFileUpload()</code> method! Let’s go back and add the following code to the <code>handleFileUpload()</code> method:</p>
+<pre><code class="hljs coffeescript">methods: {
+  handleFileUpload(){
+    <span class="hljs-keyword">this</span>.file = <span class="hljs-keyword">this</span>.$refs.file.files[<span class="hljs-number">0</span>];
+  }
+}
+</code></pre>
+<p>What this does is when the file has been changed, we set the local file variable to the first <code>File</code> object in the <code>FileList</code> on the <code>input[type="file"]</code>. The <code>this.$refs.file</code> refers to the <code>ref</code> attribute on the the <code>input[type="file"]</code>. This makes it easily accessible within our component.</p>
+<h3>Submit To Server Through Axios</h3>
+<p>Now it’s time to submit our file through the server through Axios! On our button, we have a <code>submitFile()</code> method we need to implement, so let’s add this to our methods:</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">submitFile</span>(){
+
+},
+</code></pre>
+<p>Now this is where we implement our <code>axios</code> request.</p>
+<p>The first thing we need to do is implement a <code>FormData</code> object like this:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+</code></pre>
+<p>Next, what we will do is append the file to the <code>formData</code>. This is done through the <code>append()</code> method on the object: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/append">FormData.append() – Web APIs | MDN</a>. What we are doing is essentially building a key-value pair to submit to the server like a standard POST request:</p>
+<pre><code class="hljs coffeescript">formData.append(<span class="hljs-string">'file'</span>, <span class="hljs-keyword">this</span>.file);
+</code></pre>
+<p>We just append the file variable that we have our data stored in. Now I’m not going to go into validations, but before we go any further, if you were to put this in production and the file needed to be added, I’d add a validation here to make sure the <code>file</code> variable contains an actual file.</p>
+<p>Now we can begin to make our <code>axios</code> request! We will be doing this through the <code>post()</code> method. If you look at their API (<a href="https://github.com/axios/axios#axiosposturl-data-config">GitHub – axios/axios: Promise based HTTP client for the browser and node.js</a>), you see the <code>post()</code> method contains 3 parameters. The third parameter is a config for the request which is awesome because we can add other headers to it.</p>
+<p>Our completed request should look like:</p>
+<pre><code class="hljs javascript">axios.post( <span class="hljs-string">'/single-file'</span>,
+  formData,
+  {
+    <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span>
+    }
+  }
+).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'SUCCESS!!'</span>);
+})
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'FAILURE!!'</span>);
+});
+</code></pre>
+<p>The first parameter is the URL we will be POSTing to. For this example, I have a URL set up on my server which is <code>/single-file</code>. The next parameter is a key-value store of the data we are passing. This is our <code>FormData()</code> which we built to have our file. The third parameter is probably the key to making this all work. This is adding the <code>multipart/form-data</code> header we need to send the file to the server.</p>
+<p>If you are used to file uploading, this is usually an attribute on the form you are submitting like <code>&lt;form enctype="multipart/form-data"&gt;&lt;/form&gt;</code>. Without this header, the POST request will ignore the file.</p>
+<p>Now with the rest of our request, we process a callback method on a successful request which can be used to display a notification and we process a callback on failure which can be used to alert the user of an unsuccessful upload.</p>
+<p>On the server side, you can access the file through the key of <code>file</code> which is the first parameter of the <code>formData.append('file', this.file);</code> method.</p>
+<p>In PHP it’d be: <code>$_FILES['file']</code> and in Laravel, you can use the <code>Request</code> facade and access it through <code>Request::file('files')</code> and do whatever server side processing you need.</p>
+<p>Our <code>SingleFile.vue</code> component used for testing looks like this:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>File
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">v-on:change</span>=<span class="hljs-string">"handleFileUpload()"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"submitFile()"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    <span class="hljs-comment">/*
+      Defines the data used by the component
+    */</span>
+    data(){
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">file</span>: <span class="hljs-string">''</span>
+      }
+    },
+
+    <span class="hljs-attr">methods</span>: {
+      <span class="hljs-comment">/*
+        Submits the file to the server
+      */</span>
+      submitFile(){
+        <span class="hljs-comment">/*
+                Initialize the form data
+            */</span>
+            <span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+
+            <span class="hljs-comment">/*
+                Add the form data we need to submit
+            */</span>
+            formData.append(<span class="hljs-string">'file'</span>, <span class="hljs-keyword">this</span>.file);
+
+        <span class="hljs-comment">/*
+          Make the request to the POST /single-file URL
+        */</span>
+            axios.post( <span class="hljs-string">'/single-file'</span>,
+                formData,
+                {
+                <span class="hljs-attr">headers</span>: {
+                    <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span>
+                }
+              }
+            ).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'SUCCESS!!'</span>);
+        })
+        .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'FAILURE!!'</span>);
+        });
+      },
+
+      <span class="hljs-comment">/*
+        Handles a change on the file upload
+      */</span>
+      handleFileUpload(){
+        <span class="hljs-keyword">this</span>.file = <span class="hljs-keyword">this</span>.$refs.file.files[<span class="hljs-number">0</span>];
+      }
+    }
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>The next section, we will handle multiple files. This isn’t anything super different, but I’ll point out the changes!</p>
+<h2>Uploading Multiple Files</h2>
+<p>Handling multiple files is very similar to a single file. What we will do is begin with a template that looks like this in our Vue component:</p>
+<pre><code class="hljs javascript">&lt;template&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Files
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">v-on:change</span>=<span class="hljs-string">"handleFileUploads()"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"submitFiles()"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<p>Besides the <code>ref</code> attribute name change and the <code>id</code> changing to <code>files</code>, the most important attribute is we added <code>multiple</code> to our <code>input[type="file”]</code>. This allows the user to cmd (ctrl) + click to select multiple files at once. A super slick way to upload files. In the next section we will be allowing the user to remove files and select more files if they made a mistake <img draggable="false" class="emoji" alt="😉" src="./Uploading Files With VueJS and Axios - Server Side Up_files/1f609.svg"> but for now, it’s super slick.</p>
+<h3>Multiple File handleFileUploads() method</h3>
+<p>This is very similar to an individual file, except we will be adding all of the files to our array if the user selects more than one. First, let’s add our data store to our Vue component and give it variable named <code>files</code>:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Defines the data used by the component
+*/</span>
+data(){
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">files</span>: <span class="hljs-string">''</span>
+  }
+},
+</code></pre>
+<p>Now we have a local variable to store our files to. We can now do our <code>handleFileUploads()</code> method:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Handles a change on the file upload
+*/</span>
+handleFilesUpload(){
+  <span class="hljs-keyword">this</span>.files = <span class="hljs-keyword">this</span>.$refs.files.files;
+}
+</code></pre>
+<p>What this does is grab all of the files in the <code>FilesList</code> from our files upload and stores it locally.</p>
+<h3>Implement submitFiles() method</h3>
+<p>We are ready to submit all of our files to the server now! First, let’s add our <code>submitFiles()</code> method to the methods array:</p>
+<pre><code class="hljs css"><span class="hljs-comment">/*
+  Submits all of the files to the server
+*/</span>
+<span class="hljs-selector-tag">submitFiles</span>(){
+
+},
+</code></pre>
+<p>Like in the last method, we will initialize the <code>FormData()</code> object first:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Initialize the form data
+*/</span>
+<span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+</code></pre>
+<p>Now, what we will do is loop over all of the files selected and add them to the <code>files</code> array we are going to submit to the server. The <code>files</code> array will be a key in the <code>formData()</code> object we will be sending to the server:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Iteate over any file sent over appending the files
+  to the form data.
+*/</span>
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.files.length; i++ ){
+  <span class="hljs-keyword">let</span> file = <span class="hljs-keyword">this</span>.files[i];
+
+  formData.append(<span class="hljs-string">'files['</span> + i + <span class="hljs-string">']'</span>, file);
+}
+</code></pre>
+<p>We are now ready to send our files to the server through Axios:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Make the request to the POST /multiple-files URL
+*/</span>
+axios.post( <span class="hljs-string">'/multiple-files'</span>,
+  formData,
+  {
+    <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span>
+    }
+  }
+).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'SUCCESS!!'</span>);
+})
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'FAILURE!!'</span>);
+});
+</code></pre>
+<p>There we go! Now we are allowing users to upload multiple files using Axios and VueJS through an AJAX call.</p>
+<p>On the server side, you can access the files through the key of <code>files</code> which is the first parameter of the <code>formData.append('files[' + i + ']', file);</code> method.</p>
+<p>In PHP it’d be: <code>$_FILES['files']</code> and in Laravel, you can use the <code>Request</code> facade and access it through <code>Request::file('files')</code> and do whatever server side processing you need. You can loop through all of the files now to allow for multiple uploads.</p>
+<p>Our <code>MultipleFiles.vue</code> component should look like:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Files
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">v-on:change</span>=<span class="hljs-string">"handleFilesUpload()"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"submitFiles()"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    <span class="hljs-comment">/*
+      Defines the data used by the component
+    */</span>
+    data(){
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">files</span>: <span class="hljs-string">''</span>
+      }
+    },
+
+    <span class="hljs-attr">methods</span>: {
+      <span class="hljs-comment">/*
+        Submits all of the files to the server
+      */</span>
+      submitFiles(){
+        <span class="hljs-comment">/*
+          Initialize the form data
+        */</span>
+        <span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+
+        <span class="hljs-comment">/*
+          Iteate over any file sent over appending the files
+          to the form data.
+        */</span>
+        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.files.length; i++ ){
+          <span class="hljs-keyword">let</span> file = <span class="hljs-keyword">this</span>.files[i];
+
+          formData.append(<span class="hljs-string">'files['</span> + i + <span class="hljs-string">']'</span>, file);
+        }
+
+        <span class="hljs-comment">/*
+          Make the request to the POST /multiple-files URL
+        */</span>
+        axios.post( <span class="hljs-string">'/multiple-files'</span>,
+          formData,
+          {
+            <span class="hljs-attr">headers</span>: {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span>
+            }
+          }
+        ).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'SUCCESS!!'</span>);
+        })
+        .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'FAILURE!!'</span>);
+        });
+      },
+
+      <span class="hljs-comment">/*
+        Handles a change on the file upload
+      */</span>
+      handleFilesUpload(){
+        <span class="hljs-keyword">this</span>.files = <span class="hljs-keyword">this</span>.$refs.files.files;
+      }
+    }
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>The next step we will allow users to edit the files they have selected so they don’t accidentally upload a file they don’t want.</p>
+<h2>Allowing Users to Edit Selected Files Before Uploading</h2>
+<p>When uploading multiple files, it’s very common that you accidentally select a file you do NOT want to upload. This sounds simple enough to resolve until you find out you can’t directly edit the <code>FileList</code> object for security reasons. However, you can transform it and edit the new list as an array and allow users to change the files they want uploaded.</p>
+<p>First, let’s reuse the template from the multiple files component:</p>
+<pre><code class="hljs javascript">&lt;template&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Files
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">v-on:change</span>=<span class="hljs-string">"handleFilesUpload()"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"submitFiles()"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<h3>Hide File Input</h3>
+<p>The first thing we will do is hide the actual file input. This is because we will be making a simple design interface to allow users to select the files they want. I just added a style tag that moves the input off of the screen. This is because it’s a security issue to trigger a click on the hidden file input.</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+  <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="file"]</span>{
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: -<span class="hljs-number">500px</span>;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+<p>Next, I added a button that triggers a click on the input:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"addFiles()"</span>&gt;</span>Add Files<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>So when this is clicked, we trigger a click on the file element. We need to implement the <code>addFiles()</code> method in our Vue component like this:</p>
+<pre><code class="hljs coffeescript">addFiles(){
+  <span class="hljs-keyword">this</span>.$refs.files.click();
+}
+</code></pre>
+<p>This will fire a click on the files input and the user will be prompted with a file selection box where they can select the files we want.</p>
+<h3>Implement handleFilesUpload()</h3>
+<p>This is where things get a little bit different. Like the first two examples, we will add a local variable to add files to:</p>
+<pre><code class="hljs coffeescript">data(){
+  <span class="hljs-keyword">return</span> {
+    files: []
+  }
+},
+</code></pre>
+<p>We want this as an array so we can push files onto it.</p>
+<p>Now, when the user selects some files to upload, we will push them on our local <code>files</code> variable:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> uploadedFiles = <span class="hljs-keyword">this</span>.$refs.files.files;
+
+<span class="hljs-comment">/*
+  Adds the uploaded file to the files array
+*/</span>
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; uploadedFiles.length; i++ ){
+  <span class="hljs-keyword">this</span>.files.push( uploadedFiles[i] );
+}
+</code></pre>
+<p>We do this through a loop instead of pushing the entire chunk onto the <code>files</code> array because otherwise we’d have groups based on what was selected. You can add validations here as well so the user doesn’t upload the same file multiple times if you want as well.</p>
+<h3>Display Currently Uploaded Files</h3>
+<p>In this use case, we want users to remove files they updated by accident, so we need to display the currently uploaded files.</p>
+<p>To do that, we will head back into our template and add the following code:</p>
+<pre><code class="hljs cs">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;
+  &lt;div v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"(file, key) in files"</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"file-listing"</span>&gt;{{ file.name }} &lt;span <span class="hljs-keyword">class</span>=<span class="hljs-string">"remove-file"</span> v-<span class="hljs-keyword">on</span>:click=<span class="hljs-string">"removeFile( key )"</span>&gt;Remove&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+</code></pre>
+<p>What this does is iterate over all of the files we’ve currently added and displays them to the user. A couple things to note.</p>
+<p>First, the <code>v-for="(file, key) in files"</code>. What this does is iterate over the files that we’ve uploaded and grabs the key which is the index of the file in the files array and the file itself. We then display the name of the file with: <code>{{ file.name }}</code> which is part of the individual file object. There’s more information in the object which is documented here: <a href="https://developer.mozilla.org/en-US/docs/Web/API/File">File – Web APIs | MDN</a></p>
+<p>Next, we add a <code>removeFile(key)</code> method which will remove the file from the file array. When the file is removed, the reactive nature of VueJS will update our listing.</p>
+<h3>Implement removeFile() Method</h3>
+<p>This method will remove the file from our uploaded files array. First, let’s add the method to our <code>methods</code> array:</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">removeFile</span>( <span class="hljs-selector-tag">key</span> ){
+
+}
+</code></pre>
+<p>The method accepts the key in the files array of the file we are removing. The full implementation of this method will be:</p>
+<pre><code class="hljs coffeescript">removeFile( key ){
+  <span class="hljs-keyword">this</span>.files.splice( key, <span class="hljs-number">1</span> );
+}
+</code></pre>
+<p>What this does is splice the files array at the index of the file we are removing and remove 1 entry from the array. When we do this, our list will re-render through VueJS keeping everything in sync. Since we are using a local <code>files</code> array, we can modify this at will. The next and final thing we have to do is submit our files to the server that the user has selected!</p>
+<h3>Submit Files To Server</h3>
+<p>From here, we’ve allowed the user to modify the files they have selected, we just have to allow them to submit to the server for processing.</p>
+<p>First, let’s add the <code>submitFiles()</code> method to our methods object:</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">submitFiles</span>(){
+
+}
+</code></pre>
+<p>Like the rest of the examples, let’s first create our <code>FormData()</code> object:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Initialize the form data
+*/</span>
+<span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+</code></pre>
+<p>Now, let’s add all of the chosen files to the form data:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Iterate over any file sent over appending the files
+  to the form data.
+*/</span>
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.files.length; i++ ){
+  <span class="hljs-keyword">let</span> file = <span class="hljs-keyword">this</span>.files[i];
+
+  formData.append(<span class="hljs-string">'files['</span> + i + <span class="hljs-string">']'</span>, file);
+}
+</code></pre>
+<p>This iterates over the files that the user has selected and prepares to submit them to the server.</p>
+<p>Now, we can run the <code>axios.post()</code> method to submit the files to our endpoint:</p>
+<pre><code class="hljs javascript">axios.post( <span class="hljs-string">'/select-files'</span>,
+  formData,
+  {
+    <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span>
+    }
+  }
+).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'SUCCESS!!'</span>);
+})
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'FAILURE!!'</span>);
+});
+</code></pre>
+<p>This sends all of our form data to the server with the files that the user has uploaded! If you were to run this as an example, you can see that after you remove a file, it’s no longer sent to the server.</p>
+<p>Like before, on the server side, you can access the files through the key of <code>files</code> which is the first parameter of the <code>formData.append('files[' + i + ']', file);</code> method.</p>
+<p>When using Laravel and the <code>Request</code> facade, you can access the selected files the user has uploaded with the following method: <code>Request::file('files')</code>. In straight up PHP it’d be <code>$_FILES['files']</code>. You can now do any processing you want!</p>
+<p>Our <code>SelectFiles.vue</code> component should look like:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+  <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="file"]</span>{
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: -<span class="hljs-number">500px</span>;
+  }
+
+  <span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.file-listing</span>{
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+  }
+
+  <span class="hljs-selector-tag">span</span><span class="hljs-selector-class">.remove-file</span>{
+    <span class="hljs-attribute">color</span>: red;
+    <span class="hljs-attribute">cursor</span>: pointer;
+    <span class="hljs-attribute">float</span>: right;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Files
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"files"</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">v-on:change</span>=<span class="hljs-string">"handleFilesUpload()"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(file, key) in files"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"file-listing"</span>&gt;</span>{{ file.name }} <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"remove-file"</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"removeFile( key )"</span>&gt;</span>Remove<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"addFiles()"</span>&gt;</span>Add Files<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"large-12 medium-12 small-12 cell"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"submitFiles()"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    <span class="hljs-comment">/*
+      Defines the data used by the component
+    */</span>
+    data(){
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">files</span>: []
+      }
+    },
+
+    <span class="hljs-comment">/*
+      Defines the method used by the component
+    */</span>
+    methods: {
+      <span class="hljs-comment">/*
+        Adds a file
+      */</span>
+      addFiles(){
+        <span class="hljs-keyword">this</span>.$refs.files.click();
+      },
+
+      <span class="hljs-comment">/*
+        Submits files to the server
+      */</span>
+      submitFiles(){
+        <span class="hljs-comment">/*
+          Initialize the form data
+        */</span>
+        <span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+
+        <span class="hljs-comment">/*
+          Iteate over any file sent over appending the files
+          to the form data.
+        */</span>
+        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.files.length; i++ ){
+          <span class="hljs-keyword">let</span> file = <span class="hljs-keyword">this</span>.files[i];
+
+          formData.append(<span class="hljs-string">'files['</span> + i + <span class="hljs-string">']'</span>, file);
+        }
+
+        <span class="hljs-comment">/*
+          Make the request to the POST /select-files URL
+        */</span>
+        axios.post( <span class="hljs-string">'/select-files'</span>,
+          formData,
+          {
+            <span class="hljs-attr">headers</span>: {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span>
+            }
+          }
+        ).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'SUCCESS!!'</span>);
+        })
+        .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'FAILURE!!'</span>);
+        });
+      },
+
+      <span class="hljs-comment">/*
+        Handles the uploading of files
+      */</span>
+      handleFilesUpload(){
+        <span class="hljs-keyword">let</span> uploadedFiles = <span class="hljs-keyword">this</span>.$refs.files.files;
+
+        <span class="hljs-comment">/*
+          Adds the uploaded file to the files array
+        */</span>
+        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; uploadedFiles.length; i++ ){
+          <span class="hljs-keyword">this</span>.files.push( uploadedFiles[i] );
+        }
+      },
+
+      <span class="hljs-comment">/*
+        Removes a select file the user has uploaded
+      */</span>
+      removeFile( key ){
+        <span class="hljs-keyword">this</span>.files.splice( key, <span class="hljs-number">1</span> );
+      }
+    }
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>There ya go! You can now allow users to adjust their mistakes if they select a file they don’t want to upload.</p>
+<h2>Gotchas and Recommendations</h2>
+<p>A few things to point out when uploading using <code>FormData</code>.</p>
+<h3>Adding additional POST data to the Request</h3>
+<p>You can always include more information than just files with your post. When you build your <code>FormData</code> you can add additional text or other fields like this:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+  Initialize the form data
+*/</span>
+<span class="hljs-keyword">let</span> formData = <span class="hljs-keyword">new</span> FormData();
+
+<span class="hljs-comment">/*
+  Iteate over any file sent over appending the files
+  to the form data.
+*/</span>
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.files.length; i++ ){
+  <span class="hljs-keyword">let</span> file = <span class="hljs-keyword">this</span>.files[i];
+
+  formData.append(<span class="hljs-string">'files['</span> + i + <span class="hljs-string">']'</span>, file);
+}
+
+<span class="hljs-comment">/*
+  Additional POST Data
+*/</span>
+formData.append(<span class="hljs-string">'first_name'</span>, <span class="hljs-string">'Dan'</span>);
+formData.append(<span class="hljs-string">'last_name'</span>, <span class="hljs-string">'Pastori'</span>);
+</code></pre>
+<p>The <code>first_name</code> and <code>last_name</code> fields will be accessible on the server just like a normal post request!</p>
+<h3>Arrays with FormData()</h3>
+<p>Now since we are configuring our request before we send it to the sever, arrays get accessed differently. You will either need to account for this when building your <code>FormData</code> object. In VueJS, when working with arrays, you can’t just do:</p>
+<pre><code class="hljs coffeescript"><span class="hljs-keyword">this</span>.coolData = [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>];
+formData.append(<span class="hljs-string">'cool_data'</span>, <span class="hljs-keyword">this</span>.coolData);
+</code></pre>
+<p>or you will get an <code>[object Object]</code> on the server side. You can either iterate over your cool data and push it on a nicely organized array or you can do a <code>JSON.stringify()</code> method on the data which will convert it to JSON before sending it to the server.</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">this</span>.coolData = [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>];
+formData.append(<span class="hljs-string">'cool_data'</span>, <span class="hljs-built_in">JSON</span>.stringify( <span class="hljs-keyword">this</span>.coolData ) );
+</code></pre>
+<p>You will just need to decode it before you can access it. In PHP, that method would be <code>json_decode($json)</code>.</p>
+<h3>Clearing local files on success</h3>
+<p>When axios returns success, another quick tip is to reset your local files array back to nothing. This makes sure that if you are doing things in a single page application type way or any AJAX driven way, the user who initially submitted the files doesn’t try to re-send a different group of files and gets the first group of files that still exist in the array sent along as well. You can simply clear your local files like this:</p>
+<pre><code class="hljs coffeescript"><span class="hljs-keyword">this</span>.files = <span class="hljs-string">''</span>;
+</code></pre>
+<h2>Conclusion</h2>
+<p>After running through this a few times, uploading files with VueJS and Axios through AJAX becomes a little easier to grasp! Hopefully this tutorial has helped a little. There is always room for expansion and you can do progress uploads and other cool features.</p>
+<p>This type of file uploading process comes in handy when developing an API Driven Application, especially when using VueJS. We are working on a book that will tie in this feature along with a whole bunch more API Driven ideals. We will go start to implementation to launch of an API Driven Application and point out common gotchas and tips. Sign up here to stay in the loop as the book progresses: <a href="https://serversideup.us2.list-manage.com/subscribe?u=a27137fc57d223f1cc7b986db&amp;id=1276f15943">Server Side Up General List</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="container post-container">
+<div class="about-the-author">
+<div class="row">
+<div class="large-12 medium-12 small-12 columns">
+<span class="about-the-author-header">About the Author</span>
+</div>
+</div>
+<div class="row">
+<div class="large-2 medium-3 small-12 columns">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ad148bc14cd955afaec492b49fa1def1" id="post-author-avatar">
+</div>
+<div class="large-10 medium-9 small-12 columns">
+<div class="about-the-author-text">
+Builder, creator, and maker. Dan Pastori has over 10 years experience as a full stack developer. When you aren't finding Dan working on building a farm using Arduinos, catch him at the beach or hiking in the National Parks. <a class="author-twitter-link" href="https://twitter.com/" target="_blank">Follow me on Twitter</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container post-container">
+<div class="row">
+<div class="large-12 medium-12 small-12 columns">
+<span class="related-stories-header">Related Stories</span>
+</div>
+</div>
+<div class="row related-posts-container">
+<div class="large-4 medium-6 small-12 columns ">
+<div class="article">
+<a href="https://serversideup.net/file-management-with-vuejs-and-laravel/"><img src="./Uploading Files With VueJS and Axios - Server Side Up_files/files-1200x600.jpg" class="article-header"></a>
+<div class="article-content">
+<a href="https://serversideup.net/file-management-with-vuejs-and-laravel/"><div class="article-title" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">File Management with VueJS and Laravel</div></a>
+<div class="article-excerpt"><p style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">This whole tutorial series: API Driven Development With Laravel and VueJS has been focused on building a single page application with VueJS that’s powered by an API with Laravel. We’ve gone through a variety of requests, but what we haven’t touched on is file uploading. File uploading can be a little tricky by nature, but […]</p>
+</div>
+</div>
+<div class="article-footer">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ad148bc14cd955afaec492b49fa1def1(1)" class="author-image">
+<div class="author-meta">
+<span class="author-name">Dan Pastori</span>
+<span class="author-time" data-attr-date="2018-01-15 09:00:27">2 months ago</span><span class="author-dot">·</span>
+<span class="author-tag">
+<a href="https://serversideup.net/programming/">Programming</a> </span>
+</div>
+</div>
+</div>
+</div><div class="large-4 medium-6 small-12 columns ">
+<div class="article">
+<a href="https://serversideup.net/adding-laravel-user-profiles/"><img src="./Uploading Files With VueJS and Axios - Server Side Up_files/profile-1200x600.jpg" class="article-header"></a>
+<div class="article-content">
+<a href="https://serversideup.net/adding-laravel-user-profiles/"><div class="article-title" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Adding Laravel User Profiles</div></a>
+<div class="article-excerpt"><p style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">The last few tutorials, we’ve opened up public data for the cafes. We started opening up a few routes with larval https://serversideup.net/public-private-api-laravel/, then explored VueJS Route Security and Authentication and finally implemented some navigation guards. In this tutorial we will go through the process of Step 1: Define Data To Collect When building our user […]</p>
+</div>
+</div>
+<div class="article-footer">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ad148bc14cd955afaec492b49fa1def1(1)" class="author-image">
+<div class="author-meta">
+<span class="author-name">Dan Pastori</span>
+<span class="author-time" data-attr-date="2018-01-11 09:00:36">2 months ago</span><span class="author-dot">·</span>
+<span class="author-tag">
+<a href="https://serversideup.net/programming/">Programming</a> </span>
+</div>
+</div>
+</div>
+</div><div class="large-4 medium-6 small-12 columns ">
+<div class="article">
+<a href="https://serversideup.net/preview-file-uploads-with-axios-and-vuejs/"><img src="./Uploading Files With VueJS and Axios - Server Side Up_files/preview-1200x600.jpg" class="article-header"></a>
+<div class="article-content">
+<a href="https://serversideup.net/preview-file-uploads-with-axios-and-vuejs/"><div class="article-title" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Preview File Uploads with Axios and VueJS</div></a>
+<div class="article-excerpt"><p style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">Previously, I wrote a quick article about Uploading Files With VueJS and Axios – Server Side Up which should help alleviate some of the pain of dealing with file uploads. Now it’s time to add a few bells and whistles and a little UX. In this tutorial we will work with previewing file uploads and […]</p>
+</div>
+</div>
+<div class="article-footer">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ad148bc14cd955afaec492b49fa1def1(1)" class="author-image">
+<div class="author-meta">
+<span class="author-name">Dan Pastori</span>
+<span class="author-time" data-attr-date="2018-01-09 15:53:31">2 months ago</span><span class="author-dot">·</span>
+<span class="author-tag">
+<a href="https://serversideup.net/programming/">Programming</a> </span>
+</div>
+</div>
+</div>
+</div> </div>
+</div>
+<div class="container post-container">
+<div class="row">
+<div class="large-12 medium-12 small-12 columns">
+<div class="comment-container">
+<div id="disqus_thread"><iframe id="dsq-app970" name="dsq-app970" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Uploading Files With VueJS and Axios - Server Side Up_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 2322px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+<script>
+						var disqus_config = function () {
+							this.page.url = 'https://serversideup.net/uploading-files-vuejs-axios/';
+							this.page.identifier = 'uploading-files-vuejs-axios';
+						};
+
+						(function() { // DON'T EDIT BELOW THIS LINE
+						var d = document, s = d.createElement('script');
+						s.src = '//serversideup.disqus.com/embed.js';
+						s.setAttribute('data-timestamp', +new Date());
+						(d.head || d.body).appendChild(s);
+						})();
+					</script>
+<noscript>Please enable JavaScript to view the &lt;a href="https://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+</div>
+</div>
+</div>
+</div>
+<div class="ssu-series-pop-up slide-in-bottom" style="display: block;">
+<div class="ssu-series-nav-link">
+<a href="https://serversideup.net/series/guide-uploading-files-vuejs-axios/">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/series-list.svg">
+</a>
+</div>
+<div class="ssu-series-center no-prev ">
+<div class="ssu-call-to-action-body">
+<span class="ssu-call-to-action-header">Want to learn more about API Driven App Development?</span>
+<span class="ssu-call-to-action-description">We're writing a book on API Driven App Development. Be the first to know once it is ready!</span>
+<a class="ssu-call-to-action-button-responsive" target="_blank" href="https://serversideup.us2.list-manage.com/subscribe?u=a27137fc57d223f1cc7b986db&amp;id=1276f15943">
+Get Updates <img src="./Uploading Files With VueJS and Axios - Server Side Up_files/call-to-action-right.svg">
+</a>
+</div>
+<a class="ssu-call-to-action-button" target="_blank" href="https://serversideup.us2.list-manage.com/subscribe?u=a27137fc57d223f1cc7b986db&amp;id=1276f15943">
+Get Updates <img src="./Uploading Files With VueJS and Axios - Server Side Up_files/call-to-action-right.svg">
+</a>
+</div>
+<div class="ssu-series-next-link-container">
+<span class="next-header">Next</span>
+<a class="next-link" href="https://serversideup.net/file-upload-progress-indicator-with-axios-and-vuejs/">
+File Upload Progress Indicator with Axios and VueJS </a>
+</div>
+</div>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    setTimeout(function(){
+      jQuery('.ssu-series-pop-up').css('display', 'block');
+    }, 2000);
+  });
+</script>
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="large-6 large-push-6 medium-12 small-12 columns">
+<span class="footer-slogan">Never miss a beat. We will keep you in the loop!</span>
+<div class="footer-sign-up-container">
+<form action="https://serversideup.us2.list-manage.com/subscribe/post?u=a27137fc57d223f1cc7b986db&amp;id=1276f15943" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required=""><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+<div style="position: absolute; left: -5000px;" aria-hidden="true"></div>
+</form>
+</div>
+</div>
+<div class="large-6 large-pull-6 medium-12 small-12 columns">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/ssu-logo-footer.svg" id="footer-logo">
+<a href="https://www.facebook.com/serversideup/" class="footer-social-link" target="_blank">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/footer-facebook.svg">
+</a>
+<a href="https://twitter.com/serversideup" class="footer-social-link" target="_blank">
+<img src="./Uploading Files With VueJS and Axios - Server Side Up_files/footer-twitter.svg">
+</a>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"serversideup"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/comment_count.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.12"},"disqusIdentifier":"1805 https:\/\/serversideup.net\/?p=1805","disqusShortname":"serversideup","disqusTitle":"Uploading Files With VueJS and Axios","disqusUrl":"https:\/\/serversideup.net\/uploading-files-vuejs-axios\/","postId":"1805"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/comment_embed.js"></script>
+<script type="text/javascript" src="./Uploading Files With VueJS and Axios - Server Side Up_files/wp-embed.min.js"></script>
+<div class="js-off-canvas-exit"></div></div>
+</div>
+</div>
+<script type="text/javascript">
+			jQuery(document).foundation();
+		</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"64db05a314","applicationID":"10365283","transactionName":"Ml1SNhYEWEtYV0xaVgsXcQEQDFlWFkdRXV4JXQ==","queueTime":0,"applicationTime":91,"atts":"HhpRQF4eS0U=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+<div id="extension-kmmojbkhfhninkelnlcnliacgncnnikf-installed"></div><iframe style="display: none;" src="./Uploading Files With VueJS and Axios - Server Side Up_files/saved_resource(1).html"></iframe></body></html>

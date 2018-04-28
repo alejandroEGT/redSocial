@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="33px" viewBox="0 0 15 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="01.00.01-MobileMenu-Active" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="M_01.00.01-ServerSideUp_Homepage-MobileMenu-Active" transform="translate(-149.000000, -361.000000)" fill="#9B9B9B">
+            <g id="Menu" transform="translate(59.000000, 0.000000)">
+                <g id="Social" transform="translate(90.000000, 361.000000)">
+                    <path d="M14.344,16.012 L9.928,16.012 L9.928,32.014 L3.31,32.014 L3.31,16.012 L0,16.012 L0,10.491 L3.31,10.491 L3.31,7.179 C3.31,2.681 5.176,0 10.481,0 L14.899,0 L14.899,5.521 L12.14,5.521 C10.073,5.521 9.937,6.292 9.937,7.728 L9.928,10.497 L14.934,10.497 L14.344,16.012 L14.344,16.012 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
