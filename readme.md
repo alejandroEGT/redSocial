@@ -1,4 +1,4 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="public/logo/biglogo.png"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -17,5 +17,5 @@
 
 ----
 ## Tecnologías utilizadas
-1. Laravel [logo]: http://www.google.com/images/logo.gif
+1. Laravel <img src="https://laravel.com/assets/img/components/logo-laravel.svg">
 2. Click 'HTML Preview' button.
