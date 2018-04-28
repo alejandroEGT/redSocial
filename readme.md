@@ -9,6 +9,8 @@
 
 # Red Social
 
+<img src="public/logo/captura1.png">
+<img src="public/logo/captura2.png">
 ----
 ## En que consiste?
 
