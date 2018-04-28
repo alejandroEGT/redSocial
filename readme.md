@@ -17,5 +17,6 @@
 
 ----
 ## Tecnologías utilizadas
-1. Laravel <img src="https://laravel.com/assets/img/components/logo-laravel.svg">
+<img src="https://laravel.com/assets/img/components/logo-laravel.svg">
+<img src="https://cdn.shopify.com/s/files/1/0533/2089/files/vuejs-tutorial_2d2a853c-aa2f-44b0-80df-933b495f77f8.png?v=1509478492">
 2. Click 'HTML Preview' button.
