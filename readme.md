@@ -17,6 +17,7 @@
 
 ----
 ## Tecnologías utilizadas
-<img src="https://laravel.com/assets/img/components/logo-laravel.svg">
-<img src="https://blog.tuleap.org/sites/default/files/logo-vue-js.png">
+<img style="height: 180px; width: 200px" src="https://laravel.com/assets/img/components/logo-laravel.svg">
+<img style="height: 180px; width: 200px" src="https://blog.tuleap.org/sites/default/files/logo-vue-js.png">
+<img style="height: 180px; width: 200px" src="https://cdn-images-1.medium.com/max/1600/1*0G_7Ab6ZzUMEe-RDJnGjKQ.png">
 2. Click 'HTML Preview' button.
