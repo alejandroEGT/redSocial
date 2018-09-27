@@ -14,7 +14,7 @@ class EstadoSolicitudTablaSeeder extends Seeder
     {
         DB::table('estado_solicitud')->insert([
             ['nombre' => 'Aceptada' ],
-            ['nombre' => 'Cancelada',
+            ['nombre' => 'Cancelada'],
             ['nombre' => 'Enviada' ],
         ]);
     }
