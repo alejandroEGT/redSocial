@@ -37,10 +37,10 @@ class PusherBroadcaster extends Broadcaster
      */
     public function auth($request)
     {
-        if (Str::startsWith($request->channel_name, ['private-', 'presence-']) &&
-            ! $request->user()) {
-            throw new AccessDeniedHttpException;
-        }
+        // if (Str::startsWith($request->channel_name, ['private-', 'presence-']) &&
+        //     ! $request->user()) {
+        //     throw new AccessDeniedHttpException;
+        // }
         
 
         $channelName = Str::startsWith($request->channel_name, 'private-')
