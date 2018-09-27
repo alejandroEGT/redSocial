@@ -41,15 +41,19 @@ class PusherBroadcaster extends Broadcaster
         //     ! $request->user()) {
         //     throw new AccessDeniedHttpException;
         // }
+        dd([
+            'user'=>$request->user(),
+            'channel' => $request->channel_name
 
+        ]);
 
         $channelName = Str::startsWith($request->channel_name, 'private-')
                             ? Str::replaceFirst('private-', '', $request->channel_name)
                             : Str::replaceFirst('presence-', '', $request->channel_name);
-        return($channelName);
-        // return parent::verifyUserCanAccessChannel(
-        //     $request, $channelName
-        // );
+
+        return parent::verifyUserCanAccessChannel(
+            $request, $channelName
+        );
     }
 
     /**
