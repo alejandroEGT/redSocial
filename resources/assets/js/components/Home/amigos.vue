@@ -1,35 +1,39 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="3">
-                <div v-loading="loading"><img :src="amigo.avatar" class="img-thumbnail avatar_amigo"></div>
-            </el-col>
-            <el-col :span="10">
-                    <div v-loading="loading">{{ amigo.nombres+' '+amigo.apellidos }}</div>
-            </el-col>
-        </el-row>  
+  <div>
+    <div class="row">
+      <div class="col-md-8">
+          <el-row>
+              <el-col :span="3">
+                  <div v-loading="loading"><img :src="amigo.avatar" class="img-thumbnail avatar_amigo"></div>
+              </el-col>
+              <el-col :span="10">
+                      <div v-loading="loading">{{ amigo.nombres+' '+amigo.apellidos }}</div>
+              </el-col>
+          </el-row>  
 
-        <el-row>
-            <el-col :span="24">
-              <div>
-                  <div class="box-chat" >
-                      <div class="chat-body" v-chat-scroll >
-                          <chat-messages :messages="messages"></chat-messages >
-                   
-                      </div>
-              
-               <div class="chat-foot">           
-                   <chat-form v-on:messagesent="addMessage" :user="nameAuth" :load="btn_load"></chat-form>
-                   <form method="POST" id="form1" enctype="multipart/form-data">
-                    <input type="hidden" name="id_recibe" v-model="id_recibe" >
-                    <input type="file" name="fotos[]" @change="sendFoto">
-                </form>
-                </div>
+          <el-row>
+              <el-col :span="24">
+                <div>
+                    <div class="box-chat" >
+                        <div class="chat-body" v-chat-scroll >
+                            <chat-messages :messages="messages"></chat-messages >
+                     
+                        </div>
+                
+                 <div class="chat-footsss">           
+                     <chat-form v-on:messagesent="addMessage" :user="nameAuth" :load="btn_load"></chat-form>
+                     <form method="POST" id="form1" enctype="multipart/form-data">
+                      <input type="hidden" name="id_recibe" v-model="id_recibe" >
+                      <input type="file" name="fotos[]" @change="sendFoto">
+                  </form>
                   </div>
-              </div>
-            </el-col>
-        </el-row> 
+                    </div>
+                </div>
+              </el-col>
+          </el-row> 
+      </div>
     </div>
+  </div>
 </template>
 
 
@@ -72,7 +76,8 @@
             },
             listen() {
           
-          Echo.private('chat.'+this.nameAuth.id+'.'+this.id).listen('MessageSentEvent', (e) => {
+          Echo.private('chat.'+this.nameAuth.id).listen('MessageSentEvent', (e) => {
+                  if (e.message.id_user_recibe == this.$auth.user().id) {
 
                       var audio = new Audio('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3');
                       audio.play();
@@ -83,8 +88,10 @@
                           use_2: e.user.nombres,
                           created_at: e.user.created_at
                         });
+                  }
+                      
                         
-                      });      
+          });      
                       
         },
         sendMessage() {
@@ -164,6 +171,7 @@
         height: 450px;
         width: 100%;
         overflow: auto;
+        border-bottom: 1px solid #D5DBDB;
     }
     .chat-foot{
           position: absolute;

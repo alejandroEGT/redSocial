@@ -42,6 +42,13 @@ Route::group(['middleware' => 'jwt.auth'], function(){
   Route::post('auth/messages', 'ChatController@sentMessage');
 
   Route::post('auth/user/updatefoto','UserController@update_foto');
+  Route::post('auth/user/updatefotoback','UserController@update_fotoback');
+
+  Route::get('auth/get_amigos/{id_user}','UsersSystemController@get_amigos_by_id');
+  Route::get('auth/get_user/{id_user}','UsersSystemController@get_usuario');
+  Route::get('auth/get_amigos_en_comun','userController@users_en_comun');
+
+  Route::get('auth/notifi_mensajes/{id}','ChatController@show_notificacion_mensaje');
 
 });
 Route::group(['middleware' => ['jwt.refresh', 'throttle:rate_limit,1']], function(){

@@ -63,4 +63,21 @@ class User extends Authenticatable
         }
         return "error";
     }
+    protected function updateFotoback($datos)
+    {
+        //dd($datos->all());
+        $datos->validate([
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        $us = $this->find(Auth::user()->id);
+        $image = $datos->file('foto');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        if($datos->file('foto')->move(public_path('background'), $name)){
+            $us->avatarback = 'background/'.$name;
+            if ($us->save()) {
+                return $us->avatarback;
+            }
+        }
+        return "error";
+    }
 }

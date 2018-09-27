@@ -36,6 +36,7 @@ class MessageSentEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chat.'.$this->message->id_user_recibe.'.'.$this->message->id_user_envia);
+        // return new PrivateChannel('chat.'.$this->message->id_user_recibe.'.'.$this->message->id_user_envia);
+        return new PrivateChannel('chat.'.$this->message->id_user_recibe);
     }
 }

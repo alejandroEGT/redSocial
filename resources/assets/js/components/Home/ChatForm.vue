@@ -1,16 +1,19 @@
 <template>
     <div class="">
         <el-row>
-            <el-col :span="10" >
-                <el-input placeholder="Escribir mensaje" name="message" v-model="newMessage" @keyup.enter="sendMessage"></el-input>
+            <el-col :span="24" >
+                
+                <textarea class="textarea_chat" placeholder="Escribir mensaje" name="message" v-model="newMessage" @keyup.enter="sendMessage">
+                    
+                </textarea>
 
 
             </el-col>
-            <el-col :span="5" >
+           <!--  <el-col :span="5" >
                 <el-button @click="sendMessage" v-loading="load">
                 Enviar
             </el-button>
-            </el-col>
+            </el-col> -->
         </el-row>
         <!--<input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." v-model="newMessage" @keyup.enter="sendMessage">-->
     </div>
@@ -49,3 +52,10 @@
         }    
     }
 </script>
+
+<style type="text/css">
+    .textarea_chat{
+        width: 100%;
+        border:none;
+    }
+</style>

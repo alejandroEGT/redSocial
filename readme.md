@@ -9,15 +9,17 @@
 
 # Red Social
 
-<img src="public/logo/captura1.png">
-<img src="public/logo/captura2.png">
+<img src="public/logo/cap1.png">
+<img src="public/logo/cap2.png">
+<img src="public/logo/cap3.png">
+<img src="public/logo/cap4.png">
+<img src="public/logo/cap5.png">
 ----
 ## En que consiste?
 
 
-> Es un proyecto que busca hacer interactuar a los usuarios compartiendo fotos, pensamientos y enlaces de noticias, permite la comunicación mediante un chat en tiempo real.
+> Es un proyecto que busca hacer interactuar a los usuarios compartiendo fotos, pensamientos, ideas y enlaces de noticias, permite la comunicación mediante un chat en tiempo real.
 
-----
 ## Tecnologías utilizadas
 <img style="height: 180px; width: 200px" src="https://laravel.com/assets/img/components/logo-laravel.svg">
 <img style="height: 180px; width: 200px" src="https://blog.tuleap.org/sites/default/files/logo-vue-js.png">

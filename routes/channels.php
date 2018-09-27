@@ -19,3 +19,6 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('chat.{id}.{id_otra}', function ($user) {
     return true;
 });
+Broadcast::channel('chat.{id}', function ($user) {
+    return true;
+});

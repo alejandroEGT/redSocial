@@ -1,8 +1,8 @@
 <template>
-	<div class="">
+	<div style="margin-top:15px;">
 		
 		<el-row>
-			<el-col :span="18">
+			<el-col :span="13">
 				<el-row>
 					<el-col :span="2" >
 						<img  class="img-avatar pull-right"  :src="this.$auth.user().avatar">
@@ -100,8 +100,8 @@
 					</el-row>
 					<el-row>
 						<el-col class="boxcontent" :span="24">
-							
-							<p>{{ com.texto }}</p>
+							<p v-if="!com.foto" class="txt_public">{{ com.texto }}</p>
+							<p v-if="com.foto">{{ com.texto }}</p>
 							<div v-if="com.foto">
 								<img class="fotoindex" :src="com.foto">
 							</div>
@@ -169,7 +169,7 @@
 									  					<img class="avatar_index" :src="com.avatar">
 									  				</el-col>
 									  				<el-col :span="22">
-									  					asi te pillamos jano jaaj
+									  					esto es un comentario jajajaja
 									  				</el-col>
 									  			</el-row>
 
@@ -178,7 +178,7 @@
 									  					<img class="avatar_index" :src="yo.avatar">
 									  				</el-col>
 									  				<el-col :span="22">
-									  					asi es la vida po mi wacho jajaja saludos bro cuidate abrazos..
+									  					asi es soy un comentario XD
 									  				</el-col>
 									  			</el-row>
 									  		</el-col>
@@ -200,11 +200,25 @@
 					</el-row>
 				</div>
 			</el-col>
-			<el-col :span="6">
+			<el-col :span="5">
 				<div class="subox" >
-					<label v-loading="loc" style="font-size:12px" >
+					<el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                      
+                      <el-button style="float: left;" type="text">Operation button</el-button>
+                    </div>
+                    <div v-for="o in otros_usuarios" class="text item">
+                        <img class="img-avatar" :src="o.avatar">
+                        {{ ' '+o.nombres+' '+o.apellidos }}
+                         <center>
+                         <button style="margin-top:3px" type="button" class="btn btn-sm btn-block btn-outline-dark">Agregar</button>
+                         </center>
+                        <hr>
+                    </div>
+                  </el-card>
+					<!-- <label v-loading="loc" style="font-size:12px" >
 					<i class="fas fa-map-marker-alt"></i>	{{ locate }}
-					</label>
+					</label> -->
 				</div>
 			</el-col>
 		</el-row>	
@@ -212,9 +226,9 @@
 </template>
 <script type="text/javascript">
 
-//import Autocomplete from 'vuejs-auto-complete'
-import LinkPrevue from 'link-prevue'
-import Autocomplete from 'vue2-autocomplete-js'
+	//import Autocomplete from 'vuejs-auto-complete'
+	import LinkPrevue from 'link-prevue'
+	import Autocomplete from 'vue2-autocomplete-js'
 	export default{
 		data(){
 
@@ -233,6 +247,7 @@ import Autocomplete from 'vue2-autocomplete-js'
         		imageUrl: '',
         		yo: this.$auth.user(),
         		laUrl:'',
+        		otros_usuarios:{}
 			}
 		},
 		 components: {
@@ -242,6 +257,7 @@ import Autocomplete from 'vue2-autocomplete-js'
 		created(){
 			this.getComents();
 			this.getUbicacion();
+			this.amigos_encomun()
 			//this.auto();
 		},
 		methods:{
@@ -315,6 +331,11 @@ import Autocomplete from 'vue2-autocomplete-js'
 	        }
 	        return isJPG && isLt2M;
 	      },
+	       amigos_encomun(){
+	        axios.get('api/auth/get_amigos_en_comun').then((res)=>{
+	          this.otros_usuarios = res.data;
+	        })
+	      },
 	      auto(){
 	      	axios('api/auth/users/autocomplete').then((response)=>{
 	      		console.log(response.data);
@@ -380,29 +401,29 @@ import Autocomplete from 'vue2-autocomplete-js'
 	    display: none;
 	}
 	.fotoindex{
-		height: 380px;
+		height: 100%;
 		width: 100%;
 	}
 
-.span6 {
-  float: left;
-  width: 100%;
-  padding-left: 10%;
-}
-.emojionearea-editor:not(.inline) {
-  min-height: 8em!important;
-}
-.ta_coment{
-	width: 100%;
-    	border-left: 0;
-    	border-right: 0;
-    	border-top: 1px solid #E5E8E8;
-    	border-bottom: 1px solid #E5E8E8;
-}
-.burbuja{
-	padding: 5px;
-	margin-top: 2px;margin-bottom: 2px;
-	background: #F2F3F4;
-	border-radius: 12px;
-}
+	.span6 {
+	  float: left;
+	  width: 100%;
+	  padding-left: 10%;
+	}
+	.emojionearea-editor:not(.inline) {
+	  min-height: 8em!important;
+	}
+	.ta_coment{
+		width: 100%;
+	    	border-left: 0;
+	    	border-right: 0;
+	    	border-top: 1px solid #E5E8E8;
+	    	border-bottom: 1px solid #E5E8E8;
+	}
+	.burbuja{
+		padding: 5px;
+		margin-top: 2px;margin-bottom: 2px;
+		background: #F2F3F4;
+		border-radius: 12px;
+	}
 </style>

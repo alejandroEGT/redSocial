@@ -23,10 +23,10 @@ class AuthController extends Controller
     	$user = User::find(Auth::user()->id);
     	$user->active = 1;
     	$user->save();
-    	return response([
-            'status' => 'success',
+    	return response()->json([
+    		'status' => 'success',
             'token' => $token
-        ])
+    	])
         ->header('Authorization', $token);
 	}
 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Solicitud;
 use App\User;
 use Illuminate\Http\Request;
-use Vikin\Laricon\Facades\Laricon;
+use Illuminate\Support\Facades\Auth;
 use Laravolt\Avatar\Avatar;
+use Vikin\Laricon\Facades\Laricon;
 
 class UserController extends Controller
 {
@@ -112,10 +114,37 @@ class UserController extends Controller
     public function update_foto(Request $dato){
         return User::updateFoto($dato);
     }
+    public function update_fotoback(Request $dato){
+        return User::updateFotoback($dato);
+    }
 
     public function aleatorio_colors(){
         $array =  Array('#F5B041','#EC7063','#B2BABB','#45B39D','#BB8FCE','#3498DB','#5D6D7E');
         $rand = random_int ( 0 , 6 );
         return $array[$rand];
     } 
+
+    public function users_en_comun()
+    {
+        $i = 0;
+        $ids = [];
+        $yo = Auth::user()->id;
+
+     
+                
+        $user_yo_uno=Solicitud::select('user_acepta')->where('user_solicita', $yo )->where('id_estado', '1')->get();
+        $user_yo_dos=Solicitud::select('user_solicita')->where('user_acepta', $yo )->where('id_estado', '1')->get();
+
+
+        foreach ($user_yo_uno as $key) {
+            $ids[$i]['id'] = $key->user_acepta;
+            $i++;
+        }
+
+        foreach ($user_yo_dos as $key) {
+            $ids[$i]['id'] = $key->user_solicita;
+            $i++;
+        }
+        return User::whereNotIn('id', $ids)->where('id','!=', $yo)->get();
+    }
 }

@@ -118,10 +118,73 @@ class UsersSystemController extends Controller
     {
         //
     }
+    public function get_usuario($id){
+
+        $user = User::find($id);
+        return response()->json($user);
+    }
       public function filter(Request $request)
     {
         
-        return User::where('nombres','like', "%".$request->q."%")->get();
+        return User::select([
+            DB::raw("concat(nombres,' ',apellidos) as 'nombres'"),
+            'id','email','avatar'
+        ])->where(DB::raw("concat(nombres,' ',apellidos)"),'like', "%".$request->q."%")->get();
         //return $id;
+    }
+    public function get_amigos_by_id($id_user)
+    {   
+        $ids=[];
+        $yo = Auth::user()->id;
+
+        $soli = Solicitud::where(['user_solicita' => $id_user, 'user_acepta' => Auth::user()->id
+                ])->orWhere(['user_solicita' => Auth::user()->id, 'user_acepta' => $id_user])
+                ->first();
+
+        if($soli){
+
+            if ($id_user == $yo) {
+               
+                $i = 0;
+                
+                $user_yo_uno=Solicitud::select('user_acepta')->where('user_solicita', $yo )->where('id_estado', $soli->id_estado)->get();
+                $user_yo_dos=Solicitud::select('user_solicita')->where('user_acepta', $yo )->where('id_estado', $soli->id_estado)->get();
+
+
+                foreach ($user_yo_uno as $key) {
+                    $ids[$i]['id'] = $key->user_acepta;
+                    $i++;
+                }
+
+                foreach ($user_yo_dos as $key) {
+                    $ids[$i]['id'] = $key->user_solicita;
+                    $i++;
+                }
+
+                return User::whereIn('id', $ids)->get();
+            }else{
+
+                if ($soli->id_estado == '1') {
+                    $i = 0;
+                
+                    $user_yo_uno=Solicitud::select('user_acepta')->where('user_solicita', $id_user )->where('id_estado', $soli->id_estado)->get();
+                    $user_yo_dos=Solicitud::select('user_solicita')->where('user_acepta', $id_user )->where('id_estado', $soli->id_estado)->get();
+
+
+                    foreach ($user_yo_uno as $key) {
+                        $ids[$i]['id'] = $key->user_acepta;
+                        $i++;
+                    }
+
+                    foreach ($user_yo_dos as $key) {
+                        $ids[$i]['id'] = $key->user_solicita;
+                        $i++;
+                    }
+                    return User::whereIn('id', $ids)->get();
+                }
+            }
+        } 
+
+        return [];   
     }
 }
