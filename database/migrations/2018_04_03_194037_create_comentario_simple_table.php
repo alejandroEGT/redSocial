@@ -18,6 +18,7 @@ class CreateComentarioSimpleTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->text('texto');
             $table->text('foto')->nullable();
+            $table->text('url');
             $table->timestamps();
 
              $table->foreign('id_user')->references('id')->on('users');

@@ -275,7 +275,6 @@
 								<el-card>
 									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/10273497_716538648392293_5053026506898113399_n.jpg?_nc_cat=102&oh=b58f92ec01fddba5f0c7808470c3a239&oe=5C34BFB1">
 
-									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/27459972_1706050026107812_7455996768595328468_n.jpg?_nc_cat=101&oh=06c8ae1f8dfd374da3fcdc9f2719745f&oe=5C2071CC">
 
 									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/s960x960/30715793_1777929625586518_814810494970888192_o.jpg?_nc_cat=100&oh=18f91ba31443c39f8c5b7aa00fb39da2&oe=5C197B00">
 
