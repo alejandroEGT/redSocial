@@ -20,8 +20,6 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
- 
-
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -52,7 +50,7 @@ if (token) {
 
  window.Echo = new Echo({
      broadcaster: 'pusher',
-      key: 'da4ed31c291ca0875c44',
-      cluster : 'mt1',
+      key: '8f7416536e2111def304',
+      cluster : 'eu',
       encrypted :true,
  });
