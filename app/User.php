@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use JD\Cloudder\Facades\Cloudder;
 
 class User extends Authenticatable
 {
@@ -55,10 +56,18 @@ class User extends Authenticatable
         $us = $this->find(Auth::user()->id);
         $image = $datos->file('foto');
         $name = time().'.'.$image->getClientOriginalExtension();
+
         if($datos->file('foto')->move(public_path('avatar'), $name)){
-            $us->avatar = 'avatar/'.$name;
+
+            Cloudder::upload('avatar/'.$name, $name);
+            $result = Cloudder::getResult();
+
+            $us->avatar = $result['url'];
+           
             if ($us->save()) {
-                return $us->avatar;
+                 \File::delete('avatar/'.$name);
+
+                return $total;
             }
         }
         return "error";
@@ -73,8 +82,14 @@ class User extends Authenticatable
         $image = $datos->file('foto');
         $name = time().'.'.$image->getClientOriginalExtension();
         if($datos->file('foto')->move(public_path('background'), $name)){
-            $us->avatarback = 'background/'.$name;
+
+            Cloudder::upload('background/'.$name, $name);
+            $result = Cloudder::getResult();
+
+            $us->avatarback = $result['url'];
             if ($us->save()) {
+                
+                 \File::delete('background/'.$name);
                 return $us->avatarback;
             }
         }

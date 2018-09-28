@@ -164,6 +164,8 @@ return [
         PulkitJalan\GeoIP\GeoIPServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
 
+        JD\Cloudder\CloudderServiceProvider::class,
+
     ],
 
     /*
@@ -217,6 +219,8 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'GeoIP' => PulkitJalan\GeoIP\Facades\GeoIP::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
+
     ],
 
 ];

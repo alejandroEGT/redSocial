@@ -6,7 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=7.1.3",
+        "ext-gd": "*",
         "fideloper/proxy": "~4.0",
+        "google/apiclient": "^2.0",
+        "jrm2k6/cloudder": "^0.6.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "laravolt/avatar": "^2.0",
@@ -14,8 +17,7 @@
         "pulkitjalan/geoip": "2.*",
         "pusher/pusher-php-server": "~3.0",
         "tymon/jwt-auth": "^0.5.12",
-        "vikin/laricon": "^1.0",
-        "ext-gd": "*"
+        "vikin/laricon": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
