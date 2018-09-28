@@ -67,7 +67,7 @@ class User extends Authenticatable
             if ($us->save()) {
                  \File::delete('avatar/'.$name);
 
-                return $total;
+                return "Success";
             }
         }
         return "error";

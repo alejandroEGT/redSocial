@@ -54,78 +54,122 @@
 							<el-col :span="24">
 								<div v-if="id != id_mio"  class="boxuser" >
 									<div class="boxcontent">
-										<el-row>
-											<el-col :span="2" >
-												<img  class="img-avatar pull-right"  :src="this.$auth.user().avatar">
-											</el-col>
-											<el-col :span="12">
-												<form>
-											<textarea class="txtarea" :placeholder="'Escribele algo a '+ user.nom " v-model="emotic" ></textarea>
-											<br>
-											<button type="button" class="btn btn-sm btn-outline-success" @click="ver = !ver;">
-												<i class="fas fa-smile" ></i> Emoji
-											</button>
-											<button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#exampleModal" >
-												<i class="fas fa-camera-retro"></i> Foto
-											</button>
-
-											<!-- Modal -->
-											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-											  <div class="modal-dialog" role="document">
-											  	<form method="POST" id="form1" enctype="multipart/form-data">
-											    <div class="modal-content">
-											      <div class="modal-header">
-											        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-											        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											          <span aria-hidden="true">&times;</span>
-											        </button>
-											      </div>
-											      <div class="modal-body">
-											        	<input type="hidden" name="id_projecto" value="1" >
-											        	<textarea name="texto" class="txtarea" placeholder="Que estas pensando?" v-model="emotic" ></textarea>
-														<br>
-														
-														<div class="image-upload">
-															<input type="file" id="file-input" multiple  name="fotos[]">
-														    <label for="file-input">
-														        <i class="fas fa-camera-retro"></i>
-														    </label>
-														</div>
-											        	
-
-											      </div>
-											      <div class="modal-footer">
-											        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-											        <button type="button" @click="getFotos" class="btn btn-primary">Publicar</button>
-											      </div>
-											    </div>
-											</form>
-											  </div>
-											</div>
-
-
-											<button @click="submit" type="button" class="btn  btn-outline-primary">
-												<i class="fa fa-chevron-circle-right" ></i> Publicar
-											</button>
-											<div v-if="ver">
-												<picker :i18n="{ search: 'Buscar', categories: { search: 'Résultats de recherche', recent: 'Emojis' } }" @click="add" />
-											</div>
+										<div class="row">
 											
-										</form>
-											</el-col>
-										</el-row>
+											<div class="col-md-6 col-xl-6">
+												<form>
+														<img style="float: left"  class="img-avatar"  :src="this.$auth.user().avatar">
+														<textarea class="txtarea" :placeholder="'Escribele algo a '+ user.nom " v-model="emotic" ></textarea>
+															<br><br><br>
+															<button type="button" class="btn btn-sm btn-outline-success" @click="ver = !ver;">
+																<i class="fas fa-smile" ></i> Emoji
+															</button>
+															<button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#exampleModal" >
+																<i class="fas fa-camera-retro"></i> Foto
+															</button>
+
+															<!-- Modal -->
+															<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															  <div class="modal-dialog" role="document">
+															  	<form method="POST" id="form1" enctype="multipart/form-data">
+															    <div class="modal-content">
+															      <div class="modal-header">
+															        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+															        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															          <span aria-hidden="true">&times;</span>
+															        </button>
+															      </div>
+															      <div class="modal-body">
+															        	<input type="hidden" name="id_projecto" value="1" >
+															        	<textarea name="texto" class="txtarea" placeholder="Que estas pensando?" v-model="emotic" ></textarea>
+																		<br>
+																		
+																		<div class="image-upload">
+																			<input type="file" id="file-input" multiple  name="fotos[]">
+																		    <label for="file-input">
+																		        <i class="fas fa-camera-retro"></i>
+																		    </label>
+																		</div>
+															        	
+
+															      </div>
+															      <div class="modal-footer">
+															        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															        <button type="button" @click="getFotos" class="btn btn-primary">Publicar</button>
+															      </div>
+															    </div>
+														</form>
+													 </div>
+												</div>
+
+
+													<button @click="submit" type="button" class="btn  btn-outline-primary">
+														<i class="fa fa-chevron-circle-right" ></i> Publicar
+													</button>
+													<div v-if="ver">
+														<picker :i18n="{ search: 'Buscar', categories: { search: 'Résultats de recherche', recent: 'Emojis' } }" @click="add" />
+													</div>
+													
+												</form>
+											</div>
+										</div>
 									</div>
 								</div>
 							</el-col>
 						</el-row>
 				
-					<el-row>
-						<el-col :span="14">
+					<div class="row">
+
+						<div class="col-md-3 col-xs-3 col-sm-3">
+							<center><h4>Información prsonal</h4></center>
+							<el-card>
+								
+								<div style="margin:12px">
+									<center>
+											<img :src="usuario.avatar" class="img-avatar img-thumbnai">
+											<p>{{ usuario.nombres+' '+usuario.apellidos }}</p>
+											<p>{{usuario.nacimiento}}</p>
+									</center>
+								</div>
+								
+								
+							</el-card>
+
+							<center><h4>Amigos({{ amigos.length }})</h4></center>
+							<el-card>
+								<div v-for="a in amigos">
+									<div style="margin:12px">
+											<center>
+												<img style="float: left" :src="a.avatar" class="img-avatar img-thumbnai">
+											<!-- <p>{{ a.nombres+' '+a.apellidos }}</p> -->
+											</center>
+										</div>
+								</div>
+								<center ><p><a href="">Ver todos.....</a></p></center>
+							</el-card>
+
+
+							<center><h4>Fotos</h4></center>
+							<div>
+								<el-card>
+									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/10273497_716538648392293_5053026506898113399_n.jpg?_nc_cat=102&oh=b58f92ec01fddba5f0c7808470c3a239&oe=5C34BFB1">
+
+
+									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/s960x960/30715793_1777929625586518_814810494970888192_o.jpg?_nc_cat=100&oh=18f91ba31443c39f8c5b7aa00fb39da2&oe=5C197B00">
+
+									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/15727260_1298025420243610_7960077383706047310_n.jpg?_nc_cat=107&oh=40fdf2144e836aa2aee42ed5a7dcaa1d&oe=5C196F2A">
+
+									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/15622404_1294408573938628_175703704610286964_n.jpg?_nc_cat=104&oh=2de425760dedbed6b0c296c95275a1d5&oe=5C199A45">
+							</el-card>
+							</div>
+						</div>
+
+						<div class="col-md-9 col-xs-9 col-sm-9">
 							
 							<div v-for="com in orderedCommens">
 								
 
-								<div v-if="com.id_user_envia == id_mio " class="boxuser" ><!--otro usuario-->
+								<div v-if="com.id_user_envia === id_mio " class="boxuser" ><!--otro usuario-->
 
 									<el-row>
 										<el-col class="boxhead" :span="24">
@@ -239,52 +283,8 @@
 									</div>
 								</div>	-->
 							</div>	
-						</el-col>
-
-						<el-col :span="9" >
-							<center><h4>Información prsonal</h4></center>
-							<el-card>
-								
-								<div style="margin:12px">
-									<center>
-											<img :src="usuario.avatar" class="img-avatar img-thumbnai">
-											<p>{{ usuario.nombres+' '+usuario.apellidos }}</p>
-											<p>{{usuario.nacimiento}}</p>
-									</center>
-								</div>
-								
-								
-							</el-card>
-
-							<center><h4>Amigos({{ amigos.length }})</h4></center>
-							<el-card>
-								<div v-for="a in amigos">
-									<div style="margin:12px">
-											<center>
-												<img style="float: left" :src="a.avatar" class="img-avatar img-thumbnai">
-											<!-- <p>{{ a.nombres+' '+a.apellidos }}</p> -->
-											</center>
-										</div>
-								</div>
-								<center ><p><a href="">Ver todos.....</a></p></center>
-							</el-card>
-
-
-							<center><h4>Fotos</h4></center>
-							<div>
-								<el-card>
-									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/10273497_716538648392293_5053026506898113399_n.jpg?_nc_cat=102&oh=b58f92ec01fddba5f0c7808470c3a239&oe=5C34BFB1">
-
-
-									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/s960x960/30715793_1777929625586518_814810494970888192_o.jpg?_nc_cat=100&oh=18f91ba31443c39f8c5b7aa00fb39da2&oe=5C197B00">
-
-									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/15727260_1298025420243610_7960077383706047310_n.jpg?_nc_cat=107&oh=40fdf2144e836aa2aee42ed5a7dcaa1d&oe=5C196F2A">
-
-									<img class="img img-thumbnail" style="float: left; height:100px" src="https://scontent.fscl13-1.fna.fbcdn.net/v/t1.0-9/15622404_1294408573938628_175703704610286964_n.jpg?_nc_cat=104&oh=2de425760dedbed6b0c296c95275a1d5&oe=5C199A45">
-							</el-card>
-							</div>
-						</el-col>
-					</el-row>
+						</div>
+					</div>
 			    </el-tab-pane>
 
 		  			  <el-tab-pane label="Posteos dirigidos">
@@ -545,8 +545,9 @@
 		width: 100%;
 	}
 	.txtarea{
+		position: absolute;
 		margin-left: 5px;
-		width: 350px;
+		width: 100%;
 		height: 65px;
     	border-left: 0;
     	border-right: 0;

@@ -1,14 +1,13 @@
 <template>
-	<div style="margin-top:15px;">
+	<div style="margin-top:15px; margin-left:5%;">
 		
-		<el-row>
-			<el-col :span="13">
-				<el-row>
-					<el-col :span="2" >
-						<img  class="img-avatar pull-right"  :src="this.$auth.user().avatar">
-					</el-col>
-					<el-col :span="15">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					
+					<div class="col-md-12">
 						<form>
+							<img style="float:left" class="img-avatar"  :src="this.$auth.user().avatar">
 							<el-popover
 							  ref="popover2"
 							  placement="bottom"
@@ -30,6 +29,7 @@
 							  <link-prevue :url="laUrl"></link-prevue>
 							</el-popover>
 							<textarea class="txtarea" placeholder="Que estas pensando?" v-model="emotic" ></textarea>
+							<br><br><br>
 							<!--<div class="row"> 
 								  <div class="span6">
 								    <textarea  placeholder="Que estas pensando?"  class="txtarea" id="emojionearea1"></textarea>
@@ -88,8 +88,8 @@
 							
 							
 						</form>
-					</el-col>
-				</el-row>
+					</div>
+				</div>
 				<br>
 
 				<div class="boxuser" v-for="com in comments">
@@ -199,8 +199,8 @@
 						</el-col>
 					</el-row>
 				</div>
-			</el-col>
-			<el-col :span="5">
+			</div>
+			<div class="col-md-3">
 				<div class="subox" >
 					<el-card class="box-card">
                     <div slot="header" class="clearfix">
@@ -220,8 +220,8 @@
 					<i class="fas fa-map-marker-alt"></i>	{{ locate }}
 					</label> -->
 				</div>
-			</el-col>
-		</el-row>	
+			</div>
+		</div>	
 	</div>
 </template>
 <script type="text/javascript">
@@ -425,5 +425,15 @@
 		margin-top: 2px;margin-bottom: 2px;
 		background: #F2F3F4;
 		border-radius: 12px;
+	}
+	.txtarea{
+		position: absolute;
+		margin-left: 5px;
+		width: 70%;
+		height: 65px;
+    	border-left: 0;
+    	border-right: 0;
+    	border-top: 1px solid #E5E8E8;
+    	border-bottom: 1px solid #E5E8E8;
 	}
 </style>
