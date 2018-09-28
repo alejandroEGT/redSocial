@@ -52,7 +52,7 @@ if (token) {
 
  window.Echo = new Echo({
      broadcaster: 'pusher',
-      key: '8f7416536e2111def304',
-      cluster : 'eu',
+      key: 'da4ed31c291ca0875c44',
+      cluster : 'mt1',
       encrypted :true,
  });
