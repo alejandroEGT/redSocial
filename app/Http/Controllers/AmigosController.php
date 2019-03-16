@@ -13,7 +13,7 @@ class AmigosController extends Controller
     public function show(){
     		$id = Auth::user()->id;
 
-    		$user = DB::select("SELECT `u`.`id`, `u`.`nombres`, `u`.`apellidos`,`u`.`avatar`,`u`.`active` FROM `users` as `u` inner join `solicitud`as `s`on `s`.`user_solicita` = `u`.`id` or `s`.`user_acepta` = `u`.`id` where `u`.id != $id and ( `s`.`user_solicita` = $id or `s`.`user_acepta` = $id) and `s`.`id_estado` = 1");
+    		$user = DB::select("SELECT `u`.`id`, `u`.`nombres`, `u`.`apellidos`,`u`.`avatar`,`u`.`active` FROM `users` as `u` inner join `solicitud`as `s`on `s`.`user_seguidor` = `u`.`id` or `s`.`user_seguido` = `u`.`id` where `u`.id != $id and ( `s`.`user_seguidor` = $id or `s`.`user_seguido` = $id) and `s`.`id_estado` = 1");
 
     		return $user;
     }

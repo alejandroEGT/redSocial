@@ -50,6 +50,7 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 
   Route::get('auth/notifi_mensajes/{id}','ChatController@show_notificacion_mensaje');
 
+
 });
 Route::group(['middleware' => ['jwt.refresh', 'throttle:rate_limit,1']], function(){
   Route::get('auth/refresh', 'AuthController@refresh');

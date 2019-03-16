@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotificarSolicitudEvent;
 use App\Solicitud;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +13,16 @@ class SolicitudController extends Controller
     //
     public function index(Request $datos)
     {
-        dd ($datos);
+        return User::select([
+                    'users.id','users.nombres','users.apellidos','users.avatar',
+                    's.user_seguidor','s.user_seguido','s.id_estado'
+                ])->join('solicitud as s','s.user_seguidor','users.id')
+                ->where([
+                    's.user_seguido'=> Auth::user()->id,
+                    's.id_estado' => '2'
+                ])
+                ->orWhere('s.id_estado', '1')
+                ->get();
     }
 
     /**
@@ -36,23 +47,32 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        $verify = Solicitud::where('user_solicita', Auth::user()->id)
-        				   ->where('user_acepta', $request->id_acepta)->first();
+        $verify = Solicitud::where('user_seguidor', Auth::user()->id)
+        				   ->where('user_seguido', $request->id_acepta)->first();
         if ($verify) {
         	$verify->id_estado = $request->num;
             $verify->save();
+            if ($request->num == 1) {
+                //dd("uno");
+                broadcast(new NotificarSolicitudEvent($verify, "Seguir"));
+            }
+             if ($request->num == 2) {
+                
+                broadcast(new NotificarSolicitudEvent($verify, "Dejar de seguir"));
+            }
+            
         }
         else{
 
 
             $sol = new Solicitud;
-            $sol->user_solicita = Auth::user()->id;
-            $sol->user_acepta = $request->id_acepta;
+            $sol->user_seguidor = Auth::user()->id;
+            $sol->user_seguido = $request->id_acepta;
             $sol->id_estado = $request->num;
             if($sol->save()){
-            	return "enviada..";
-            }
-            return "no se envió..";
+                
+              broadcast(new NotificarSolicitudEvent($sol, "Seguir"));
+           }
         }   
     }
 
@@ -100,13 +120,14 @@ class SolicitudController extends Controller
     {
         //
     }
-    public function aceptarSolicitud(Request $datos)
-    {
-        $verify = Solicitud::where('user_solicita', $datos->id_solicita)
-                           ->where('user_acepta', $datos->id_acepta)->first();
-        if ($verify) {
-            $verify->id_estado = $datos->num;
-            $verify->save();
-        }
-    }
+    // public function aceptarSolicitud(Request $datos)
+    // {
+    //     $verify = Solicitud::where('user_solicita', $datos->id_solicita)
+    //                        ->where('user_acepta', $datos->id_acepta)->first();
+    //     if ($verify) {
+    //         $verify->id_estado = $datos->num;
+    //         $verify->save();
+    //         broadcast(new NotificarSolicitudEvent($verify, "aceptada"));
+    //     }
+    // }
 }

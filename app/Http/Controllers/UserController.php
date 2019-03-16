@@ -130,19 +130,23 @@ class UserController extends Controller
         $ids = [];
         $yo = Auth::user()->id;
 
-     
-                
-        $user_yo_uno=Solicitud::select('user_acepta')->where('user_solicita', $yo )->where('id_estado', '1')->get();
-        $user_yo_dos=Solicitud::select('user_solicita')->where('user_acepta', $yo )->where('id_estado', '1')->get();
+        
+        $user_yo_uno=Solicitud::select('user_seguido')->where('user_seguidor', $yo )->where('id_estado', '1')->get();
+        $user_yo_dos=Solicitud::select('user_seguidor')->where('user_seguido', $yo )->where('id_estado', '1')->get();
+
+        // return [
+        //     $user_yo_uno,
+        //     $user_yo_dos
+        // ];
 
 
         foreach ($user_yo_uno as $key) {
-            $ids[$i]['id'] = $key->user_acepta;
+            $ids[$i]['id'] = $key->user_seguido;
             $i++;
         }
 
         foreach ($user_yo_dos as $key) {
-            $ids[$i]['id'] = $key->user_solicita;
+            $ids[$i]['id'] = $key->user_seguidor;
             $i++;
         }
         return User::whereNotIn('id', $ids)->where('id','!=', $yo)->get();

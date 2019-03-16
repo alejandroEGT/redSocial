@@ -22,3 +22,16 @@ Broadcast::channel('chat.{id}.{id_otra}', function ($user) {
 Broadcast::channel('chat.{id}', function ($user) {
     return true;
 });
+
+Broadcast::channel('notificar_solicitud.{id}', function ($user) {
+    return true;
+});
+
+Broadcast::channel('notificar_solicitud_cancel.{id}', function ($user) {
+    return true;
+});
+Broadcast::channel('notificar_solicitud_return.{id}', function ($user) {
+    return true;
+});
+
+

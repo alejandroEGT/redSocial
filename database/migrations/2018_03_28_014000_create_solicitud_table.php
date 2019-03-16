@@ -15,13 +15,13 @@ class CreateSolicitudTable extends Migration
     {
         Schema::create('solicitud', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_solicita')->unsigned();
-            $table->integer('user_acepta')->unsigned();
+            $table->integer('user_seguidor')->unsigned();
+            $table->integer('user_seguido')->unsigned();
             $table->integer('id_estado')->unsigned();
             $table->timestamps();
 
-            $table->foreign('user_solicita')->references('id')->on('users');
-            $table->foreign('user_acepta')->references('id')->on('users');
+            $table->foreign('user_seguidor')->references('id')->on('users');
+            $table->foreign('user_seguido')->references('id')->on('users');
             $table->foreign('id_estado')->references('id')->on('estado_solicitud');
         });
     }

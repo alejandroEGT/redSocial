@@ -46,12 +46,12 @@ class UsersSystemController extends Controller
         
         $verify = DB::table('solicitud')
                     ->join('estado_solicitud','estado_solicitud.id','=','solicitud.id_estado')  
-                    ->where('user_solicita', Auth::user()->id)
-                    ->where('user_acepta', $request->id)->first();
+                    ->where('user_seguidor', Auth::user()->id)
+                    ->where('user_seguido', $request->id)->first();
 
         $verifyOut = DB::table('solicitud') 
-                     ->where('user_acepta', Auth::user()->id)
-                     ->where('user_solicita', $request->id)->first();
+                     ->where('user_seguido', Auth::user()->id)
+                     ->where('user_seguidor', $request->id)->first();
                               
         if ($verifyOut) {
             $id_estado_solicitud = $verifyOut->id_estado;
@@ -60,10 +60,10 @@ class UsersSystemController extends Controller
             $id_estado_solicitud = '0';
         }
         if ($verify) {
-            $verificar = $verify->nombre;
+            $verificar = $verify->nombre.'...';
     
         }else{
-        $verificar = "Agregar";
+        $verificar = "Seguir";
         }
 
         return( response()->json([
@@ -137,8 +137,8 @@ class UsersSystemController extends Controller
         $ids=[];
         $yo = Auth::user()->id;
 
-        $soli = Solicitud::where(['user_solicita' => $id_user, 'user_acepta' => Auth::user()->id
-                ])->orWhere(['user_solicita' => Auth::user()->id, 'user_acepta' => $id_user])
+        $soli = Solicitud::where(['user_seguidor' => $id_user, 'user_seguido' => Auth::user()->id
+                ])->orWhere(['user_seguidor' => Auth::user()->id, 'user_seguido' => $id_user])
                 ->first();
 
         if($soli){
@@ -147,17 +147,17 @@ class UsersSystemController extends Controller
                
                 $i = 0;
                 
-                $user_yo_uno=Solicitud::select('user_acepta')->where('user_solicita', $yo )->where('id_estado', $soli->id_estado)->get();
-                $user_yo_dos=Solicitud::select('user_solicita')->where('user_acepta', $yo )->where('id_estado', $soli->id_estado)->get();
+                $user_yo_uno=Solicitud::select('user_seguido')->where('user_seguidor', $yo )->where('id_estado', $soli->id_estado)->get();
+                $user_yo_dos=Solicitud::select('user_seguidor')->where('user_seguido', $yo )->where('id_estado', $soli->id_estado)->get();
 
 
                 foreach ($user_yo_uno as $key) {
-                    $ids[$i]['id'] = $key->user_acepta;
+                    $ids[$i]['id'] = $key->user_seguido;
                     $i++;
                 }
 
                 foreach ($user_yo_dos as $key) {
-                    $ids[$i]['id'] = $key->user_solicita;
+                    $ids[$i]['id'] = $key->user_seguidor;
                     $i++;
                 }
 
@@ -167,17 +167,17 @@ class UsersSystemController extends Controller
                 if ($soli->id_estado == '1') {
                     $i = 0;
                 
-                    $user_yo_uno=Solicitud::select('user_acepta')->where('user_solicita', $id_user )->where('id_estado', $soli->id_estado)->get();
-                    $user_yo_dos=Solicitud::select('user_solicita')->where('user_acepta', $id_user )->where('id_estado', $soli->id_estado)->get();
+                    $user_yo_uno=Solicitud::select('user_seguido')->where('user_seguidor', $id_user )->where('id_estado', $soli->id_estado)->get();
+                    $user_yo_dos=Solicitud::select('user_seguidor')->where('user_seguido', $id_user )->where('id_estado', $soli->id_estado)->get();
 
 
                     foreach ($user_yo_uno as $key) {
-                        $ids[$i]['id'] = $key->user_acepta;
+                        $ids[$i]['id'] = $key->user_seguido;
                         $i++;
                     }
 
                     foreach ($user_yo_dos as $key) {
-                        $ids[$i]['id'] = $key->user_solicita;
+                        $ids[$i]['id'] = $key->user_seguidor;
                         $i++;
                     }
                     return User::whereIn('id', $ids)->get();

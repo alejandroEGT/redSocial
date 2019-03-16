@@ -372,7 +372,7 @@
 				user:{},
 				txt:'',
 				cancelar : "Cancelar solicitud",
-				eliminar :"Eliminar de mis amigos",
+				eliminar :"Te sigue",
 				agregar : "Agregar",
 				aceptar: "Aceptar solicitud",
 				comments:{},
@@ -476,7 +476,8 @@
 			},
 			aceptarSolicitud($num){
 				axios.post('api/auth/aceptarSolicitud', {num:$num, id_acepta: this.id_mio, id_solicita: this.id}).then((response) =>{
-					console.log(response.data)
+
+					this.getuser()
 					
 				})	
 			},

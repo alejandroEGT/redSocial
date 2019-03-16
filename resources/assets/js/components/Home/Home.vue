@@ -12,8 +12,48 @@
             <li class="nav-item">
                   <router-link style="color:white" :to="{path:'/index'}" class="nav-link active color">Inicio</router-link>
             </li>
-            <li class="nav-item">
+           <!--  <li class="nav-item">
                 <router-link style="color:white" :to="{name:'Chat'}"class="nav-link"><i class="fas fa-user"></i></router-link>
+            </li> -->
+             <li class="nav-item">
+                 
+                  <el-dropdown trigger="click" class="nav-link">
+
+                       <h5 style="color:white"><i class="fas fa-user"></i> <span class="badge badge-danger">{{notif_solicitud}}</span></h5>
+                    <el-dropdown-menu slot="dropdown">
+                        <div style="width:330px" v-for="s in solicitudes">
+                          <el-dropdown-item @click.native="">
+                             <div class="container" style="border-bottom: 1px solid #D5DBDB;">
+                                <div class="row">
+                                  <div class="col-md-2">
+                                    <img style="margin-top:3px" class="img-avatar" :src="s.avatar">
+                                  </div>
+                                  <div class="col-md-9">
+                                    <strong>
+                                      <router-link :to="{path:'/search/'+s.id}">{{ ' '+s.nombres+' '+s.apellidos }}
+                                      </router-link></strong>
+                                    <label style="color:#7F8C8D;display:block;line-height: 1.2;">
+                                      <div v-if="s.id_estado == 1">
+                                        Te comenzó a seguir
+                                      </div>
+                                      <div v-if="s.id_estado == 2">
+                                        Dejó de seguirte
+                                        <!-- <el-button type="primary" @click="optionSolicitud(1)" size="mini">Aceptar</el-button>
+                                        <el-button type="warning" @click="optionSolicitud(2)" size="mini">Cancelar</el-button> -->
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                             </div>
+                          </el-dropdown-item>
+                        </div>
+                      <el-dropdown-item v-if="notif_context == 'null'" >
+                        <span>No Hay mensajes..</span>
+                      </el-dropdown-item>
+                      
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                
             </li>
             <li class="nav-item">
                  
@@ -22,7 +62,7 @@
                        <h5 style="color:white"><i class="fas fa-comment-alt"></i> <span class="badge badge-danger">{{notif_sms}}</span></h5>
                     <el-dropdown-menu slot="dropdown">
                         <div style="width:330px" v-for="n in notif_context">
-                          <el-dropdown-item >
+                          <el-dropdown-item @click.native="select_mensaje(n.envia, n.recibe)">
                              <div class="container" style="border-bottom: 1px solid #D5DBDB;">
                                 <div class="row">
                                   <div class="col-md-2">
@@ -45,16 +85,42 @@
                     </el-dropdown-menu>
                   </el-dropdown>
                 
-                </li>
+            </li>
+
+             <li class="nav-item">
+                 
+                  <el-dropdown trigger="click" class="nav-link">
+
+                       <h5 style="color:white"><i class="fas fa-bell"></i> <span class="badge badge-danger">1</span></h5>
+                    <el-dropdown-menu slot="dropdown">
+                        <div style="width:330px" v-for="n in notif_context">
+                          <el-dropdown-item @click.native="select_mensaje(n.envia, n.recibe)">
+                             <div class="container" style="border-bottom: 1px solid #D5DBDB;">
+                                <div class="row">
+                                  <div class="col-md-2">
+                                    <img style="margin-top:3px" class="img-avatar" :src="n.avatar">
+                                  </div>
+                                  <div class="col-md-9">
+                                    <strong><!--{{ ' '+n.nick }}--></strong>
+                                    <label style="color:#7F8C8D;display:block;line-height: 1.2;">
+                                      <!--{{ n.mensaje }}-->
+                                    </label>
+                                  </div>
+                                </div>
+                             </div>
+                          </el-dropdown-item>
+                        </div>
+                      <el-dropdown-item v-if="notif_context == 'null'" >
+                        <span>No Hay mensajes..</span>
+                      </el-dropdown-item>
+                      
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                
+            </li>
           </ul>
           <span class="navbar-text">
-            <!-- <el-input size="small"       
-                      icon="fa fa-search"
-                      @change="search"
-                      placeholder="Buscar persona" 
-                      v-model="buscar">
-                                      
-                    </el-input> -->
+           
                     <autocomplete
                           url="/users/autocomplete"
                           id="id_auto"
@@ -82,7 +148,7 @@
                 <div class="col-md-8">
                     <div class="dropdown show">
                             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              {{ nick }}
+                              {{ yo.nickname }}
                             </a>
 
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -90,7 +156,7 @@
                             <a class="dropdown-item" @click="logout" href="#" >Salir</a>
                           </div>
                     </div>
-                     <p class="nombre">{{name+' '+lastname}}</p>
+                     <p class="nombre">{{yo.nombres+' '+yo.apellidos}}</p>
                 </div>
               </div>
 
@@ -108,9 +174,7 @@
                                       {{ (am.nombres+' '+am.apellidos).substr(0, 17) }}
                                     </router-link>
                                       
-                                    </p>
-                                        
-                                  
+                                    </p>  
                                   </el-col>
                                   <el-col :span="3">
                                     <div v-if="am.active == 1"><img src="http://3.bp.blogspot.com/-XqF09AkxbIw/VmbGVUHSCNI/AAAAAAAAH48/YqKi_0fpFMk/s1600/1437492872628.png" height="10"></div>
@@ -171,15 +235,13 @@
   export default{
     components: {
         Autocomplete,
-       
       },
     data(){
       return{
         loadSearch: false,
         loadfriend:true,
         exist:false,
-        nick: this.$auth.user().nickname,
-        name: this.$auth.user().nombres,
+        yo: this.$auth.user(),
         lastname: this.$auth.user().apellidos,
         activeName: 'first',
         tabPosition:'bottom',
@@ -195,7 +257,9 @@
         izq:true,
         autocompleto:'',
         notif_sms: 0,
-        notif_context:{}
+        notif_context:{},
+        notif_solicitud:0,
+        solicitudes:{}
       }
     },
     mounted(){
@@ -211,19 +275,24 @@
         this.amigos();
         this.amigos_encomun();
         this.get_notix_mensaje();
+        this.ver_solicitudes();
       //}.bind(this), 3000); 
-      Echo.private('chat.'+this.$auth.user().id).listen('MessageSentEvent', (e) => {
+        Echo.private('chat.'+this.$auth.user().id).listen('MessageSentEvent', (e) => {
+            if(e.message.id_user_recibe == this.$auth.user().id){
+              var audio = new Audio('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3');
+              audio.play();
 
-          if(e.message.id_user_recibe == this.$auth.user().id){
-            var audio = new Audio('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3');
-            audio.play();
+              this.notif_sms++;
+              this.get_notix_mensaje();
 
-            this.notif_sms++;
-            this.get_notix_mensaje();
+            }
+                          
+        });   
+         Echo.private('notificar_solicitud.'+this.yo.id).listen('NotificarSolicitudEvent', (e) => {this.notif_solicitud++; this.ver_solicitudes(); });
 
-          }
-                        
-      });     
+         Echo.private('notificar_solicitud_return.'+this.yo.id).listen('NotificarSolicitudEvent', (e) => {this.amigos(); });
+
+
     },
     methods:{
       quite(){
@@ -333,6 +402,30 @@
             this.notif_context = res.data;
         })
         
+      },
+      select_mensaje($envia, $recibe){
+        var id = 0;
+        if ($envia == this.yo.id){id=$recibe}else{ id=$envia}
+        //alert(id);
+        this.$router.push({name: 'Amigos', params: {id:id }});
+      },
+      ver_solicitudes(){
+        axios.get('api/auth/solicitud',{id:this.yo.id}).then((res)=>{
+            this.solicitudes = res.data;
+        })
+      },
+      cancelarSolicitud($num){
+        axios.post('api/auth/solicitud', {num:$num, id_acepta: this.yo.id}).then((response) =>{
+          
+          this.getuser()
+          
+        })
+      },
+      aceptarSolicitud($num){
+        axios.post('api/auth/aceptarSolicitud', {num:$num, id_acepta: this.id_mio, id_solicita: this.id}).then((response) =>{
+          console.log(response.data)
+          
+        })  
       },
    }
     

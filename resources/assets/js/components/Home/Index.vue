@@ -158,7 +158,7 @@
 								</el-col>
 							</el-row>
 							
-								<el-row >
+							<el-row >
 								<el-col :span="24">
 									<div class="collapse" :id="'collapseExample.'+com.id">
 									  <div class="card card-body">
@@ -207,11 +207,14 @@
                       
                       <el-button style="float: left;" type="text">Operation button</el-button>
                     </div>
-                    <div v-for="o in otros_usuarios" class="text item">
+                    <div v-for="(o,i) in otros_usuarios" class="text item">
                         <img class="img-avatar" :src="o.avatar">
-                        {{ ' '+o.nombres+' '+o.apellidos }}
+                        <router-link :to="{path:'/search/'+o.id}">{{ ' '+o.nombres+' '+o.apellidos }}</router-link>
                          <center>
-                         <button style="margin-top:3px" type="button" class="btn btn-sm btn-block btn-outline-dark">Agregar</button>
+     
+                                          	
+                         </button>
+                         <input :id="'btns'+i" @click="seguir(o.id, i, o.nombres+' '+o.apellidos )" style="margin-top:3px" type="button" class="btn btn-sm btn-block btn-outline-dark" value="Seguir">
                          </center>
                         <hr>
                     </div>
@@ -247,7 +250,9 @@
         		imageUrl: '',
         		yo: this.$auth.user(),
         		laUrl:'',
-        		otros_usuarios:{}
+        		otros_usuarios:{},
+        		btns:{},
+        		
 			}
 		},
 		 components: {
@@ -259,6 +264,16 @@
 			this.getUbicacion();
 			this.amigos_encomun()
 			//this.auto();
+		},
+		mounted(){
+
+			Echo.private('notificar_solicitud.'+this.yo.id).listen('NotificarSolicitudEvent', (e) => { 
+         		 
+                 this.amigos_encomun();               
+          	});
+          	Echo.private('notificar_solicitud_cancel.'+this.yo.id).listen('NotificarSolicitudEvent', (e) => {
+          		 this.amigos_encomun();  
+          	});
 		},
 		methods:{
 			add(even){
@@ -334,6 +349,7 @@
 	       amigos_encomun(){
 	        axios.get('api/auth/get_amigos_en_comun').then((res)=>{
 	          this.otros_usuarios = res.data;
+	          
 	        })
 	      },
 	      auto(){
@@ -355,6 +371,25 @@
 		      
 		    `
 		  },
+		  seguir($id_user, $i, $nombre){
+		  	//seguir al usuario
+
+		  		axios.post('api/auth/solicitud', {num:1, id_acepta:$id_user}).then((response) =>{
+		  			this.$notify({
+			          title: 'Sigues ahora a',
+			          message: 'h2'+$nombre+''
+			        });
+					this.amigos_encomun();
+					
+				})
+		  		
+		  	
+		  	
+		  	//this.verify[$i] = !this.verify[$i];
+		  	//this.btns[$i] = "Cancelar"
+		  	console.log($("#btns"+$i))
+		  },
+
 	  }
 	}
 </script>
