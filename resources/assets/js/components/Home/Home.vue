@@ -21,8 +21,8 @@
 
                        <h5 style="color:white"><i class="fas fa-user"></i> <span class="badge badge-danger">{{notif_solicitud}}</span></h5>
                     <el-dropdown-menu slot="dropdown">
-                        <div style="width:330px" v-for="s in solicitudes">
-                          <el-dropdown-item @click.native="">
+                        <div style="width:330px" v-for="s in solicitudes" :key="s">
+                          <el-dropdown-item >
                              <div class="container" style="border-bottom: 1px solid #D5DBDB;">
                                 <div class="row">
                                   <div class="col-md-2">
@@ -61,7 +61,7 @@
 
                        <h5 style="color:white"><i class="fas fa-comment-alt"></i> <span class="badge badge-danger">{{notif_sms}}</span></h5>
                     <el-dropdown-menu slot="dropdown">
-                        <div style="width:330px" v-for="n in notif_context">
+                        <div style="width:330px" v-for="n in notif_context" :key="n">
                           <el-dropdown-item @click.native="select_mensaje(n.envia, n.recibe)">
                              <div class="container" style="border-bottom: 1px solid #D5DBDB;">
                                 <div class="row">
@@ -93,7 +93,7 @@
 
                        <h5 style="color:white"><i class="fas fa-bell"></i> <span class="badge badge-danger">1</span></h5>
                     <el-dropdown-menu slot="dropdown">
-                        <div style="width:330px" v-for="n in notif_context">
+                        <div style="width:330px" v-for="n in notif_context" :key="n">
                           <el-dropdown-item @click.native="select_mensaje(n.envia, n.recibe)">
                              <div class="container" style="border-bottom: 1px solid #D5DBDB;">
                                 <div class="row">
@@ -127,7 +127,7 @@
                           anchor="nombres"
                           label="email"
                            :classes="{ wrapper: 'form-wrapper', input: 'form-control', list: 'data-list', item: 'data-list-item' }"
-                            placeholder="placeholder"
+                            placeholder="Buscar.."
                            :onShouldRenderChild="renderChild"
                            :on-select="getData"
                           >
@@ -164,7 +164,7 @@
                 <div class="col-md-12">
                   <a href="#"><i class="fa fa-user"></i> Amigos</a>
                     <div class="boxfriends" v-loading="loadfriend"  >
-                              <div v-for="am in friends">
+                              <div v-for="am in friends" :key="am">
                                 <el-row>
                                   <el-col :span="20">
                                     <p @mouseover="mouseOver(am.id)" style="font-size:12px; color:black" >
@@ -201,7 +201,7 @@
                       </center>
                     </div>
                     <div v-if="!videoCon">
-                      <div v-for="v in videos">        
+                      <div v-for="v in videos" :key="v">        
                          <youtube style="border-radius:10px" :video-id=" ''+v.id.videoId+'' " player-width="200" player-height="100" :player-vars="{autoplay: 0}"></youtube>
                       </div>
                     </div>

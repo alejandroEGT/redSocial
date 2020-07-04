@@ -12,7 +12,7 @@
 						    <input  @change="handlePreview" id="upload" name="foto"  class="file-upload__input" type="file"  >
 						</div>
 					</form>	
-				</el-col>
+				</el-col>  
 				<el-col :span="10">
 					
 					<form id="form2">
@@ -107,11 +107,21 @@
 }
 
 .file-upload__label {
-  display: block;
-  color: #fff;
-  background: #222;
-  border-radius: .4em;
-  transition: background .3s;
+	display: block;
+    line-height: 2.2em;
+    padding: 0 0.62em;
+    border: 1px solid #666;
+    border-radius: 0.25em;
+    background-image: linear-gradient( to bottom, black, black );
+    box-shadow: inset 0 0 0.1em #fff, 0.2em 0.2em 0.2em rgba( 0, 0, 0, 0.3 );
+    font-family: arial, sans-serif;
+    font-size: 0.8em;
+	color:white;
+  /* display: block;
+  color: #fff; */
+  /* background: #222;
+  border-radius: .9em;
+  transition: background .3s; */
   
   &:hover {
      cursor: pointer;
@@ -133,6 +143,7 @@
 .update_foto{
 	height: 80px;
 	width:80px;
+	border:4px solid rgb(56, 11, 11);
 
 }
 </style>

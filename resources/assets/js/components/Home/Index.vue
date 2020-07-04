@@ -92,7 +92,7 @@
 				</div>
 				<br>
 
-				<div class="boxuser" v-for="com in comments">
+				<div class="boxuser" v-for="com in comments" :key="com">
 					<el-row >
 						<el-col class="boxhead" :span="24">
 							<p><img class="avatar_index" :src="com.avatar"> <a :href="'#/search/'+com.id_user">{{com.nickname}}</a> <small> {{com.created_at}}</small> </p>
@@ -142,7 +142,7 @@
 											    anchor="nombres"
 											    label="email"
 											     :classes="{ wrapper: 'form-wrapper', input: 'form-control', list: 'data-list', item: 'data-list-item' }"
-    												placeholder="placeholder"
+    												placeholder="Buscar.."
 											     :onShouldRenderChild="renderChild"
 											    >
 											  </autocomplete>
@@ -207,7 +207,7 @@
                       
                       <el-button style="float: left;" type="text">Operation button</el-button>
                     </div>
-                    <div v-for="(o,i) in otros_usuarios" class="text item">
+                    <div v-for="(o,i) in otros_usuarios" class="text item" :key="o">
                         <img class="img-avatar" :src="o.avatar">
                         <router-link :to="{path:'/search/'+o.id}">{{ ' '+o.nombres+' '+o.apellidos }}</router-link>
                          <center>

@@ -44,7 +44,8 @@ class ComentarioMultiple extends Model
     			   ->join('comentario-user','Comentario-user.id_comentario','comentario_multiple.id')
     			   ->join('users as ur','ur.id','Comentario-user.id_user_recibe')
     			   ->join('users as ue','ue.id','comentario_multiple.id_user')
-    			   ->where('comentario-user.id_user_recibe', $id)
+				   ->where('comentario-user.id_user_recibe', $id)
+				   ->orderBy('created_at','asc')
     			   ->get();
         return $comentTo;
 
