@@ -11,12 +11,28 @@ import routes from './rutas';
 Vue.router = new VueRouter({ routes: routes});
 let AppLayout= require('./components/ExampleComponent');
 //ELEMENT UI.
-import ElementUI from 'element-ui'
-import lang from 'element-ui/lib/locale/lang/es'
-import locale from 'element-ui/lib/locale'
-import 'element-ui/lib/theme-default/index.css'
-import 'vue2-animate/dist/vue2-animate.min.css'
+// import ElementUI from 'element-ui'
+// import lang from 'element-ui/lib/locale/lang/es'
+// import locale from 'element-ui/lib/locale'
+// import 'element-ui/lib/theme-default/index.css'
+// import 'vue2-animate/dist/vue2-animate.min.css'
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import './assets/icon.css'
+
+
+// import VueSocialauth from 'vue-social-auth'
+// Vue.use(VueSocialauth)
+
+
 //Axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -65,8 +81,8 @@ Vue.component('picker', Picker)
 Vue.component('emoji', Emoji)
  
 Vue.use(VueAxios, axios)
-Vue.use(ElementUI);
-locale.use(lang)
+// Vue.use(ElementUI);
+// locale.use(lang)
 
 Vue.use(VueAuth, {
    auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),

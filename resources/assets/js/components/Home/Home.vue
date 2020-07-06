@@ -305,13 +305,13 @@
         console.log(key, keyPath);
       },
       logout: function () {
-                this.$confirm('Seguro que quieres salir ?', 'Confirmation', {
-                }).then(() => {
+                // this.$confirm('Seguro que quieres salir ?', 'Confirmation', {
+                // }).then(() => {
                     this.$auth.logout({
                         makeRequest: true,
-                        redirect: '/'
+                        redirect: '/login'
                     });
-                });
+                // });
       },
        handleClick(tab, event) {
         console.log(tab, event);

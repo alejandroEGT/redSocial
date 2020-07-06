@@ -1,35 +1,33 @@
 <template>
-	<div class="container">
-    <br>
+	<div class="">
+    
       <h3>Log in</h3>
-      <div class="row">
-          <div class="col-md-12">
-            <el-form ref="form" :model="form">
-              <el-form-item >
-                  <el-input
+      
+          
+            
+                  <b-input
                     placeholder="Correo"
                     icon="fa fa-envelope-open"
                     v-model="form.email">
-                  </el-input>
+                  </b-input>
 
-              </el-form-item>
-              <el-form-item>
-                  <el-input
+              
+                  <b-input
                     type="password"
                     placeholder="Clave"
                     icon="fa fa-key"
                     v-model="form.password">
-                  </el-input>
-              </el-form-item>
+                  </b-input>
+              
 
-              <el-button class="btn-block" @click="login">Log in</el-button>
-            </el-form>
+              <button class="btn-block" @click="login">Log in</button>
+            
             <div class="row justify-content-md-center">
-              <router-link :to="{name:'registro'}"class="nav-link">Crear una cuenta aqui</router-link>
+              <router-link :to="{name:'registro'}" class="nav-link">Crear una cuenta aqui</router-link>
             </div>  
-          </div>
+         
           
-      </div>
+    
 	  
 	</div>
 </template>

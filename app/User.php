@@ -28,11 +28,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function setNombresAttribute($nombres)
+    public function setNombre_nickAttribute($nombres)
     {
         $this->attributes['nombres'] = ucfirst($nombres);
     }
-    public function setApellidosAttribute($apellidos)
+    public function setNombre_pymeAttribute($apellidos)
     {
         $this->attributes['apellidos'] = ucfirst($apellidos);
     }

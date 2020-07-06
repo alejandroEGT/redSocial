@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Solicitud;
 use App\User;
+use App\Solicitud;
+use App\categoria_pymes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UsersSystemController extends Controller
 {
@@ -186,5 +187,15 @@ class UsersSystemController extends Controller
         } 
 
         return [];   
+    }
+
+
+      public function categorias(Request $request)
+    {
+        $upp = strtoupper($request->q);
+        return categoria_pymes::select([
+           'id', 'text'
+        ])->where(DB::raw("upper(text)"),'like', "%".$upp."%")->get();
+        //return $id;
     }
 }

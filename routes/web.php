@@ -20,3 +20,22 @@ Route::resource('/user','UserController');
 Route::resource('geoip','GeoIpController');
 
 Route::get('users/autocomplete','UsersSystemController@filter');
+
+Route::get('users/categorias','UsersSystemController@categorias');
+
+// Route::get('categorias', function(){
+
+//     dd("hola");
+
+//     return [
+        //   ['value' =>'', 'text' => 'Seleccione..' ], 
+        //   ['value' =>'1', 'text' => 'Gastronómico'  ], 
+        //   ['value' =>'2', 'text' => 'Turístico'  ],  
+        //   ['value' =>'3', 'text' => 'Cuidado personal'  ],  
+        //   ['value' =>'4', 'text' => 'Entretenimiento y Ocio'  ], 
+        //   ['value' =>'5', 'text' => 'tecnológico' ],   
+        //   ['value' =>'6', 'text' => 'Deporte' ],           
+        //   ['value' =>'7', 'text' => 'Artesanía'],  
+        //   ['value' =>'8', 'text' => 'Belleza' ],          
+//     ];
+// });

@@ -44,21 +44,20 @@ class UserController extends Controller
         $avatar = new Avatar;
         $uriAvatar = 'avatar/'.time().'.png';
         $urlBack = 'background/'.time().'-'.$request->email.'.png';
-        $avatar->create(strtoupper($request->nombres.' '.$request->apellidos))->setBackground($this->aleatorio_colors())->save($uriAvatar, $quality = 90);
+        $avatar->create(strtoupper($request->nombre))->setBackground($this->aleatorio_colors())->save($uriAvatar, $quality = 90);
 
-        $avatar->create(strtoupper($request->nickname.' '.$request->email))
+        $avatar->create(strtoupper($request->nombre.' '.$request->email))
         ->setBackground('#9B59B6')
         ->setDimension(200, 300)
         ->setShape('square')
         ->save($urlBack, $quality = 90);
 
-        $user->nombres = $request->nombres;
-        $user->apellidos = $request->apellidos;
-        $user->nickname = $request->nickname;
-        $user->nacimiento = $request->nacimiento;
-        $user->id_sexo = $request->sexo;
+        $user->nombre_nick = $request->nombre;
+        $user->nombre_pyme = $request->pyme;
+        // $user->nickname = $request->nickname;
+        $user->categoria_pyme_id = $request->tipo;
         $user->email = $request->email;
-        $user->password = $request->clave;
+        $user->password = $request->pass;
         $user->avatar = $uriAvatar;
         $user->avatarback = $urlBack;
         if($user->save()){

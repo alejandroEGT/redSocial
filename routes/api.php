@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('auth/login', 'AuthController@login');
 Route::post('auth/login_api', 'AuthController@login');
 
+Route::post('registro_pyme','UserController@store');
+
 Route::group(['middleware' => 'jwt.auth'], function(){
   Route::get('auth/user', 'AuthController@user');
   Route::post('auth/logout', 'AuthController@logout');
