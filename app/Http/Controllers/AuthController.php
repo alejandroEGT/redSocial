@@ -30,6 +30,29 @@ class AuthController extends Controller
         ->header('Authorization', $token);
 	}
 
+	public function login_facebook($r)
+	{
+        $user = User::where(['email'=> $r->email])->first();
+
+		$token = JWTAuth::fromUser($user);
+		if ( ! $token = JWTAuth::fromUser($user)) {
+            return response([
+                'status' => 'error',
+                'error' => 'invalid.credentials',
+                'msg' => 'Invalid Credentials.'
+            ], 400);
+    	}
+
+    	// $user = User::find(Auth::user()->id);
+    	// $user->active = 1;
+    	// $user->save();
+    	return response()->json([
+    		'status' => 'success',
+            'token' => $token
+    	])
+        ->header('Authorization', $token);
+	}
+
 	
 
 	public function user(Request $request)

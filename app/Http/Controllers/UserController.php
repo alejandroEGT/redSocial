@@ -330,11 +330,11 @@ class UserController extends Controller
         }
     }
 
-    public function login_facebook($r)
-	{
-        $user = User::where(['email'=> $r->email])->first();
+    // public function login_facebook($r)
+	// {
+    //     $user = User::where(['email'=> $r->email])->first();
 
-		$token = JWTAuth::fromUser($user);
-		return response()->json(compact('user','token'),201);
-	}
+	// 	$token = JWTAuth::fromUser($user);
+	// 	return response()->json(compact('user','token'),201);
+	// }
 }
