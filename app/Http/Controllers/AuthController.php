@@ -30,7 +30,7 @@ class AuthController extends Controller
         ->header('Authorization', $token);
 	}
 
-	public function login_facebook($r)
+	public function login_facebook(Request $r)
 	{
         $user = User::where(['email'=> $r->email])->first();
 
