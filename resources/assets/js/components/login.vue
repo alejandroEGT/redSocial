@@ -331,8 +331,8 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
 
               axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
                   if(ress.data.estado == "failed"){
-                    alert(res.data.mensaje);
-                    this.ruta('index');
+                    alert(ress.data.mensaje);
+                    this.ruta('login');
                   }
               });
 
