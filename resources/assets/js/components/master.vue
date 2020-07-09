@@ -41,7 +41,7 @@
                   <b-button v-b-modal.inicio size="lg" variant="outline-primary">Iniciar sesion</b-button>
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
-                      <div class = "fb-login-button" data-size = "large" data-button-type = "continue_with" data-layout = "default" data-auto-logout-link = "false" data-use-continue-as = "false" data-width = "" > </div>   
+                      <!-- <div class = "fb-login-button" data-size = "large" data-button-type = "continue_with" data-layout = "default" data-auto-logout-link = "false" data-use-continue-as = "false" data-width = "" > </div>    -->
                          <v-facebook-login 
                          v-model="mi_fb"
                           app-id="2711739702480818" 
