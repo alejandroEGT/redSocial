@@ -338,6 +338,7 @@ import VFacebookLogin from 'vue-facebook-login-component'
         console.log(this.mi_fb)
       },
       handlelogin(data){
+        console.log("el-login")
         console.log(data)
         if(this.data.status == "connected"){
           token = this.data.authResponse.accessToken;
