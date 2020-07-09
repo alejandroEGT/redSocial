@@ -6,6 +6,7 @@ use App\User;
 use App\Solicitud;
 use App\user_contacto;
 use Faker\Provider\File;
+use Tymon\JWTAuth\JWTAuth;
 use Laravolt\Avatar\Avatar;
 use Illuminate\Http\Request;
 use Vikin\Laricon\Facades\Laricon;
@@ -308,6 +309,31 @@ class UserController extends Controller
     
     public function validar_si_existe_email_en_sistema(Request $r)
     {
-        dd($r->all());
+       
+        $validar = User::where(['email'=>$r->email])->first();
+
+        if ($validar) { //si existe el email
+
+            $pro = $this->login_facebook($r);
+            return[
+                'estado' => 'success',
+                'respuesta' => $r,
+                'proceso' => $pro
+            ];
+        }else{ // si no existe
+            return[
+                'estado' => 'failed',
+                'mensaje' => 'Primero registrece con su usuario de facebook',
+                'respuesta' => $r
+            ];
+        }
     }
+
+    public function login_facebook($r)
+	{
+        $user = User::where(['email', $r->email])->first();
+
+		$token = JWTAuth::fromUser($user);
+		return response()->json(compact('user','token'),201);
+	}
 }
