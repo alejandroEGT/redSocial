@@ -197,6 +197,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
     },
 
     methods:{
+      ruta(ruta){
+            this.$router.push('/'+ruta);
+        },
       renderChild(data) {
 		    return `
 		    	<label>
@@ -327,7 +330,10 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
             axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
               axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
-
+                  if(ress.data.estado == "failed"){
+                    alert(res.data.mensaje);
+                    this.ruta('index');
+                  }
               });
 
             });
