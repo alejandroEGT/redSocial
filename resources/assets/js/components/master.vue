@@ -341,12 +341,12 @@ import VFacebookLogin from 'vue-facebook-login-component'
         console.log("el-login")
         console.log(data)
         if(data.status == "connected"){
-          token = data.authResponse.accessToken;
-          user_id = data.authResponse.userID;
-            console.log("iduser", user_id)
-            axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+          var token = data.authResponse.accessToken;
+          var user_id = data.authResponse.userID;
+            console.log("iduser", user_id, 'token',token)
+            // axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
-            });
+            // });
         }
       },
       fb_click(){
