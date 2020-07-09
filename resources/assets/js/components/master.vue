@@ -48,7 +48,7 @@
                           @sdk-init="handleSdkInit"
                           @login="handlelogin"
                           @click="fb_click"
-                          login-options
+                          
                           :use-alt-logo="true"
                         ></v-facebook-login>
                        <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
@@ -280,6 +280,7 @@ import VFacebookLogin from 'vue-facebook-login-component'
        logInWithFacebook() {
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
+         console.log("login with fb")
          console.log(FB)
           console.log(this.mi_fb)
         
@@ -303,6 +304,7 @@ import VFacebookLogin from 'vue-facebook-login-component'
         });
 
         FB.AppEvents.logPageView();  
+        console.log("initFB")
          console.log(this.mi_fb)
 
         // (function(d, s, id){
@@ -324,12 +326,13 @@ import VFacebookLogin from 'vue-facebook-login-component'
       js.id = id;
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
-       console.log(this.mi_fb)
+      //  console.log(this.mi_fb)
     },
 
     handleSdkInit({ FB, scope }) {
         this.FB = FB
         this.scope = scope
+        console.log("handleSdkInit")
         console.log(this.scope);
         console.log(this.FB);
         console.log(this.mi_fb)
@@ -338,7 +341,8 @@ import VFacebookLogin from 'vue-facebook-login-component'
         console.log(data)
       },
       fb_click(){
-          console.log(this.scope);
+        console.log("fb_click")
+        console.log(this.scope);
         console.log(this.FB);
         console.log(this.mi_fb);
       }
