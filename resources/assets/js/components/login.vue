@@ -239,6 +239,22 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         });
       },
 
+      login_fb(email){
+        var app = this
+        this.$auth.login({
+          loginData:{url:'api/login_fb'},
+          data: email,
+          redirect:'/home/',
+          success: function(){
+            //this.$router.push({ path: '/index' });
+          },
+          error: function(){},
+          rememberMe: true,
+          //redirect: '/index',
+          //fetchUser: true,
+        });
+      },
+
       registrar() {
 
         if($("#cat").val() == ''){
@@ -334,6 +350,8 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                     alert(ress.data.mensaje);
                     // this.ruta('login');
                     location.reload();
+                  }else{
+                    this.login_fb(res.data.email);
                   }
               });
 
