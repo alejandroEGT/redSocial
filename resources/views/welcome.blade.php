@@ -23,6 +23,8 @@
         
     </head>
     <body>
+        <div id = "fb-root" > </div> <script async defer crossorigin = "anónimo" src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v7.0&appId= 2711739702480818 & autoLogAppEvents = 1 " nonce = " muSMJqga " > </script> 
+        <div class = "fb-login-button" data-size = "large" data-button-type = "continue_with" data-layout = "default" data-auto-logout-link = "false" data-use-continue -as = "false" data-width = "" > </div> 
         <div id="app">
            
         </div>
