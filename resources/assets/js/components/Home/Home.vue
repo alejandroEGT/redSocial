@@ -1,232 +1,20 @@
 <template>
-   <div @click="quite">
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top" style=" background-color:#17202A">
-        <a class="navbar-brand" data-toggle=".containers" id="sidebar-toggle" >
-          <img src="logo/logowhite.png" height="30" width="40" >
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                  <router-link style="color:white" :to="{path:'/index'}" class="nav-link active color">Inicio</router-link>
-            </li>
-           <!--  <li class="nav-item">
-                <router-link style="color:white" :to="{name:'Chat'}"class="nav-link"><i class="fas fa-user"></i></router-link>
-            </li> -->
-             <li class="nav-item">
-                 
-                  <el-dropdown trigger="click" class="nav-link">
+  <div>
+    <b-nav style="background: rgb(176,58,46);
+background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small>
+        <b-nav-item active @click="ruta('index')">Inicio</b-nav-item>
+        <b-nav-item v-if="this.$auth.check()" @click="ruta('profile')">Mi perfil</b-nav-item>
+        <b-nav-item>Link</b-nav-item>
+        <b-nav-item>Another Link</b-nav-item>
+        <b-nav-item disabled>Disabled</b-nav-item>
+      </b-nav>
 
-                       <h5 style="color:white"><i class="fas fa-user"></i> <span class="badge badge-danger">{{notif_solicitud}}</span></h5>
-                    <el-dropdown-menu slot="dropdown">
-                        <div style="width:330px" v-for="s in solicitudes" :key="s">
-                          <el-dropdown-item >
-                             <div class="container" style="border-bottom: 1px solid #D5DBDB;">
-                                <div class="row">
-                                  <div class="col-md-2">
-                                    <img style="margin-top:3px" class="img-avatar" :src="s.avatar">
-                                  </div>
-                                  <div class="col-md-9">
-                                    <strong>
-                                      <router-link :to="{path:'/search/'+s.id}">{{ ' '+s.nombres+' '+s.apellidos }}
-                                      </router-link></strong>
-                                    <label style="color:#7F8C8D;display:block;line-height: 1.2;">
-                                      <div v-if="s.id_estado == 1">
-                                        Te comenzó a seguir
-                                      </div>
-                                      <div v-if="s.id_estado == 2">
-                                        Dejó de seguirte
-                                        <!-- <el-button type="primary" @click="optionSolicitud(1)" size="mini">Aceptar</el-button>
-                                        <el-button type="warning" @click="optionSolicitud(2)" size="mini">Cancelar</el-button> -->
-                                      </div>
-                                    </label>
-                                  </div>
-                                </div>
-                             </div>
-                          </el-dropdown-item>
-                        </div>
-                      <el-dropdown-item v-if="notif_context == 'null'" >
-                        <span>No Hay mensajes..</span>
-                      </el-dropdown-item>
-                      
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                
-            </li>
-            <li class="nav-item">
-                 
-                  <el-dropdown trigger="click" class="nav-link">
-
-                       <h5 style="color:white"><i class="fas fa-comment-alt"></i> <span class="badge badge-danger">{{notif_sms}}</span></h5>
-                    <el-dropdown-menu slot="dropdown">
-                        <div style="width:330px" v-for="n in notif_context" :key="n">
-                          <el-dropdown-item @click.native="select_mensaje(n.envia, n.recibe)">
-                             <div class="container" style="border-bottom: 1px solid #D5DBDB;">
-                                <div class="row">
-                                  <div class="col-md-2">
-                                    <img style="margin-top:3px" class="img-avatar" :src="n.avatar">
-                                  </div>
-                                  <div class="col-md-9">
-                                    <strong>{{ ' '+n.nick }}</strong>
-                                    <label style="color:#7F8C8D;display:block;line-height: 1.2;">
-                                      {{ n.mensaje }}
-                                    </label>
-                                  </div>
-                                </div>
-                             </div>
-                          </el-dropdown-item>
-                        </div>
-                      <el-dropdown-item v-if="notif_context == 'null'" >
-                        <span>No Hay mensajes..</span>
-                      </el-dropdown-item>
-                      
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                
-            </li>
-
-             <li class="nav-item">
-                 
-                  <el-dropdown trigger="click" class="nav-link">
-
-                       <h5 style="color:white"><i class="fas fa-bell"></i> <span class="badge badge-danger">1</span></h5>
-                    <el-dropdown-menu slot="dropdown">
-                        <div style="width:330px" v-for="n in notif_context" :key="n">
-                          <el-dropdown-item @click.native="select_mensaje(n.envia, n.recibe)">
-                             <div class="container" style="border-bottom: 1px solid #D5DBDB;">
-                                <div class="row">
-                                  <div class="col-md-2">
-                                    <img style="margin-top:3px" class="img-avatar" :src="n.avatar">
-                                  </div>
-                                  <div class="col-md-9">
-                                    <strong><!--{{ ' '+n.nick }}--></strong>
-                                    <label style="color:#7F8C8D;display:block;line-height: 1.2;">
-                                      <!--{{ n.mensaje }}-->
-                                    </label>
-                                  </div>
-                                </div>
-                             </div>
-                          </el-dropdown-item>
-                        </div>
-                      <el-dropdown-item v-if="notif_context == 'null'" >
-                        <span>No Hay mensajes..</span>
-                      </el-dropdown-item>
-                      
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                
-            </li>
-          </ul>
-          <span class="navbar-text">
-           
-                    <autocomplete
-                          url="/users/autocomplete"
-                          id="id_auto"
-                          anchor="nombres"
-                          label="email"
-                           :classes="{ wrapper: 'form-wrapper', input: 'form-control', list: 'data-list', item: 'data-list-item' }"
-                            placeholder="Buscar.."
-                           :onShouldRenderChild="renderChild"
-                           :on-select="getData"
-                          >
-                    </autocomplete>
-          </span>
-        </div>
-      </nav>
-      
-      <div class="containers">
-        <div id="sidebar">
-            <div style="position: fixed; width:200px; margin-left:5px">
-              <div class="mnu" style="background-color: #F2F3F4">
-              <div class="row" style="margin-top:25px">
-                <div class="col-md-2">
-                    <router-link :to="{name:'Profile'}"> <img height="45" class="img-avatar"  :src="this.$auth.user().avatar"></router-link>
-                </div>
-
-                <div class="col-md-8">
-                    <div class="dropdown show">
-                            <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              {{ yo.nickname }}
-                            </a>
-
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" >Mi cuenta</a>
-                            <a class="dropdown-item" @click="logout" href="#" >Salir</a>
-                          </div>
-                    </div>
-                     <p class="nombre">{{yo.nombres+' '+yo.apellidos}}</p>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <a href="#"><i class="fa fa-user"></i> Amigos</a>
-                    <div class="boxfriends" v-loading="loadfriend"  >
-                              <div v-for="am in friends" :key="am">
-                                <el-row>
-                                  <el-col :span="20">
-                                    <p @mouseover="mouseOver(am.id)" style="font-size:12px; color:black" >
-                                       
-                                      <router-link style="color:black" :to="{path:'/amigos/'+am.id}">
-                                        <img style="height:25px; width:25px; border-radius:25px; margin-right:4px" :src="am.avatar" />
-                                      {{ (am.nombres+' '+am.apellidos).substr(0, 17) }}
-                                    </router-link>
-                                      
-                                    </p>  
-                                  </el-col>
-                                  <el-col :span="3">
-                                    <div v-if="am.active == 1"><img src="http://3.bp.blogspot.com/-XqF09AkxbIw/VmbGVUHSCNI/AAAAAAAAH48/YqKi_0fpFMk/s1600/1437492872628.png" height="10"></div>
-                                  </el-col>
-                                </el-row>
-                              </div>
-                    </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12" style="overflow: scroll; height:300px; margin-top:5px; padding-top: 5px; border-top:1px solid gris">
-                    <el-input        
-                        icon="fa fa-search"
-                        @change="getVideo"
-                        placeholder="Buscar videos" 
-                        v-model="q">           
-                    </el-input>
-                    <hr>
-                    <div v-if="videoCon">
-                      <center style="color:#BDBDBD">
-                        <label>Extension de youtube </label>
-                        <p><i class="fab fa-youtube fa-3x"></i></p>
-                      </center>
-                    </div>
-                    <div v-if="!videoCon">
-                      <div v-for="v in videos" :key="v">        
-                         <youtube style="border-radius:10px" :video-id=" ''+v.id.videoId+'' " player-width="200" player-height="100" :player-vars="{autoplay: 0}"></youtube>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            </div>
-        </div>
-        
-          <div class="main-content" style="margin-top:60px">
-            
-              <div class="">
-                <div class="row justify-content-md-center">
-                  <div class="col-md-12">
-                    <router-view :key="$route.path"></router-view>  
-                  </div>
-                 
-                </div>
-
-              </div>
-          </div>
-      </div>
-     
+       <div style="background:#F4F6F6">
+         <b-container fluid>
+         <router-view></router-view>
+         </b-container>
+       </div>
   </div>
-   
 </template>
 
 <script type="text/javascript">
@@ -263,6 +51,9 @@
       }
     },
     mounted(){
+
+      console.log(this.$auth.check())
+
       $(function () {
         $('[data-toggle="popover"]').popover({});
         $("[data-toggle]").click(function() {
@@ -295,6 +86,17 @@
 
     },
     methods:{
+      ruta(ruta){
+            this.$router.push('/'+ruta);
+        },
+        url_params(name, json){
+          this.$router.push({name:name, params:json}).catch(error => {
+              if (error.name != "NavigationDuplicated") {
+                throw error;
+              }
+          });
+      }
+      ,
       quite(){
         this.exist = false;
       },
@@ -580,5 +382,11 @@
   .avatar_indexx{
       height: 35px;width: 35px; border-radius: 30px;
     }
+
+    .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+}
 
 </style>

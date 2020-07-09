@@ -22,6 +22,9 @@ Route::post('auth/login_api', 'AuthController@login');
 
 Route::post('registro_pyme','UserController@store');
 
+Route::get('emprendimientos_mes', 'PublicController@emprendedores_mes');
+
+
 Route::group(['middleware' => 'jwt.auth'], function(){
   Route::get('auth/user', 'AuthController@user');
   Route::post('auth/logout', 'AuthController@logout');
@@ -51,6 +54,11 @@ Route::group(['middleware' => 'jwt.auth'], function(){
   Route::get('auth/get_amigos_en_comun','UserController@users_en_comun');
 
   Route::get('auth/notifi_mensajes/{id}','ChatController@show_notificacion_mensaje');
+
+  //new
+
+  Route::get('auth/contacto', 'UserController@contacto');
+  Route::post('auth/editar_perfil', 'UserController@editar_perfil');
 
 
 });

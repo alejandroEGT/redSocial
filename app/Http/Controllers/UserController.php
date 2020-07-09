@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Solicitud;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Solicitud;
+use App\user_contacto;
+use Faker\Provider\File;
 use Laravolt\Avatar\Avatar;
+use Illuminate\Http\Request;
 use Vikin\Laricon\Facades\Laricon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -150,4 +153,155 @@ class UserController extends Controller
         }
         return User::whereNotIn('id', $ids)->where('id','!=', $yo)->get();
     }
+
+    public function validar_archivo($archivo, $campo_name, $formato1, $formato2)
+    {
+       
+        if($archivo == "null" || $archivo == "undefined"){
+            return "nofile";
+        }else{
+            
+            if($_FILES[$campo_name]['type']==$formato1 ){
+                return true;
+                //  dd("true");
+                
+            }
+            if ($_FILES[$campo_name]['type']==$formato2) {
+                return true;
+            }
+
+            else{
+                // dd("false");
+                return false;
+            }
+        }
+    }
+
+    public function contacto()
+    {
+        $c = user_contacto::where('user_id', Auth::user()->id)->first();
+
+        if ($c) {
+            return[
+                'contact' => $c->contacto,
+                'direccion' => $c->direccion,
+                'url_facebook' => $c->url_facebook,
+                'url_instagram' => $c->url_instagram,
+                'descripcion' => $c->descripcion_pyme,
+                'url_web' => $c->url_web
+            ];
+        }else{
+            return[
+                'contact' => '',
+                'direccion' => '',
+                'url_facebook' => '',
+                'url_instagram' => '',
+                'descripcion' => '',
+                'url_web' => ''
+            ];
+        }
+    }
+
+    public function editar_perfil(Request $r)
+    {
+        // return false;
+        $e_1 = false;
+        $e_2 = false;
+
+
+        $u = User::find(Auth::user()->id);
+        $c = user_contacto::where('user_id', Auth::user()->id)->first();
+
+        if ($u) {
+
+            $validar_img=$this->validar_archivo($r->logo,'logo', 'image/jpeg','image/png');
+            if ($validar_img == false) {
+                return [
+                    'estado' => 'failed',
+                    'mensaje' => 'El archivo no es una imagen o logo'
+                ];  
+            }else{
+                    if ($validar_img != "nofile") {
+                        $ruta = substr($u->avatar, 8);
+					    $borrar = Storage::delete($ruta);
+                    }
+                    
+                    $file = $this->guardarArchivo($r->logo,'avatar/');
+                    // dd($file);
+
+                    if($file['estado'] == "success"){
+                            $u->avatar = 'storage/'.$file['archivo'];
+                    }else{
+
+                            // $u->avatar = '--';
+                            //return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+                    }
+                    
+                    
+                    
+            }
+
+
+            $u->email = $r->email;
+            $u->nombre_pyme = $r->nombre_pyme;
+            $u->nombre_nick = $r->nombre_nick;
+            if ($u->save()) {
+                $e_1 = true;
+            }
+        }
+
+        if ($c) {
+            $c->contacto = $r->contacto;
+            $c->direccion = $r->direccion;
+            $c->url_facebook = $r->url_facebook;
+            $c->url_instagram = $r->url_instagram;
+            $c->descripcion_pyme = $r->descripcion;
+            $c->url_web = $r->url_web;
+            if ($c->save()) {
+                $e_2 = true;
+            }
+        }else{
+            $c2 = new user_contacto;
+            $c2->user_id = Auth::user()->id;
+            $c2->contacto = $r->contacto;
+            $c2->direccion = $r->direccion;
+            $c2->url_facebook = $r->url_facebook;
+            $c2->url_instagram = $r->url_instagram;
+            if ($c2->save()) {
+                $e_2 = true;
+            }
+        }
+
+        if ($e_1 == true || $e_2 == true) {
+            return ['estado'=>'success', 'mensaje'=>'Perfil actualizado'];
+        }else{
+            return ['estado'=>'failed', 'mensaje'=>'Nada para actualizar'];
+        }
+    }
+
+
+
+    protected function guardarArchivo($archivo, $ruta)
+    {
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
+
+	        // $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+            $guardar = \Storage::disk('public')->put($ruta . $nombreArchivo, (string) file_get_contents($archivo));
+            
+            //  return response()->json($guardar);
+             if ($guardar) {
+                
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
+	}
 }

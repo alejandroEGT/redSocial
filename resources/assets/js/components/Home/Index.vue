@@ -1,230 +1,161 @@
 <template>
-	<div style="margin-top:15px; margin-left:5%;">
-		
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row">
-					
-					<div class="col-md-12">
-						<form>
-							<img style="float:left" class="img-avatar"  :src="this.$auth.user().avatar">
-							<el-popover
-							  ref="popover2"
-							  placement="bottom"
-							  title="Title"
-							  width=""
-							  trigger="click"
-							  >
-							  <picker :i18n="{ search: 'Buscar', categories: { search: 'Résultats de recherche', recent: 'Emojis' } }" set="facebook"  @click="add" />
-							</el-popover>
-							<el-popover
-							  ref="popover3"
-							  placement="bottom"
-							  title="Title"
-							  width=""
-							  trigger="click"
-							  >
-							  <input type="url" class="form-control" v-model="laUrl" name="">
-							  <hr>
-							  <link-prevue :url="laUrl"></link-prevue>
-							</el-popover>
-							<textarea class="txtarea" placeholder="Que estas pensando?" v-model="emotic" ></textarea>
-							<br><br><br>
-							<!--<div class="row"> 
-								  <div class="span6">
-								    <textarea  placeholder="Que estas pensando?"  class="txtarea" id="emojionearea1"></textarea>
-								  </div>
-							</div>-->
-							<br>
-							<button type="button" class="btn btn-sm btn-outline-success" v-popover:popover2>
-								<i class="fas fa-smile" ></i> Emoji
-							</button>
-							<button type="button" class="btn btn-sm btn-outline-primary" v-popover:popover3>
-								<i class="fas fa-link" ></i> Enlace
-							</button>
-							<button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#exampleModal" >
-								<i class="fas fa-camera-retro"></i> Foto
-							</button>
-							
+	<div style=""><br>
+		<!-- <div class="main">
+  <p>This is inline-block:</p>
+  
+  <p>This is flex:</p>
+  <div class="container flex">
+    <div class="item flex-item"></div>
+    <div class="item flex-item"></div>
+    <div class="item flex-item"></div>
+    <div class="item flex-item"></div>
+    <div class="item flex-item"></div>
+  </div>
+</div> -->
+	<b-row>
+		<b-col xs="12" md="8">
+			<h5><label style="color:#ABB2B9">Inicio</label> <label style="color:#58D68D"> > </label> Nuevos emprendimientos de este mes. ver mas...</h5>
+			<b-row>
+				<b-col md="12">
+				 <b-card>	
+					<div class="containerx inline">
+						<div v-for="d in e_mes" :key="d.user_id" class="item inline-item">
+							<div class="product-image-wrapper-scroll">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img style="width:80px; height:95px;" :src="d.avatar" alt="" />
+										<h6>{{d.nombre_pyme}}</h6>
+										<b-badge class="badgex">{{d.categoria}}</b-badge><br>
+										<p>{{d.contacto}}</p>
+															
+															
+										<b-button class="float-center btn-fw" size="sm" variant="outline-dark">Conocer</b-button>
+									</div>
+																
+								</div>
+							</div>
+						</div>
+	
+				 	</div>
+				 </b-card>	
+				</b-col>
+			</b-row>
+			
+			<h5 class="txt-linea"><label style="color:#58D68D;"> > </label> Categoria de emprendedores</h5>
+			<hr>
+			<b-row>
+				<b-col xs="12" md="12">
+					<b-navbar  style="background: rgb(176,58,46);
+background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" toggleable="lg" >
+							<b-navbar-brand href="#">.</b-navbar-brand>
 
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							  	<form method="POST" id="form1" enctype="multipart/form-data">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body">
-							        	<input type="hidden" name="id_projecto" value="1" >
-							        	<textarea name="texto" class="txtarea" placeholder="Que estas pensando?" v-model="emotic" ></textarea>
-										<br>
-										
-										<div class="image-upload">
-											<input type="file" id="file-input" multiple  name="fotos[]">
-										    <label for="file-input">
-										        <i class="fas fa-camera-retro"></i>
-										    </label>
+							<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+							<b-collapse id="nav-collapse" is-nav>
+							<b-navbar-nav>
+								<b-nav-item v-for="c in categorias" 
+								:key="c.id" href="#">
+								<small style="color:white">{{c.text}}</small>
+								</b-nav-item>
+								
+							</b-navbar-nav>
+
+							
+							</b-collapse>
+					</b-navbar>
+
+						<b-card>
+							<div v-for="d in e_mes" :key="d.user_id" class="product-image-wrapper">
+								
+								<div class="single-products">
+									<b-card>
+										<div class="productinfo text-center">
+											<img style="width:50px; height:65px;" :src="d.avatar" alt="" />
+											<h6>{{d.nombre_pyme}}</h6>
+											<b-badge class="badgex">{{d.categoria}}</b-badge><br>
+											<p>{{d.contacto}}</p>
+											
+											
+											<b-button size="sm" variant="outline-dark">Conocer</b-button>
 										</div>
-							        	
-
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							        <button type="button" @click="getFotos" class="btn btn-primary">Publicar</button>
-							      </div>
-							    </div>
-							</form>
-							  </div>
+									</b-card>			
+								</div>
+								
 							</div>
-
-
-							<button @click="submit" type="button" class="btn  btn-outline-primary">
-								<i class="fa fa-chevron-circle-right" ></i> Publicar
-							</button>
+						</b-card>
 							
 							
-						</form>
-					</div>
-				</div>
-				<br>
+					
+				</b-col>
+			</b-row>
 
-				<div class="boxuser" v-for="com in comments" :key="com">
-					<el-row >
-						<el-col class="boxhead" :span="24">
-							<p><img class="avatar_index" :src="com.avatar"> <a :href="'#/search/'+com.id_user">{{com.nickname}}</a> <small> {{com.created_at}}</small> </p>
-						</el-col>
-					</el-row>
-					<el-row>
-						<el-col class="boxcontent" :span="24">
-							<p v-if="!com.foto" class="txt_public">{{ com.texto }}</p>
-							<p v-if="com.foto">{{ com.texto }}</p>
-							<div v-if="com.foto">
-								<img class="fotoindex" :src="com.foto">
-							</div>
-							<div v-if="com.url">
-								<link-prevue cardWidth="100%" :url="com.url"></link-prevue>
-							</div>
-						
-						</el-col>
-					</el-row>
-					<el-row>
-						<el-col class="boxfoot " :span="24">
-							<el-row>
-								<el-col :offset="10" :span="2">
-									<i class="far fa-thumbs-up"></i> 20
-								</el-col>
+		</b-col>
 
-								<el-col :span="2">
-									<a  data-toggle="collapse" :href="'#collapseExample.'+com.id" role="button" aria-expanded="false" :aria-controls="'collapseExample.'+com.id"><i class="far fa-comment"></i> 5</a>
-								</el-col>
-								<el-col :span="2">
-									<a data-toggle="modal" :data-target="'#exampleModal.'+com.id">
-									  <i class="fas fa-share-alt"></i>
-									</a>
+		<b-col xs="12" md="4">
+			<img src="data:image/jpeg;base64,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" alt="">
+			<hr>
+			<h5><label style="color:#58D68D"> > </label> Publicaciones de usuarios</h5>
+			<b-card>
+				<b-row>
+					<b-col xs="2" md="3"><b-avatar src="https://placekitten.com/300/300"></b-avatar></b-col>
+					<b-col xs="10" md="9"><b>Camilo sexto ismael</b></b-col>
+				</b-row>
 
-									<!-- Modal -->
-									<div class="modal fade" :id="'exampleModal.'+com.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									  <div class="modal-dialog" role="document">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									          <span aria-hidden="true">&times;</span>
-									        </button>
-									      </div>
-									      <div class="modal-body">
-											<autocomplete
-											    url="/users/autocomplete"
-											    anchor="nombres"
-											    label="email"
-											     :classes="{ wrapper: 'form-wrapper', input: 'form-control', list: 'data-list', item: 'data-list-item' }"
-    												placeholder="Buscar.."
-											     :onShouldRenderChild="renderChild"
-											    >
-											  </autocomplete>
-											  <link-prevue url="http://localhost:8000/#/index"></link-prevue>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Save changes</button>
-									      </div>
-									    </div>
-									  </div>
-									</div>
-								</el-col>
-							</el-row>
-							
-							<el-row >
-								<el-col :span="24">
-									<div class="collapse" :id="'collapseExample.'+com.id">
-									  <div class="card card-body">
-									  	<el-row>
-									  		<el-col :offset="3" :span="20">
-									  			<el-row class="burbuja" >
-									  				<el-col :span="2">
-									  					<img class="avatar_index" :src="com.avatar">
-									  				</el-col>
-									  				<el-col :span="22">
-									  					esto es un comentario jajajaja
-									  				</el-col>
-									  			</el-row>
+				<b-row>
+					<b-col xs="12" md="12"><br>
+						Hola, consulta estoy buscando servicios peluqieros, si alguien pueda contactarme, soy de los angeles, este es mi wsp +5697878987
+					</b-col>
+				</b-row>
+			</b-card>
 
-									  			<el-row class="burbuja" >
-									  				<el-col :span="2">
-									  					<img class="avatar_index" :src="yo.avatar">
-									  				</el-col>
-									  				<el-col :span="22">
-									  					asi es soy un comentario XD
-									  				</el-col>
-									  			</el-row>
-									  		</el-col>
-									  	</el-row>
-									  	<el-row>
-									  		<el-col :span="2">
-									  			<img class="avatar_index" :src="yo.avatar">
-									  		</el-col>
-									  		<el-col :span="22">
-									    		<textarea class="ta_coment" placeholder="Comentar..." ></textarea>
-									    	</el-col>
-									    </el-row>	
-									  </div>
-									</div>
-								</el-col>
-							</el-row>
-							
-						</el-col>
-					</el-row>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="subox" >
-					<el-card class="box-card">
-                    <div slot="header" class="clearfix">
-                      
-                      <el-button style="float: left;" type="text">Operation button</el-button>
-                    </div>
-                    <div v-for="(o,i) in otros_usuarios" class="text item" :key="o">
-                        <img class="img-avatar" :src="o.avatar">
-                        <router-link :to="{path:'/search/'+o.id}">{{ ' '+o.nombres+' '+o.apellidos }}</router-link>
-                         <center>
-     
-                                          	
-                         </button>
-                         <input :id="'btns'+i" @click="seguir(o.id, i, o.nombres+' '+o.apellidos )" style="margin-top:3px" type="button" class="btn btn-sm btn-block btn-outline-dark" value="Seguir">
-                         </center>
-                        <hr>
-                    </div>
-                  </el-card>
-					<!-- <label v-loading="loc" style="font-size:12px" >
-					<i class="fas fa-map-marker-alt"></i>	{{ locate }}
-					</label> -->
-				</div>
-			</div>
-		</div>	
+			<b-card>
+				<b-row>
+					<b-col xs="2" md="3"><b-avatar src="https://placekitten.com/300/300"></b-avatar></b-col>
+					<b-col xs="10" md="9"><b>Camilo sexto ismael</b></b-col>
+				</b-row>
+
+				<b-row>
+					<b-col xs="12" md="12"><br>
+						Hola, busco alguien para realizar pagina web de concepcion, contactar a mi correo kkck@gmail.com
+					</b-col>
+				</b-row>
+			</b-card>
+
+			<b-card>
+				<b-row>
+					<b-col xs="2" md="3"><b-avatar src="https://placekitten.com/300/300"></b-avatar></b-col>
+					<b-col xs="10" md="9"><b>Camilo sexto ismael</b></b-col>
+				</b-row>
+
+				<b-row>
+					<b-col xs="12" md="12"><br>
+						Hola, busco alguien para realizar pagina web de concepcion, contactar a mi correo kkck@gmail.com
+					</b-col>
+				</b-row>
+			</b-card>
+
+			<b-card>
+				<b-row>
+					<b-col xs="2" md="3"><b-avatar src="https://placekitten.com/300/300"></b-avatar></b-col>
+					<b-col xs="10" md="9"><b>Camilo sexto ismael</b></b-col>
+				</b-row>
+
+				<b-row>
+					<b-col xs="12" md="12"><br>
+						Hola, busco alguien para realizar pagina web de concepcion, contactar a mi correo kkck@gmail.com
+					</b-col>
+				</b-row>
+			</b-card>
+		</b-col>
+		<!-- <b-col xs="12" md="1">
+			<img src="https://i.ytimg.com/vi/8WyXhGUz0w8/maxresdefault.jpg" style="width:100%" alt="">
+		</b-col> -->
+	</b-row>
+
+	
+
+	
+
 	</div>
 </template>
 <script type="text/javascript">
@@ -251,7 +182,11 @@
         		yo: this.$auth.user(),
         		laUrl:'',
         		otros_usuarios:{},
-        		btns:{},
+				btns:{},
+				
+
+				e_mes:{},
+				categorias:{}
         		
 			}
 		},
@@ -260,9 +195,11 @@
 		    LinkPrevue
 		  },
 		created(){
-			this.getComents();
-			this.getUbicacion();
-			this.amigos_encomun()
+			// this.getComents();
+			// this.getUbicacion();
+			// this.amigos_encomun()
+			this.get_emprendedores_mes();
+			this.get_categorias();
 			//this.auto();
 		},
 		mounted(){
@@ -276,6 +213,22 @@
           	});
 		},
 		methods:{
+
+			get_emprendedores_mes(){
+				axios.get('api/emprendimientos_mes').then((res)=>{
+					if(res.data.estado == 'success'){
+						this.e_mes = res.data.response;
+					}
+				});
+			},
+			get_categorias(){
+				axios.get('users/categorias').then((res)=>{
+					
+						this.categorias = res.data;
+					
+				});
+			},
+
 			add(even){
 				console.log(even);
 				this.emotic = this.emotic+''+even.native;
@@ -471,4 +424,135 @@
     	border-top: 1px solid #E5E8E8;
     	border-bottom: 1px solid #E5E8E8;
 	}
+
+	@media (min-width: 991px) {
+		.product-image-wrapper-scroll{
+			background: white;
+			width: 100%;
+			float:left;
+			/* border:2px solid #E5E8E8; */
+			overflow: hidden;
+			margin:5px;
+		}
+
+		.product-image-wrapper{
+			background: white;
+			width: 25%;
+			float:left;
+			border:1px solid #E5E8E8;
+			overflow: hidden;
+			
+		}
+	}
+
+    
+	.single-products {
+	position: relative;
+	}
+
+  /* General */
+/* .main {
+  border: 3px solid #236AB9;
+  background-color: #D4E4F7;
+  height: 400px;
+  width: 400px;
+} */
+
+.containerx {
+  
+  width: 100%;
+  height: 250px;
+  /* border: 2px solid #341C09; */
+  white-space: nowrap;
+}
+
+.item {
+  /* border: 2px solid #B85B14;
+  background-color: #FC7307;
+  width: auto; */
+}
+
+/* Inline-block */
+.inline {
+  vertical-align: middle;
+  overflow-x: scroll; 
+   line-height: 1em;
+}
+.inline::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.inline::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+.inline::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.inline::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.inline-item {
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #EAECEE;
+  margin:3px;
+  /* height: 96px;
+  margin-right: -4px; */
+}
+
+
+/* Flex */
+.flex {
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow: auto;
+}
+.flex-item {
+  flex: 0 0 auto;
+}
+
+
+
+.btn-fw{
+	background: #A569BD;
+	color:white;
+	margin-bottom: 3px;
+	border: 1px solid #EB984E;
+}
+.btn-fw:hover{
+	background: #EC7063;
+	border: 1px solid #EB984E;
+	
+}
+.txt-linea{
+	text-decoration: underline;
+  -webkit-text-decoration-color:  #E18728;
+  text-decoration-color: #E18728;
+  line-height: 2.2;
+  
+}
+
+.badgex{
+	background: #EB984E;
+}
+ hr {
+    background-image: linear-gradient(90deg,#ff8a00,#e52e71);
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    
+}
+
+
+
+
+
+
+
 </style>

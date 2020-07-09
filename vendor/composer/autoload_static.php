@@ -506,6 +506,7 @@ class ComposerStaticInit6802d500637d03d4e3c599a97d89c8d9
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Solicitud' => __DIR__ . '/../..' . '/app/Solicitud.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\categoria_pymes' => __DIR__ . '/../..' . '/app/categoria_pymes.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
