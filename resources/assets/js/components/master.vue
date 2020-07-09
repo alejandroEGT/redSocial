@@ -41,7 +41,13 @@
                   <b-button v-b-modal.inicio size="lg" variant="outline-primary">Iniciar sesion</b-button>
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
-                         <v-facebook-login app-id="2711739702480818" @sdk-init="handleSdkInit"></v-facebook-login>
+                         <v-facebook-login 
+                         v-model="mi_fb"
+                          app-id="2711739702480818" 
+                          @sdk-init="handleSdkInit"
+                          login-options="{ scope: 'email' }"
+                          :use-alt-logo="true"
+                        ></v-facebook-login>
                        <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
                       <!-- <button @click="AuthProvider('facebook')">auth Facebook</button> -->
                       <hr>
@@ -196,7 +202,8 @@ import VFacebookLogin from 'vue-facebook-login-component'
           
         ],pass:'',
 
-        form:{}
+        form:{},
+        mi_fb:null
       }
     },
     created(){
@@ -271,6 +278,7 @@ import VFacebookLogin from 'vue-facebook-login-component'
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
          console.log(FB)
+          console.log(this.mi_fb)
         
         // window.FB.login(function(response) {
         //   if (response.authResponse) {
@@ -292,6 +300,7 @@ import VFacebookLogin from 'vue-facebook-login-component'
         });
 
         FB.AppEvents.logPageView();  
+         console.log(this.mi_fb)
 
         // (function(d, s, id){
         //   var js, fjs = d.getElementsByTagName(s)[0];
@@ -312,11 +321,14 @@ import VFacebookLogin from 'vue-facebook-login-component'
       js.id = id;
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
+       console.log(this.mi_fb)
     },
 
     handleSdkInit({ FB, scope }) {
         this.FB = FB
         this.scope = scope
+        console.log(this.scope);
+        console.log(this.mi_fb)
       }
             
       }
