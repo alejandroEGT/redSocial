@@ -340,9 +340,9 @@ import VFacebookLogin from 'vue-facebook-login-component'
       handlelogin(data){
         console.log("el-login")
         console.log(data)
-        if(this.data.status == "connected"){
-          token = this.data.authResponse.accessToken;
-          user_id = this.data.authResponse.userID;
+        if(data.status == "connected"){
+          token = data.authResponse.accessToken;
+          user_id = data.authResponse.userID;
             console.log("iduser", user_id)
             axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
