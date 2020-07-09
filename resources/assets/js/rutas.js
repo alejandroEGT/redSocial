@@ -34,11 +34,11 @@ let routes = [
     path: '/home/',
     component: Home,
     name: 'Administration',
-    redirect:'index',
+    redirect:'pm_index',
     iconCls: 'el-icon-message',
     meta: {auth: true},
     children: [
-        { path: '/index', component: Index, name: 'index' },
+        { path: '/pm_index', component: Index, name: 'pm_index' },
         { path: '/chat', component: Chat, name: 'Chat' },
         { path: '/search/:id', component: User, name:'User'},
         { path: '/amigos/:id', component: Amigos, name: 'Amigos'},
