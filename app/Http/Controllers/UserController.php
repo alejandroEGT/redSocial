@@ -6,9 +6,10 @@ use App\User;
 use App\Solicitud;
 use App\user_contacto;
 use Faker\Provider\File;
-use Tymon\JWTAuth\JWTAuth;
+
 use Laravolt\Avatar\Avatar;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Vikin\Laricon\Facades\Laricon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
