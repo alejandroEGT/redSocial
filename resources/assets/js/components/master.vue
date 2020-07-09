@@ -344,9 +344,9 @@ import VFacebookLogin from 'vue-facebook-login-component'
           var token = data.authResponse.accessToken;
           var user_id = data.authResponse.userID;
             console.log("iduser", user_id, 'token',token)
-            // axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+            axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
-            // });
+            });
         }
       },
       fb_click(){
