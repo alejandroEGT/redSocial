@@ -346,10 +346,10 @@ import VFacebookLogin from 'vue-facebook-login-component'
         console.log(this.FB);
         console.log(this.mi_fb);
 
-        if(this.mi_fb['status'] == "connected"){
+        if(this.mi_fb.status == "connected"){
           token = this.mi_fb.authResponse.accessToken;
           user_id = this.mi_fb.authResponse.userID;
-            
+            console.log("iduser", user_id)
             axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
             });
