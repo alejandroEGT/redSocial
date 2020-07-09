@@ -323,7 +323,7 @@ class UserController extends Controller
         }else{ // si no existe
             return[
                 'estado' => 'failed',
-                'mensaje' => 'Primero registrece con su usuario de facebook',
+                'mensaje' => 'Primero registrece con su email de facebook en crear cuenta, por su seguridad no le pediremos contraseña para el registro',
                 'respuesta' => $r
             ];
         }
