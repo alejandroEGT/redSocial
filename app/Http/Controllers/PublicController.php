@@ -24,7 +24,7 @@ class PublicController extends Controller
                         left join user_contacto c on c.user_id = u.id
                         inner join categoria_pymes ca on ca.id = u.categoria_pyme_id
                         where 
-                        extract(month from u.created_at) = (select extract(month from now()))");
+                        extract(month from u.created_at) = (select extract(month from now())) and rol_id=1");
         
         for ($i=0; $i < count($d) ; $i++) { 
             $d[$i]->created_at = Carbon::parse($d[$i]->created_at)->diffForHumans();

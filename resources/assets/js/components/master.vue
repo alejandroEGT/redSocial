@@ -1,176 +1,20 @@
 <template>
 
-   
-     
-      <!-- <nav class="navbar navbar-light" style="background-color: #5DADE2">
-        <ul class="nav">
-          <li class="nav-item" >
-            <img height="70" width="150" src="logo/milogo.png">
-          </li>
-          <li class="nav-item">
-            <router-link style="color:white" :to="{name:'login'}" class="nav-link active color">Login</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link style="color:white" :to="{name:'registro'}" class="nav-link">Registro</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link style="color:white" :to="{name:'terminos'}" class="nav-link">Terminos</router-link>
-          </li>
-        </ul>	
-      </nav>	 -->
 <div>
+      <b-nav small v-if="this.$auth.check()">
+        <b-nav-item>{{yo.nombre_nick}}</b-nav-item>
+      </b-nav>
       <b-nav small>
-        <b-nav-item active>Active</b-nav-item>
-        <b-nav-item>Link</b-nav-item>
-        <b-nav-item>Another Link</b-nav-item>
-        <b-nav-item disabled>Disabled</b-nav-item>
+        <b-nav-item>Inicio</b-nav-item>
+        <b-nav-item v-if="!this.$auth.check()">Entrar como pyme</b-nav-item>
+        <b-nav-item v-if="!this.$auth.check()">Entrar como usuario</b-nav-item>
+        <!-- <b-nav-item>Another Link</b-nav-item>
+        <b-nav-item disabled>Disabled</b-nav-item> -->
       </b-nav>
       
-       <div style="background:#F4F6F6">
-        <b-card no-body class="overflow-hidden" style="background:#F4F6F6; width: 100%;">
-          <b-row no-gutters>
-            <b-col md="4">
-              <b-card-img style="height:80%; width:80%;" src="https://i.pinimg.com/originals/0e/0a/54/0e0a54a90658ba6995488a35585642ee.gif" alt="Image" class="rounded-0"></b-card-img>
-            </b-col>
-            <b-col md="8">
-              <b-card-body title="Publica tu emprendimiento, hoy, facil y sencillo">
-                <b-card-text>
-                  En este apartado te damos dos opciones, un registro de tu emprendimiento y un inicio a tu cuenta, comencemos!
-                  <br><br>
-                 
-                  <b-button v-b-modal.inicio size="lg" variant="outline-primary">Iniciar sesion</b-button>
-                  <b-modal id="inicio" title="Log in" hide-footer ok-only>
-                    <div>
-                      <!-- <div class = "fb-login-button" data-size = "large" data-button-type = "continue_with" data-layout = "default" data-auto-logout-link = "false" data-use-continue-as = "false" data-width = "" > </div>    -->
-                         <v-facebook-login 
-                         v-model="mi_fb"
-                          app-id="2711739702480818" 
-                          @sdk-init="handleSdkInit"
-                          @login="handlelogin"
-                          @click="fb_click"
-                          
-                          :use-alt-logo="true"
-                        ></v-facebook-login>
-                       <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
-                      <!-- <button @click="AuthProvider('facebook')">auth Facebook</button> -->
-                      <hr>
-                       <b-input
-                          placeholder="Correo"
-                          
-                          v-model="form.email">
-                        </b-input>
-
-                        <br>
-                    
-                        <b-input
-                          type="password"
-                          placeholder="Clave"
-                          
-                          v-model="form.password">
-                        </b-input>
-                    <br>
-
-                    <button class="btn-block" @click="loginx">Log in</button>
-                    </div>
-                  </b-modal>
-
-
-
-
-
-
-
-
-                  <b-button v-b-modal.registro size="lg" variant="outline-success">Crear cuenta</b-button>
-                  <b-modal id="registro" title="Crear cuenta" hide-footer ok-only>
-                    <div>
-                     <b-alert show variant="success"> <small> <i class="far fa-save"></i> Creat tu cuenta ahora, es gratis!</small></b-alert>
-                     <hr>
-                     <label for="">Nombre completo o nick</label>
-                     <b-input v-model="nombre_nick"></b-input>
-                     <br>
-                     <label for="">Nombre de tu negocio o emprendimiento</label>
-                     <b-input v-model="pyme"></b-input>
-                     <br>
-                     <label for="">Tipo de negocio o emprendimiento</label>
-                     <!-- <b-form-select v-model="selected" :options="options">
-
-                     </b-form-select> -->
-
-                     <autocomplete
-                          id="cat"
-											    url="/users/categorias"
-											    anchor="text"
-                          :filterByAnchor="false"
-											    label="email"
-											     :classes="{ wrapper: 'form-wrapper', input: 'form-control', list: 'data-list', item: 'data-list-item' }"
-    												placeholder="Buscar categoría.."
-											     :onShouldRenderChild="renderChild"
-                           :on-select="getData"
-                           :onFocus="onInput"
-											    >
-											  </autocomplete>
-                        <br>
-                        <label for="">Correo electrónico</label>
-                        <b-input v-model="email"></b-input>
-
-                        <br>
-                        <label for="">Clave provisoria (Antes de registrarse apunte esta clave)</label>
-                        <b-input disabled v-model="pass"></b-input>
-                        <br>
-                        <b-button @click="registrar">Registrarme</b-button>
-                    </div>
-                  </b-modal>
-                </b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-
-        <b-card no-body class="overflow-hidden" style="background:#5D6D7E; color:white; width: 100%;">
-          <b-row no-gutters>
-            <b-col md="8">
-              <b-card-body title="Red de clientes">
-                <b-card-text>
-                  Comparte tu enlace de perfil que crearemos para que tus clientes puedan ver tus publicaciones
-                </b-card-text>
-              </b-card-body>
-            </b-col>
-            <b-col md="4">
-              <b-card-img style="height:80%; width:80%;" src="https://www.pngmart.com/files/11/Eye-Contact-PNG-Image.png" alt="Image" class="rounded-0"></b-card-img>
-            </b-col>
-          </b-row>
-        </b-card>
-
-        <b-card no-body class="overflow-hidden" style="background:#5499C7;color:white; width: 100%;">
-          <b-row no-gutters>
-            <b-col md="4">
-              <b-card-img style="height:80%; width:80%;" src="https://lh3.googleusercontent.com/proxy/04FgtZ6o3q9bPMOa7lSCHX83CzarZFzYvLxpPN56v1hA5oIat2xPFxHe2gE1L_PopdskLAPnSILjMLvJ1THocNOCQ5pISjCrfv61BIF_fCXrl2VkAkhOT3q6UTdjL3SeBmdMGxIBFQ" alt="Image" class="rounded-0"></b-card-img>
-            </b-col>
-            <b-col md="8">
-              <b-card-body title="Público">
-                <b-card-text>
-                  Existiran personas viendo los emprendimientos de esta plataforma, podran contactarte al instante!
-                </b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-        <!-- <b-card style="background:#F4F6F6" img-src="https://i.pinimg.com/originals/0e/0a/54/0e0a54a90658ba6995488a35585642ee.gif" img-alt="Card image" img-left class="mb-3">
-          <b-card-text >
-            Some quick example text to build on the card and make up the bulk of the card's content.
-          </b-card-text>
-        </b-card> -->
-          <!-- <b-row>
-              <b-col xs="12" sm="8" md="8" lg="8" xl="8">
-                <b-img-lazy :src="'https://i.pinimg.com/originals/0e/0a/54/0e0a54a90658ba6995488a35585642ee.gif'" alt="Image 1"></b-img-lazy>
-                
-              </b-col>
-              <el-col xs="12" sm="4" md="4" lg="4" xl="4">
-                <router-view></router-view>  
-              </el-col>
-          </b-row> -->
-      </div>  
+        <div style="background:#F4F6F6">
+          <router-view></router-view>
+        </div>  
 </div>   
 
 </template>
@@ -178,14 +22,17 @@
 <script type="text/javascript">
 import Autocomplete from 'vue2-autocomplete-js'
 import VFacebookLogin from 'vue-facebook-login-component'
+import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-component'
   export default{
     components: {
         Autocomplete,
-        VFacebookLogin
+        VFacebookLogin,VFacebookLoginScope
+        
 		    // LinkPrevue
 		},
     data(){
       return{
+        yo: this.$auth.user(),
         tipo:'',
         nombre_nick:'',
         pyme:'',

@@ -69,7 +69,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 								
 								<div class="single-products">
 									<b-card>
-										<div class="productinfo text-center">
+										<div class="text-center">
 											<img style="width:50px; height:65px;" :src="d.avatar" alt="" />
 											<h6>{{d.nombre_pyme}}</h6>
 											<b-badge class="badgex">{{d.categoria}}</b-badge><br>
@@ -432,7 +432,8 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 			float:left;
 			/* border:2px solid #E5E8E8; */
 			overflow: hidden;
-			margin:5px;
+			margin:2px;
+		
 		}
 
 		.product-image-wrapper{
@@ -534,6 +535,10 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
   text-decoration-color: #E18728;
   line-height: 2.2;
   
+}
+
+.productinfo.text-center {
+    padding: 7px;
 }
 
 .badgex{

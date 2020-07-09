@@ -49,11 +49,11 @@ class UserController extends Controller
         $urlBack = 'background/'.time().'-'.$request->email.'.png';
         $avatar->create(strtoupper($request->nombre))->setBackground($this->aleatorio_colors())->save($uriAvatar, $quality = 90);
 
-        $avatar->create(strtoupper($request->nombre.' '.$request->email))
-        ->setBackground('#9B59B6')
-        ->setDimension(200, 300)
-        ->setShape('square')
-        ->save($urlBack, $quality = 90);
+        // $avatar->create(strtoupper($request->nombre.' '.$request->email))
+        // ->setBackground('#9B59B6')
+        // ->setDimension(200, 300)
+        // ->setShape('square')
+        // ->save($urlBack, $quality = 90);
 
         $user->nombre_nick = $request->nombre;
         $user->nombre_pyme = $request->pyme;
@@ -63,6 +63,7 @@ class UserController extends Controller
         $user->password = $request->pass;
         $user->avatar = $uriAvatar;
         $user->avatarback = $urlBack;
+        $user->rol_id = 1; // rol para pymes o emprendedores
         if($user->save()){
             return "success";
         }
@@ -303,5 +304,10 @@ class UserController extends Controller
 	    }catch (\Throwable $t) {
     			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
 		}
-	}
+    }
+    
+    public function validar_si_existe_email_en_sistema(Request $r)
+    {
+        dd($r->all());
+    }
 }

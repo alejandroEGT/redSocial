@@ -21,6 +21,7 @@ Route::post('auth/login', 'AuthController@login');
 Route::post('auth/login_api', 'AuthController@login');
 
 Route::post('registro_pyme','UserController@store');
+Route::post('validar_si_existe_email_en_sistema','UserController@validar_si_existe_email_en_sistema');
 
 Route::get('emprendimientos_mes', 'PublicController@emprendedores_mes');
 

@@ -12,20 +12,24 @@ import Amigos from "./components/Home/amigos";
 import Profile from "./components/Home/profile";
 
 let routes = [
+
+    //usuario pasajero
 {
     path: '/',
     component: Master,
     name:'Admin',
-    redirect:'login',
+    redirect:'index',
     iconCls:'el-icon-message',
     meta:{auth:false},
     children:[
+        {path: '/index', component: Index, name: 'index' },
         {path: '/login',name: 'login',component: Login,meta: { auth: false }},
         {path: '/registro',name: 'registro',component: Registro,meta: { auth: false}},
         {path: '/terminos',name: 'terminos',component: Terminos,meta: { auth: false }},
     ]   
 },
 
+//usuario pasajero
 {
     path: '/home/',
     component: Home,

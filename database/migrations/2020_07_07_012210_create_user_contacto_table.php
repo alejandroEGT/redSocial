@@ -22,6 +22,7 @@ class CreateUserContactoTable extends Migration
             $table->text('url_instagram')->nullable();
             $table->text('direccion')->nullable();
             $table->text('descripcion_pyme')->nullable();
+            $table->integer('rol_id')->nullable();
             $table->timestamps();
         });
     }
