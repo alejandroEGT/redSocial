@@ -46,6 +46,7 @@
                           app-id="2711739702480818" 
                           @sdk-init="handleSdkInit"
                           @login="handlelogin"
+                          @click="fb_click"
                           login-options="{ scope: 'email' }"
                           :use-alt-logo="true"
                         ></v-facebook-login>
@@ -329,10 +330,16 @@ import VFacebookLogin from 'vue-facebook-login-component'
         this.FB = FB
         this.scope = scope
         console.log(this.scope);
+        console.log(this.FB);
         console.log(this.mi_fb)
       },
       handlelogin(data){
         console.log(data)
+      },
+      fb_click(){
+          console.log(this.scope);
+        console.log(this.FB);
+        console.log(this.mi_fb);
       }
             
     }
