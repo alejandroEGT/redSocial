@@ -351,7 +351,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                     // this.ruta('login');
                     location.reload();
                   }else{
-                    this.login_fb(res.data.email);
+                    this.login_fb(data.authResponse.email);
                   }
               });
 

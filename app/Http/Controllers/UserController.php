@@ -315,11 +315,11 @@ class UserController extends Controller
 
         if ($validar) { //si existe el email
 
-            $pro = $this->login_facebook($r);
+            // $pro = $this->login_facebook($r);
             return[
                 'estado' => 'success',
                 'respuesta' => $r,
-                'proceso' => $pro
+                // 'proceso' => $pro
             ];
         }else{ // si no existe
             return[
