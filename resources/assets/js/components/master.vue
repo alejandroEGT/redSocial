@@ -5,8 +5,9 @@
         <b-nav-item>{{yo.nombre_nick}}</b-nav-item>
       </b-nav>
       <b-nav small>
-        <b-nav-item>Inicio</b-nav-item>
-        <b-nav-item v-if="!this.$auth.check()">Entrar como pyme</b-nav-item>
+        <b-nav-item v-if="!this.$auth.check()" @click="ruta('index')" >Inicio</b-nav-item>
+        <b-nav-item v-if="this.$auth.check()" @click="ruta('pm_index')" >Inicio</b-nav-item>
+        <b-nav-item v-if="!this.$auth.check()" @click="ruta('login')">Entrar como pyme</b-nav-item>
         <b-nav-item v-if="!this.$auth.check()">Entrar como usuario</b-nav-item>
         <!-- <b-nav-item>Another Link</b-nav-item>
         <b-nav-item disabled>Disabled</b-nav-item> -->
@@ -64,6 +65,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
     },
 
     methods:{
+      ruta(ruta){
+            this.$router.push('/'+ruta);
+        },
       renderChild(data) {
 		    return `
 		    	<label>
