@@ -1,20 +1,12 @@
 <template>
 	<div style=""><br>
-		<!-- <div class="main">
-  <p>This is inline-block:</p>
-  
-  <p>This is flex:</p>
-  <div class="container flex">
-    <div class="item flex-item"></div>
-    <div class="item flex-item"></div>
-    <div class="item flex-item"></div>
-    <div class="item flex-item"></div>
-    <div class="item flex-item"></div>
-  </div>
-</div> -->
+
 	<b-row>
 		<b-col xs="12" md="8">
-			<h5><label style="color:#ABB2B9">Inicio</label> <label style="color:#58D68D"> > </label> Nuevos emprendimientos de este mes. ver mas...</h5>
+			<h5><label style="color:#ABB2B9">Inicio</label> <label style="color:#EB984E"> > </label> Nuevos emprendimientos de este mes.  <b-button v-if="!this.$auth.check()" class="float-right" style="color:#DC7633" @click="ruta('ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
+
+			<b-button v-if="this.$auth.check()" class="float-right" style="color:#DC7633" @click="ruta('pm_ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
+			</h5>
 			<b-row>
 				<b-col md="12">
 				 <b-card>	
@@ -23,7 +15,7 @@
 							<div class="product-image-wrapper-scroll">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img style="width:80px; height:95px;" :src="d.avatar" alt="" />
+										<img style="width:80px; height:80px;" :src="d.avatar" alt="" />
 										<h6>{{d.nombre_pyme}}</h6>
 										<b-badge class="badgex">{{d.categoria}}</b-badge><br>
 										<p>{{d.contacto}}</p>
@@ -40,9 +32,10 @@
 				 </b-card>	
 				</b-col>
 			</b-row>
+			<hr> 
 			
-			<h5 class="txt-linea"><label style="color:#58D68D;"> > </label> Categoria de emprendedores</h5>
-			<hr>
+			<h5 class="txt-linea-nada"><label style="color:#EB984E;"> > </label> Categoria de emprendedores <b-button class="float-right" style="color:#DC7633" @click="ruta('ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button></h5>
+			<!-- <hr> -->
 			<b-row>
 				<b-col xs="12" md="12">
 					<b-navbar  style="background: rgb(176,58,46);
@@ -53,6 +46,9 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 
 							<b-collapse id="nav-collapse" is-nav>
 							<b-navbar-nav>
+								<b-nav-item >
+									<small style="color:white">Todo</small>
+								</b-nav-item>
 								<b-nav-item v-for="c in categorias" 
 								:key="c.id" href="#">
 								<small style="color:white">{{c.text}}</small>
@@ -70,7 +66,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 								<div class="single-products">
 									<b-card>
 										<div class="text-center">
-											<img style="width:50px; height:65px;" :src="d.avatar" alt="" />
+											<img style="width:80px; height:80px;" :src="d.avatar" alt="" />
 											<h6>{{d.nombre_pyme}}</h6>
 											<b-badge class="badgex">{{d.categoria}}</b-badge><br>
 											<p>{{d.contacto}}</p>
@@ -343,6 +339,17 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 		  	console.log($("#btns"+$i))
 		  },
 
+		  ruta(ruta){
+                this.$router.push('/'+ruta);
+            },
+            url_params(name, json){
+                this.$router.push({name:name, params:json}).catch(error => {
+                    if (error.name != "NavigationDuplicated") {
+                        throw error;
+                    }
+                });
+            }
+
 	  }
 	}
 </script>
@@ -462,7 +469,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 .containerx {
   
   width: 100%;
-  height: 250px;
+  height: 220px;
   /* border: 2px solid #341C09; */
   white-space: nowrap;
 }

@@ -20,7 +20,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 
       
       
-        <div style="background:#F4F6F6; margin-top:23px;">
+        <div style="background:#F4F6F6; margin-top:25px;">
          <b-container fluid>
           <router-view></router-view>
          </b-container>

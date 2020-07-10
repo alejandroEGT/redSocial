@@ -2,6 +2,7 @@ import Login from "./components/login";
 import Registro from "./components/registro";
 import Terminos from "./components/terminos";
 import NotFound from './components/404.vue'
+import ver_mas_emprendedores_mes from './components/Home/ver_mas_emprendedores_mes.vue'
 //loged
 import Master from "./components/master";
 import Home from "./components/Home/Home";
@@ -23,6 +24,8 @@ let routes = [
     meta:{auth:false},
     children:[
         {path: '/index', component: Index, name: 'index' },
+        { path: '/ver_mas_emprendedores_mes', component: ver_mas_emprendedores_mes, name: 'ver_mas_emprendedores_mes' },
+        
         {path: '/login',name: 'login',component: Login,meta: { auth: false }},
         {path: '/registro',name: 'registro',component: Registro,meta: { auth: false}},
         {path: '/terminos',name: 'terminos',component: Terminos,meta: { auth: false }},
@@ -39,6 +42,7 @@ let routes = [
     meta: {auth: true},
     children: [
         { path: '/pm_index', component: Index, name: 'pm_index' },
+        { path: '/pm_ver_mas_emprendedores_mes', component: ver_mas_emprendedores_mes, name: 'pm_ver_mas_emprendedores_mes' },
         { path: '/chat', component: Chat, name: 'Chat' },
         { path: '/search/:id', component: User, name:'User'},
         { path: '/amigos/:id', component: Amigos, name: 'Amigos'},

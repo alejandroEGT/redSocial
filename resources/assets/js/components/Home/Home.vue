@@ -1,5 +1,6 @@
 <template>
   <div>
+    <nav class="fixed-top">
     <b-nav style="background: rgb(176,58,46);
 background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small>
         <b-nav-item active @click="ruta('pm_index')">Inicio</b-nav-item>
@@ -8,8 +9,9 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
         <b-nav-item>Another Link</b-nav-item>
         <b-nav-item @click="logout">Salir</b-nav-item>
       </b-nav>
+    </nav>
 
-       <div style="background:#F4F6F6">
+       <div style="background:#F4F6F6; margin-top:23px;">
          <b-container fluid>
          <router-view></router-view>
          </b-container>
