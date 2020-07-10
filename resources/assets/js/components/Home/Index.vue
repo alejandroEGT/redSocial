@@ -76,7 +76,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 											<p>{{d.contacto}}</p>
 											
 											
-											<b-button size="sm" variant="outline-dark">Conocer</b-button>
+											<b-button class="float-center btn-fw" size="sm" variant="outline-dark">Conocer</b-button>
 										</div>
 									</b-card>			
 								</div>

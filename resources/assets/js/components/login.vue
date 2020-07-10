@@ -17,7 +17,7 @@
                     <div>
                      
                       <!-- <div class = "fb-login-button" data-size = "large" data-button-type = "continue_with" data-layout = "default" data-auto-logout-link = "false" data-use-continue-as = "false" data-width = "" > </div>    -->
-                         <v-facebook-login 
+                        <center> <v-facebook-login 
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
                           app-id="2711739702480818" 
@@ -28,7 +28,7 @@
                           :use-alt-logo="true"
                         >
                         <span slot="login">Entrar con facebook</span>
-                        </v-facebook-login>
+                        </v-facebook-login></center>
                        <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
                       <!-- <button @click="AuthProvider('facebook')">auth Facebook</button> -->
                       <hr>
@@ -48,7 +48,8 @@
                         </b-input>
                     <br>
 
-                    <button class="btn-block" @click="loginx">Log in</button>
+            
+                    <b-button @click="loginx" class="float-center btn-fw btn-block" size="sm" variant="outline-dark">Log in</b-button>
                     </div>
                   </b-modal>
 
@@ -381,4 +382,18 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
     
   }
 </script>
+
+<style>
+.btn-fw{
+	background: #A569BD;
+	color:white;
+	margin-bottom: 3px;
+	border: 1px solid #EB984E;
+}
+.btn-fw:hover{
+	background: #EC7063;
+	border: 1px solid #EB984E;
+	
+}
+</style>
 <!--#34495E;-->

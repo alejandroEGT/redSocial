@@ -1,10 +1,14 @@
 <template>
 
 <div>
-      <b-nav small v-if="this.$auth.check()">
+      <b-nav style="background: rgb(176,58,46);
+background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small v-if="this.$auth.check()">
         <b-nav-item>{{yo.nombre_nick}}</b-nav-item>
       </b-nav>
-      <b-nav small>
+      <nav class="fixed-top">
+  
+      <b-nav style="background: rgb(176,58,46);
+background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small >
         <b-nav-item v-if="!this.$auth.check()" @click="ruta('index')" >Inicio</b-nav-item>
         <b-nav-item v-if="this.$auth.check()" @click="ruta('pm_index')" >Inicio</b-nav-item>
         <b-nav-item v-if="!this.$auth.check()" @click="ruta('login')">Entrar como pyme</b-nav-item>
@@ -12,9 +16,14 @@
         <!-- <b-nav-item>Another Link</b-nav-item>
         <b-nav-item disabled>Disabled</b-nav-item> -->
       </b-nav>
+      </nav>
+
       
-        <div style="background:#F4F6F6">
+      
+        <div style="background:#F4F6F6; margin-top:23px;">
+         <b-container fluid>
           <router-view></router-view>
+         </b-container>
         </div>  
 </div>   
 
@@ -224,3 +233,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
   }
 </script>
 <!--#34495E;-->
+
+<style>
+a.nav-link {
+    color: white;
+}
+</style>

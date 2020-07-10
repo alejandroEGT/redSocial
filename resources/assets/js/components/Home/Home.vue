@@ -113,6 +113,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
                         makeRequest: true,
                         redirect: '/index',
                         success: function(){
+                          this.ruta("index");
                           location.reload();//para que me limpie todo nomas
                         },
                     });
