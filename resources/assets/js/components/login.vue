@@ -280,12 +280,12 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
        logInWithFacebook() {
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
-         console.log("login with fb")
-         console.log(FB)
-          console.log(this.mi_fb)
+         
         
         window.FB.login(function(response) {
           if (response.authResponse) {
+            console.log("abajo datos:")
+            console.log(response.authResponse)
             alert("You are logged in &amp; cookie set!");
             
           } else {
