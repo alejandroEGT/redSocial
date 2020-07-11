@@ -187,7 +187,8 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         ],pass:'',
 
         form:{},
-        mi_fb:null
+        mi_fb:null,
+        magica:''
       }
     },
     created(){
@@ -284,7 +285,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         
         window.FB.login(function(response) {
           if (response.authResponse) {
-            console.log("abajo datos:")
+            console.log("abajo datos:"+this.magica)
             console.log(response.authResponse)
             var token = response.authResponse.accessToken;
           var user_id = response.authResponse.userID;
@@ -297,6 +298,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                     // this.ruta('login');
                     location.reload();
                   }else{
+                    
                     console.log("va a logear")
                     console.log(self)
                     // this.login_fb(res.data.email);
