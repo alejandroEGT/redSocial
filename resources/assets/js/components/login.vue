@@ -281,12 +281,8 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
        logInWithFacebook() {
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
-          console.log("---------") 
-          // console.log(this.window) 
-          // console.log(vue) 
-          console.log(window.vue)
-          console.log("---------") 
-        window.FB.login(function(response) {
+         
+        FB.login(function(response) {
           if (response.authResponse) {
             console.log("abajo datos:")
             console.log(response.authResponse)
@@ -303,9 +299,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                   }else{
                     
                     console.log("va a logear")
-                    console.log(window.vue)
+                    
                     // this.login_fb(res.data.email);
-                    window.vue.$auth.login({
+                    $auth.login({
                       url:'api/auth/login_fb',
                       data: {'email':res.data.email},
                       redirect:'/home/',
@@ -328,7 +324,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         });
         return false;
     },
-     initFacebook() {
+     async initFacebook() {
       window.fbAsyncInit = function() {
         window.FB.init({
           appId      : '2711739702480818',
@@ -338,16 +334,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         });
 
         FB.AppEvents.logPageView();  
-        console.log("initFB")
-         console.log(this.mi_fb)
-
-        // (function(d, s, id){
-        //   var js, fjs = d.getElementsByTagName(s)[0];
-        //   if (d.getElementById(id)) {return;}
-        //   js = d.createElement(s); js.id = id;
-        //   js.src = "https://connect.facebook.net/en_US/sdk.js";
-        //   fjs.parentNode.insertBefore(js, fjs);
-        // }(document, 'script', 'facebook-jssdk'));
+        
       };
     },
     async loadFacebookSDK(d, s, id) {
