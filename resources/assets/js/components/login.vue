@@ -286,7 +286,22 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
           if (response.authResponse) {
             console.log("abajo datos:")
             console.log(response.authResponse)
-            alert("You are logged in &amp; cookie set!");
+            var token = response.authResponse.accessToken;
+          var user_id = response.authResponse.userID;
+            console.log("iduser", user_id, 'token',token)
+            axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+
+              axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
+                  if(ress.data.estado == "failed"){
+                    alert(ress.data.mensaje);
+                    // this.ruta('login');
+                    location.reload();
+                  }else{
+                    this.login_fb(res.data.email);
+                  }
+              });
+
+            });
             
           } else {
             alert("User cancelled login or did not fully authorize.");
