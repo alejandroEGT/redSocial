@@ -188,7 +188,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
 
         form:{},
         mi_fb:null,
-        magica:''
+        magica:'magica'
       }
     },
     created(){
