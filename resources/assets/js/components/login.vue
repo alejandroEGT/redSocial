@@ -311,7 +311,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
           }
         });
 
-        if(localStorage.getItem("email")!=''){
+        
           this.$auth.login({
                       url:'api/auth/login_fb',
                       data: {'email':localStorage.getItem("email")},
@@ -325,8 +325,8 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                       //redirect: '/index',
                       //fetchUser: true,
                     });
-        }
-        return false;
+        
+        
     },
      async initFacebook() {
       window.fbAsyncInit = function() {
