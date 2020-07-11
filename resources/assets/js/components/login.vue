@@ -317,7 +317,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                       data: {'email':localStorage.getItem("email")},
                       redirect:'/home/',
                       success: function(){
-                        localStorage.clear();
+                        // localStorage.clear();
 
                         //this.$router.push({ path: '/index' });
                       },
