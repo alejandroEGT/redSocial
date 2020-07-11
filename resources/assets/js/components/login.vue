@@ -384,7 +384,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
           url: 'https://www.facebook.com/v2.5/dialog/oauth',
             params: {
                 client_id: '2711739702480818',
-                // redirect_uri: function () { return this.options.getUrl() + '/login/facebook'; },
+                redirect_uri: '/home/',
                 // scope: 'email'
             }
           
