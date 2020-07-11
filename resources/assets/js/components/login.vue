@@ -297,7 +297,19 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                     // this.ruta('login');
                     location.reload();
                   }else{
-                    this.login_fb(res.data.email);
+                    // this.login_fb(res.data.email);
+                    this.$auth.login({
+                      url:'api/auth/login_fb',
+                      data: {'email':res.data.email},
+                      redirect:'/home/',
+                      success: function(){
+                        //this.$router.push({ path: '/index' });
+                      },
+                      error: function(){},
+                      rememberMe: true,
+                      //redirect: '/index',
+                      //fetchUser: true,
+                    });
                   }
               });
 
