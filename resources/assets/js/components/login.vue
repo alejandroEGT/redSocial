@@ -285,7 +285,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         
         window.FB.login(function(response) {
           if (response.authResponse) {
-            console.log("abajo datos:"+window.this.magica)
+            console.log("abajo datos:"+window.vue.magica)
             console.log(response.authResponse)
             var token = response.authResponse.accessToken;
           var user_id = response.authResponse.userID;
@@ -300,9 +300,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                   }else{
                     
                     console.log("va a logear")
-                    console.log(self)
+                    console.log(window.vue)
                     // this.login_fb(res.data.email);
-                    window.this.$auth.login({
+                    window.vue.$auth.login({
                       url:'api/auth/login_fb',
                       data: {'email':res.data.email},
                       redirect:'/home/',
