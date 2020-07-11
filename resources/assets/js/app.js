@@ -72,6 +72,16 @@ require('vue2-autocomplete-js/dist/style/vue2-autocomplete.css')
 window.emojioneVersion = "2.1.1";
 Vue.use(VueChatScroll)
 
+// import VueSocialauth from 'vue-social-auth'
+// Vue.use(VueSocialauth, {
+//   providers: {
+//     github: {
+//       clientId: '2711739702480818',
+//       redirectUri: '/auth/github/callback' // Your client app URL
+//     }
+//   }
+// })
+
 Vue.component('chat-messages', require('./components/Home/ChatMessages.vue'));
 Vue.component('chat-form', require('./components/Home/ChatForm.vue'));
 

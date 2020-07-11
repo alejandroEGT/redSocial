@@ -16,7 +16,7 @@
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
                      
-                      <!-- <div class = "fb-login-button" data-size = "large" data-button-type = "continue_with" data-layout = "default" data-auto-logout-link = "false" data-use-continue-as = "false" data-width = "" > </div>    -->
+                     <button @click="lg_fb">logear fb</button>
                         <center> <v-facebook-login 
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
@@ -376,6 +376,19 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         
         
         
+      },
+
+
+      lg_fb(){
+        this.$auth.login({
+          url: 'https://www.facebook.com/v2.5/dialog/oauth',
+            params: {
+                client_id: '2711739702480818',
+                // redirect_uri: function () { return this.options.getUrl() + '/login/facebook'; },
+                // scope: 'email'
+            }
+          
+        });
       }
             
     }
