@@ -16,7 +16,7 @@
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
                      
-                     <button @click="lg_fb">logear fb</button>
+                     <button @click="logInWithFacebook">logear fb</button>
                         <center> <v-facebook-login 
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
@@ -284,15 +284,15 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
          console.log(FB)
           console.log(this.mi_fb)
         
-        // window.FB.login(function(response) {
-        //   if (response.authResponse) {
-        //     alert("You are logged in &amp; cookie set!");
+        window.FB.login(function(response) {
+          if (response.authResponse) {
+            alert("You are logged in &amp; cookie set!");
             
-        //   } else {
-        //     alert("User cancelled login or did not fully authorize.");
-        //   }
-        // });
-        // return false;
+          } else {
+            alert("User cancelled login or did not fully authorize.");
+          }
+        });
+        return false;
     },
      initFacebook() {
       window.fbAsyncInit = function() {
