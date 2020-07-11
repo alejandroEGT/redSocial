@@ -52,8 +52,11 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
         solicitudes:{}
       }
     },
-    mounted(){
+    created(){
       localStorage.removeItem("email");
+    },
+    mounted(){
+      
 
       console.log(this.$auth.check())
 
