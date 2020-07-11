@@ -282,10 +282,10 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
           console.log("---------") 
-          console.log(this.window) 
-        console.log(vue) 
-        console.log(window.vue)
-        console.log("---------") 
+          // console.log(this.window) 
+          // console.log(vue) 
+          console.log(window.vue)
+          console.log("---------") 
         window.FB.login(function(response) {
           if (response.authResponse) {
             console.log("abajo datos:")
