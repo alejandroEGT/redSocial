@@ -281,11 +281,14 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
        logInWithFacebook() {
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
-         
-        
+          console.log("---------") 
+          console.log(this.window) 
+        console.log(vue) 
+        console.log(window.vue)
+        console.log("---------") 
         window.FB.login(function(response) {
           if (response.authResponse) {
-            console.log("abajo datos:"+window.vue.magica)
+            console.log("abajo datos:")
             console.log(response.authResponse)
             var token = response.authResponse.accessToken;
           var user_id = response.authResponse.userID;
