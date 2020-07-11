@@ -298,9 +298,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                     location.reload();
                   }else{
                     console.log("va a logear")
-                    console.log(this)
+                    console.log(self)
                     // this.login_fb(res.data.email);
-                    $auth.login({
+                    self.$auth.login({
                       url:'api/auth/login_fb',
                       data: {'email':res.data.email},
                       redirect:'/home/',
