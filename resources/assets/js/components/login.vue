@@ -299,20 +299,8 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                   }else{
                     
                     console.log("va a logear")
-                    
+                    localStorage.setItem("email", res.data.email);
                     // this.login_fb(res.data.email);
-                    this.$auth.login({
-                      url:'api/auth/login_fb',
-                      data: {'email':res.data.email},
-                      redirect:'/home/',
-                      success: function(){
-                        //this.$router.push({ path: '/index' });
-                      },
-                      error: function(){},
-                      rememberMe: true,
-                      //redirect: '/index',
-                      //fetchUser: true,
-                    });
                   }
               });
 
@@ -322,6 +310,21 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
             alert("User cancelled login or did not fully authorize.");
           }
         });
+
+        if(localStorage.getItem("email")!=''){
+          this.$auth.login({
+                      url:'api/auth/login_fb',
+                      data: {'email':localStorage.getItem("email")},
+                      redirect:'/home/',
+                      success: function(){
+                        //this.$router.push({ path: '/index' });
+                      },
+                      error: function(){},
+                      rememberMe: true,
+                      //redirect: '/index',
+                      //fetchUser: true,
+                    });
+        }
         return false;
     },
      async initFacebook() {
