@@ -88,6 +88,7 @@ class UserController extends Controller
         $u->email = $r->email;
         $u->facebook_id = $r->id;
         $u->avatar = $r['picture']['data']['url'];
+        $u->avatarback = $urlBack;
         $u->rol_id = 2;
 
         if($u->save()){

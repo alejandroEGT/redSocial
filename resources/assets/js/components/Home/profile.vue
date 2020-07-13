@@ -40,7 +40,7 @@
 					<el-row>
 					<el-col xs="3" md="3">
 						<!-- <b-avatar :src="data_p.avatar" size="6em"></b-avatar> -->
-						<img :src="'/'+data_p.avatar" style="width:20%" alt="">
+						<img :src="data_p.avatar" style="width:20%" alt="">
 						
 					</el-col>
 					<el-col xs="9" md="9">
