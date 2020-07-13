@@ -16,8 +16,8 @@
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
                      
-                    <center> <button @click="logInWithFacebook">Ingresar con facebook</button></center>
-                        <!-- <center> <v-facebook-login 
+                     <button @click="logInWithFacebook">logear fb</button>
+                        <center> <v-facebook-login 
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
                           app-id="2711739702480818" 
@@ -28,7 +28,7 @@
                           :use-alt-logo="true"
                         >
                         <span slot="login">Entrar con facebook</span>
-                        </v-facebook-login></center> -->
+                        </v-facebook-login></center>
                        <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
                       <!-- <button @click="AuthProvider('facebook')">auth Facebook</button> -->
                       <hr>
@@ -265,53 +265,56 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
       },
 
 
-    logInWithFacebook() {
+       logInWithFacebook() {
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
          
          let _this = this;
-          FB.login(function(response) {
-            
-            if (response.authResponse) {
-              console.log("abajo datos:")
-              console.log(response.authResponse)
-              var token = response.authResponse.accessToken;
-            var user_id = response.authResponse.userID;
-              console.log("iduser", user_id, 'token',token)
-              axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+        FB.login(function(response) {
+          
+          if (response.authResponse) {
+            console.log("abajo datos:")
+            console.log(response.authResponse)
+            var token = response.authResponse.accessToken;
+          var user_id = response.authResponse.userID;
+            console.log("iduser", user_id, 'token',token)
+            axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
-                axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
-                    if(ress.data.estado == "failed"){
-                      alert(ress.data.mensaje);
-                      // this.ruta('login');
-                      location.reload();
-                    }else{
-                      
-                      console.log("va a logear")
-                      console.log(res.data.email)
-                      _this.$auth.login({
-                        url:'api/auth/login_fb',
-                        data: {'email':  res.data.email},
-                        redirect:'/home/',
-                        success: function(){
-                          
-                          //this.$router.push({ path: '/index' });
-                        },
-                        error: function(){},
-                        rememberMe: true,
-                        //redirect: '/index',
-                        //fetchUser: true,
-                      });
-                    }
-                });
-
+              axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
+                  if(ress.data.estado == "failed"){
+                    alert(ress.data.mensaje);
+                    // this.ruta('login');
+                    location.reload();
+                  }else{
+                    
+                    console.log("va a logear")
+                    console.log(res.data.email)
+                    _this.$auth.login({
+                      url:'api/auth/login_fb',
+                      data: {'email':  res.data.email},
+                      redirect:'/home/',
+                      success: function(){
+                        
+                        //this.$router.push({ path: '/index' });
+                      },
+                      error: function(){},
+                      rememberMe: true,
+                      //redirect: '/index',
+                      //fetchUser: true,
+                    });
+                  }
               });
-              
-            } else {
-              alert("User cancelled login or did not fully authorize.");
-            }
-          });
- 
+
+            });
+            
+          } else {
+            alert("User cancelled login or did not fully authorize.");
+          }
+        });
+
+        
+          
+        
         
     },
      async initFacebook() {
@@ -348,33 +351,33 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         console.log(this.FB);
         console.log(this.mi_fb)
       },
-      // handlelogin(data){
-      //   console.log("el-login")
-      //   console.log(data)
-      //   if(data.status == "connected"){
-      //     var token = data.authResponse.accessToken;
-      //     var user_id = data.authResponse.userID;
-      //       console.log("iduser", user_id, 'token',token)
-      //       axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+      handlelogin(data){
+        console.log("el-login")
+        console.log(data)
+        if(data.status == "connected"){
+          var token = data.authResponse.accessToken;
+          var user_id = data.authResponse.userID;
+            console.log("iduser", user_id, 'token',token)
+            axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
 
-      //         axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
-      //             if(ress.data.estado == "failed"){
-      //               alert(ress.data.mensaje);
-      //               // this.ruta('login');
-      //               location.reload();
-      //             }else{
-      //               this.login_fb(res.data.email);
-      //             }
-      //         });
+              axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
+                  if(ress.data.estado == "failed"){
+                    alert(ress.data.mensaje);
+                    // this.ruta('login');
+                    location.reload();
+                  }else{
+                    this.login_fb(res.data.email);
+                  }
+              });
 
-      //       });
-      //   }
-      // },
-      // fb_click(){
-        // console.log("fb_click")
-        // console.log(this.scope);
-        // console.log(this.FB);
-        // console.log(this.mi_fb);
+            });
+        }
+      },
+      fb_click(){
+        console.log("fb_click")
+        console.log(this.scope);
+        console.log(this.FB);
+        console.log(this.mi_fb);
 
         // if(this.mi_fb.status == "connected"){
         //   token = this.mi_fb.authResponse.accessToken;
@@ -384,16 +387,18 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
 
         //     });
         // }
-         
-      // },
+        
+        
+        
+      },
 
 
-      // lg_fb(){
-      //   axios.get("https://www.facebook.com/v7.0/dialog/oauth?client_id=2711739702480818&redirect_uri=https://www.facebook.com/connect/login_success.html&state={st=state123abc,ds=123456789}"
-      //         ).then((res)=>{
+      lg_fb(){
+        axios.get("https://www.facebook.com/v7.0/dialog/oauth?client_id=2711739702480818&redirect_uri=https://www.facebook.com/connect/login_success.html&state={st=state123abc,ds=123456789}"
+              ).then((res)=>{
 
-      //           });
-      // }
+                });
+      }
             
     }
     
