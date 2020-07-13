@@ -74,7 +74,32 @@ class UserController extends Controller
 
     public function registrar_por_facebook(Request $r)
     {
-        dd($r->all());
+        dd($r['picture']['data']->ur);
+        $u = new User;
+        $urlBack = 'background/'.time().'-'.$request->email.'.png';
+        
+        $avatar->create(strtoupper($request->nombre.' '.$request->email))
+        ->setBackground('#9B59B6')
+        ->setDimension(200, 300)
+        ->setShape('square')
+        ->save($urlBack, $quality = 90);
+        $u->nombre = $r->name;
+        $u->email = $r->email;
+        $u->facebook_id = $r->id;
+        $u->avatar = $r['picture']['data']->url;
+        $u->rol_id = 2;
+
+        if($u->save()){
+            return [
+                'estado'=>'success',
+                'mensaje'=>'register'
+            ];
+        }else{
+            return [
+                'estado'=>'failed',
+                'mensaje'=>'No se ha podido registrar'
+            ];
+        }
     }
 
     /**
