@@ -270,7 +270,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
          this.initFacebook();
          
          let _this = this;
-          window.FB.login(function(response) {
+          FB.login(function(response) {
             
             if (response.authResponse) {
               console.log("abajo datos:")
@@ -340,14 +340,14 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
       //  console.log(this.mi_fb)
     },
 
-    // handleSdkInit({ FB, scope }) {
-    //     this.FB = FB
-    //     this.scope = scope
-    //     console.log("handleSdkInit")
-    //     console.log(this.scope);
-    //     console.log(this.FB);
-    //     console.log(this.mi_fb)
-    //   },
+    handleSdkInit({ FB, scope }) {
+        this.FB = FB
+        this.scope = scope
+        console.log("handleSdkInit")
+        console.log(this.scope);
+        console.log(this.FB);
+        console.log(this.mi_fb)
+      },
       // handlelogin(data){
       //   console.log("el-login")
       //   console.log(data)
