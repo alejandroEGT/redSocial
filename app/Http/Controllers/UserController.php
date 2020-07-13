@@ -76,6 +76,7 @@ class UserController extends Controller
     {
         // dd($r['picture']['data']['url']);
         $u = new User;
+        $avatar = new Avatar;
         $urlBack = 'background/'.time().'-'.$r->email.'.png';
         
         $avatar->create(strtoupper($r->nombre.' '.$r->email))
