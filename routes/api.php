@@ -22,6 +22,7 @@ Route::post('auth/login_api', 'AuthController@login');
 Route::post('auth/login_fb', 'AuthController@login_facebook');
 
 Route::post('registro_pyme','UserController@store');
+Route::post('registrar_por_facebook','UserController@registrar_por_facebook');
 Route::post('validar_si_existe_email_en_sistema','UserController@validar_si_existe_email_en_sistema');
 
 Route::get('emprendimientos_mes', 'PublicController@emprendedores_mes');

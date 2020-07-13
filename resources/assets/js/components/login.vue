@@ -16,7 +16,12 @@
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
                      
-                    <center> <button @click="logInWithFacebook">Ingresar con facebook</button></center>
+                    <center> 
+                      <button class="btn" style="color:white;background:#29487d" @click="logInWithFacebook">
+                        <i class="fab fa-facebook"></i>
+                        Ingresar con facebook
+                      </button>
+                    </center>
                         <center> <v-facebook-login 
                         style="display:none"
                          text-class="Entrar con facebook"
@@ -65,19 +70,39 @@
                   <b-modal id="registro" title="Crear cuenta" hide-footer ok-only>
                     <div>
                      <b-alert show variant="success"> <small> <i class="far fa-save"></i> Creat tu cuenta ahora, es gratis!</small></b-alert>
+                     
+                     <center><button class="btn" style="color:white;background:#29487d" @click="RegisterAndLogInWithFacebook">
+                        <i class="fab fa-facebook"></i>
+                        Registrar con facebook
+                      </button>
+                      
+                      <v-facebook-login 
+                        style="display:none"
+                         text-class="Entrar con facebook"
+                         v-model="mi_fb"
+                          app-id="2711739702480818" 
+                          @sdk-init="handleSdkInit"
+                          @login="handlelogin"
+                          @click="fb_click"
+                          
+                          :use-alt-logo="true"
+                        >
+                        <span slot="login">Entrar con facebook</span>
+                        </v-facebook-login>
+                      </center>
                      <hr>
-                     <label for="">Nombre completo o nick</label>
+                     <label for="">Nombre</label>
                      <b-input v-model="nombre_nick"></b-input>
                      <br>
-                     <label for="">Nombre de tu negocio o emprendimiento</label>
-                     <b-input v-model="pyme"></b-input>
-                     <br>
-                     <label for="">Tipo de negocio o emprendimiento</label>
+                     <!-- <label for="">Nombre de tu negocio o emprendimiento</label> -->
+                     <!-- <b-input v-model="pyme"></b-input> -->
+                     <!-- <br> -->
+                     <!-- <label for="">Tipo de negocio o emprendimiento</label> -->
                      <!-- <b-form-select v-model="selected" :options="options">
 
                      </b-form-select> -->
 
-                     <autocomplete
+                     <!-- <autocomplete
                           id="cat"
 											    url="/users/categorias"
 											    anchor="text"
@@ -89,14 +114,14 @@
                            :on-select="getData"
                            :onFocus="onInput"
 											    >
-											  </autocomplete>
-                        <br>
+											  </autocomplete> -->
+                        <!-- <br> -->
                         <label for="">Correo electrónico</label>
                         <b-input v-model="email"></b-input>
 
                         <br>
-                        <label for="">Clave provisoria (Antes de registrarse apunte esta clave)</label>
-                        <b-input disabled v-model="pass"></b-input>
+                        <label for="">Contraseña</label>
+                        <b-input v-model="pass"></b-input>
                         <br>
                         <b-button @click="registrar">Registrarme</b-button>
                     </div>
@@ -318,6 +343,51 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         
         
     },
+
+    RegisterAndLogInWithFacebook() {
+         this.loadFacebookSDK(document, "script", "facebook-jssdk");
+         this.initFacebook();
+         
+         let _this = this;
+          FB.login(function(response) {
+            
+            if (response.authResponse) {
+              console.log("abajo datos:")
+              console.log(response.authResponse)
+              var token = response.authResponse.accessToken;
+            var user_id = response.authResponse.userID;
+              console.log("iduser", user_id, 'token',token)
+              axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+
+                axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
+                    if(ress.data.estado == "failed"){
+                      alert(ress.data.mensaje);
+                      // this.ruta('login');
+                      location.reload();
+                    }else{
+                      
+                      console.log("va a registrar")
+                      
+                      axios.post('api/registrar_por_facebook',res.data).then((res)=>{
+
+                      });
+                    }
+                });
+
+              });
+              
+            } else {
+              alert("User cancelled login or did not fully authorize.");
+            }
+          });
+
+        
+          
+        
+        
+    },
+
+
      async initFacebook() {
       window.fbAsyncInit = function() {
         window.FB.init({

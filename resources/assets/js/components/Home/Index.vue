@@ -3,12 +3,12 @@
 
 	<b-row>
 		<b-col xs="12" md="8">
-			<h5><label style="color:#ABB2B9">Inicio</label> <label style="color:#EB984E"> > </label> Nuevos emprendimientos de este mes.  <b-button v-if="!this.$auth.check()" class="float-right" style="color:#DC7633" @click="ruta('ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
-
-			<b-button v-if="this.$auth.check()" class="float-right" style="color:#DC7633" @click="ruta('pm_ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
-			</h5>
 			<b-row>
 				<b-col md="12">
+				<h5><label style="color:#ABB2B9">Inicio</label> <label style="color:#EB984E"> > </label> Nuevos emprendimientos de este mes.  <b-button v-if="!this.$auth.check()"  style="color:#DC7633" @click="ruta('ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
+
+				<b-button v-if="this.$auth.check()"  style="color:#DC7633" @click="ruta('pm_ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
+				</h5>
 				 <b-card>	
 					<div class="containerx inline">
 						<div v-for="d in e_mes" :key="d.user_id" class="item inline-item">
@@ -34,7 +34,11 @@
 			</b-row>
 			<hr> 
 			
-			<h5 class="txt-linea-nada"><label style="color:#EB984E;"> > </label> Categoria de emprendedores <b-button class="float-right" style="color:#DC7633" @click="ruta('ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button></h5>
+			<h5 class="txt-linea-nada"><label style="color:#EB984E;"> > </label> Categoria de emprendedores 
+			<b-button v-if="!this.$auth.check()" style="color:#DC7633" @click="ruta('ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
+			
+			<b-button v-if="this.$auth.check()" style="color:#DC7633" @click="ruta('pm_ver_mas_emprendedores_mes')" variant="link">Ver mas..</b-button>
+			</h5>
 			<!-- <hr> -->
 			<b-row>
 				<b-col xs="12" md="12">

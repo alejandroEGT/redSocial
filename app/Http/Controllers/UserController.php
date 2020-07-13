@@ -51,25 +51,30 @@ class UserController extends Controller
         $urlBack = 'background/'.time().'-'.$request->email.'.png';
         $avatar->create(strtoupper($request->nombre))->setBackground($this->aleatorio_colors())->save($uriAvatar, $quality = 90);
 
-        // $avatar->create(strtoupper($request->nombre.' '.$request->email))
-        // ->setBackground('#9B59B6')
-        // ->setDimension(200, 300)
-        // ->setShape('square')
-        // ->save($urlBack, $quality = 90);
+        $avatar->create(strtoupper($request->nombre.' '.$request->email))
+        ->setBackground('#9B59B6')
+        ->setDimension(200, 300)
+        ->setShape('square')
+        ->save($urlBack, $quality = 90);
 
-        $user->nombre_nick = $request->nombre;
-        $user->nombre_pyme = $request->pyme;
+        $user->nombre = $request->nombre;
+        // $user->nombre_pyme = $request->pyme;
         // $user->nickname = $request->nickname;
-        $user->categoria_pyme_id = $request->tipo;
+        // $user->categoria_pyme_id = $request->tipo;
         $user->email = $request->email;
         $user->password = $request->pass;
         $user->avatar = $uriAvatar;
         $user->avatarback = $urlBack;
-        $user->rol_id = 1; // rol para pymes o emprendedores
+        $user->rol_id = 2; // por defecto tipo usuario, 1 es para pymes
         if($user->save()){
             return "success";
         }
         return "denied";
+    }
+
+    public function registrar_por_facebook(Request $r)
+    {
+        dd($r->all());
     }
 
     /**
