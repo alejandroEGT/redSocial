@@ -93,7 +93,8 @@ class UserController extends Controller
         if($u->save()){
             return [
                 'estado'=>'success',
-                'mensaje'=>'register'
+                'mensaje'=>'register',
+                'email' => $u->email
             ];
         }else{
             return [

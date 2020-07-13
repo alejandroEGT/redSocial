@@ -361,15 +361,28 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
 
                 axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
                     if(ress.data.estado == "failed"){
-                      alert(ress.data.mensaje);
-                      // this.ruta('login');
-                      location.reload();
-                    }else{
-                      
                       console.log("va a registrar")
                       
                       axios.post('api/registrar_por_facebook',res.data).then((res)=>{
 
+                          if(res.data.estado == 'success'){
+                            console.log("va a logear")
+                            console.log(res.data.email)
+                            _this.$auth.login({
+                              url:'api/auth/login_fb',
+                              data: {'email':  res.data.email},
+                              redirect:'/home/',
+                              success: function(){
+                                
+                                //this.$router.push({ path: '/index' });
+                              },
+                              error: function(){},
+                              rememberMe: true,
+                              //redirect: '/index',
+                              //fetchUser: true,
+                            });
+                          }
+                        
                       });
                     }
                 });
