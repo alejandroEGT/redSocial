@@ -282,7 +282,9 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
          this.loadFacebookSDK(document, "script", "facebook-jssdk");
          this.initFacebook();
          
+         let _this = this;
         FB.login(function(response) {
+          
           if (response.authResponse) {
             console.log("abajo datos:")
             console.log(response.authResponse)
@@ -299,8 +301,20 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                   }else{
                     
                     console.log("va a logear")
-                    localStorage.setItem("email", res.data.email);
-                    // this.login_fb(res.data.email);
+                    console.log(ress.data)
+                    _this.$auth.login({
+                      url:'api/auth/login_fb',
+                      data: {'email':  'kkck@kkck'},
+                      redirect:'/home/',
+                      success: function(){
+                        
+                        //this.$router.push({ path: '/index' });
+                      },
+                      error: function(){},
+                      rememberMe: true,
+                      //redirect: '/index',
+                      //fetchUser: true,
+                    });
                   }
               });
 
@@ -312,19 +326,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
         });
 
         
-          this.$auth.login({
-                      url:'api/auth/login_fb',
-                      data: {'email':localStorage.getItem("email")},
-                      redirect:'/home/',
-                      success: function(){
-                        
-                        //this.$router.push({ path: '/index' });
-                      },
-                      error: function(){},
-                      rememberMe: true,
-                      //redirect: '/index',
-                      //fetchUser: true,
-                    });
+          
         
         
     },
