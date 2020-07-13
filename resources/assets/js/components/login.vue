@@ -301,10 +301,10 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
                   }else{
                     
                     console.log("va a logear")
-                    console.log(ress.data)
+                    console.log(res.data.email)
                     _this.$auth.login({
                       url:'api/auth/login_fb',
-                      data: {'email':  'kkck@kkck'},
+                      data: {'email':  res.data.email},
                       redirect:'/home/',
                       success: function(){
                         
