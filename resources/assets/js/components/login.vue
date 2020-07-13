@@ -18,10 +18,13 @@
                      
                     <center> <button @click="logInWithFacebook">Ingresar con facebook</button></center>
                         <center> <v-facebook-login 
+                        style="display:none"
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
                           app-id="2711739702480818" 
-                          
+                          @sdk-init="handleSdkInit"
+                          @login="handlelogin"
+                          @click="fb_click"
                           
                           :use-alt-logo="true"
                         >
