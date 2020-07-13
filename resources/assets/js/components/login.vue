@@ -16,8 +16,8 @@
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
                      
-                     <button @click="logInWithFacebook">logear fb</button>
-                        <center> <v-facebook-login 
+                    <center> <button @click="logInWithFacebook">Ingresar con facebook</button></center>
+                        <!-- <center> <v-facebook-login 
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
                           app-id="2711739702480818" 
@@ -28,7 +28,7 @@
                           :use-alt-logo="true"
                         >
                         <span slot="login">Entrar con facebook</span>
-                        </v-facebook-login></center>
+                        </v-facebook-login></center> -->
                        <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
                       <!-- <button @click="AuthProvider('facebook')">auth Facebook</button> -->
                       <hr>
