@@ -17,18 +17,16 @@
                     <div>
                      
                     <center> <button @click="logInWithFacebook">Ingresar con facebook</button></center>
-                        <!-- <center> <v-facebook-login 
+                        <center> <v-facebook-login 
                          text-class="Entrar con facebook"
                          v-model="mi_fb"
                           app-id="2711739702480818" 
-                          @sdk-init="handleSdkInit"
-                          @login="handlelogin"
-                          @click="fb_click"
+                          
                           
                           :use-alt-logo="true"
                         >
                         <span slot="login">Entrar con facebook</span>
-                        </v-facebook-login></center> -->
+                        </v-facebook-login></center>
                        <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
                       <!-- <button @click="AuthProvider('facebook')">auth Facebook</button> -->
                       <hr>
@@ -270,47 +268,47 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
          this.initFacebook();
          
          let _this = this;
-        FB.login(function(response) {
-          
-          if (response.authResponse) {
-            console.log("abajo datos:")
-            console.log(response.authResponse)
-            var token = response.authResponse.accessToken;
-          var user_id = response.authResponse.userID;
-            console.log("iduser", user_id, 'token',token)
-            axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
-
-              axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
-                  if(ress.data.estado == "failed"){
-                    alert(ress.data.mensaje);
-                    // this.ruta('login');
-                    location.reload();
-                  }else{
-                    
-                    console.log("va a logear")
-                    console.log(res.data.email)
-                    _this.$auth.login({
-                      url:'api/auth/login_fb',
-                      data: {'email':  res.data.email},
-                      redirect:'/home/',
-                      success: function(){
-                        
-                        //this.$router.push({ path: '/index' });
-                      },
-                      error: function(){},
-                      rememberMe: true,
-                      //redirect: '/index',
-                      //fetchUser: true,
-                    });
-                  }
-              });
-
-            });
+          FB.login(function(response) {
             
-          } else {
-            alert("User cancelled login or did not fully authorize.");
-          }
-        });
+            if (response.authResponse) {
+              console.log("abajo datos:")
+              console.log(response.authResponse)
+              var token = response.authResponse.accessToken;
+            var user_id = response.authResponse.userID;
+              console.log("iduser", user_id, 'token',token)
+              axios.get("https://graph.facebook.com/"+user_id+"?fields=id,name,email,picture&access_token="+token).then((res)=>{
+
+                axios.post('api/validar_si_existe_email_en_sistema',res.data).then((ress)=>{
+                    if(ress.data.estado == "failed"){
+                      alert(ress.data.mensaje);
+                      // this.ruta('login');
+                      location.reload();
+                    }else{
+                      
+                      console.log("va a logear")
+                      console.log(res.data.email)
+                      _this.$auth.login({
+                        url:'api/auth/login_fb',
+                        data: {'email':  res.data.email},
+                        redirect:'/home/',
+                        success: function(){
+                          
+                          //this.$router.push({ path: '/index' });
+                        },
+                        error: function(){},
+                        rememberMe: true,
+                        //redirect: '/index',
+                        //fetchUser: true,
+                      });
+                    }
+                });
+
+              });
+              
+            } else {
+              alert("User cancelled login or did not fully authorize.");
+            }
+          });
 
         
           
