@@ -3,7 +3,7 @@
     <nav class="fixed-top">
     <b-nav style="background: rgb(176,58,46);
 background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small>
-        <b-nav-item><img :src="data_p.avatar" height="30" alt=""></b-nav-item>
+        <b-nav-item><img :src="yo.avatar" height="30" alt=""></b-nav-item>
         <b-nav-item active @click="ruta('pm_index')">Inicio</b-nav-item>
         <b-nav-item v-if="this.$auth.check()" @click="ruta('profile')">Mi perfil</b-nav-item>
         <b-nav-item>Link</b-nav-item>
