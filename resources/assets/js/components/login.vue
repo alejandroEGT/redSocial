@@ -270,7 +270,7 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
          this.initFacebook();
          
          let _this = this;
-          FB.login(function(response) {
+          window.FB.login(function(response) {
             
             if (response.authResponse) {
               console.log("abajo datos:")
