@@ -11,6 +11,8 @@ import Chat from "./components/Home/chat";
 import User from "./components/Home/user";
 import Amigos from "./components/Home/amigos";
 import Profile from "./components/Home/profile";
+import Publicar from "./components/Home/publicar";
+import Emprendimiento from "./components/Home/emprendedor_perfil";
 
 let routes = [
 
@@ -25,7 +27,7 @@ let routes = [
     children:[
         {path: '/index', component: Index, name: 'index' },
         { path: '/ver_mas_emprendedores_mes', component: ver_mas_emprendedores_mes, name: 'ver_mas_emprendedores_mes' },
-        
+        { path: '/emprendimiento/:id', component: Emprendimiento, name: 'emprendimiento' },
         {path: '/login',name: 'login',component: Login,meta: { auth: false }},
         {path: '/registro',name: 'registro',component: Registro,meta: { auth: false}},
         {path: '/terminos',name: 'terminos',component: Terminos,meta: { auth: false }},
@@ -47,6 +49,8 @@ let routes = [
         { path: '/search/:id', component: User, name:'User'},
         { path: '/amigos/:id', component: Amigos, name: 'Amigos'},
         { path: '/profile', component: Profile, name: 'Profile'},
+        { path: '/publicar', component: Publicar, name: 'Publicar' },
+        { path: '/pm_emprendimiento/:id', component: Emprendimiento, name: 'pm_emprendimiento' },
     ]
 },
 {

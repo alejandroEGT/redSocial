@@ -57,6 +57,11 @@ Vue.use(VueYouTubeEmbed)
 import linkify from 'vue-linkify'
 Vue.directive('linkified', linkify)
 
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+
+Vue.use(Viewer)
+
 require('vue2-autocomplete-js/dist/style/vue2-autocomplete.css')
 
 //import VueTimeago from 'vue-timeago'

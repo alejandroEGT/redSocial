@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Solicitud;
 use App\user_contacto;
-use Faker\Provider\File;
+use App\Emprendimiento;
 
+use Faker\Provider\File;
 use Laravolt\Avatar\Avatar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Vikin\Laricon\Facades\Laricon;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +54,7 @@ class UserController extends Controller
         $avatar->create(strtoupper($request->nombre))->setBackground($this->aleatorio_colors())->save($uriAvatar, $quality = 90);
 
         $avatar->create(strtoupper($request->nombre.' '.$request->email))
-        ->setBackground('#9B59B6')
+        ->setBackground($this->aleatorio_colors())
         ->setDimension(200, 300)
         ->setShape('square')
         ->save($urlBack, $quality = 90);
@@ -157,8 +159,8 @@ class UserController extends Controller
     }
 
     public function aleatorio_colors(){
-        $array =  Array('#F5B041','#EC7063','#B2BABB','#45B39D','#BB8FCE','#3498DB','#5D6D7E');
-        $rand = random_int ( 0 , 6 );
+        $array =  Array('#F5B041','#2874A6','#16A085','#F5B041','#EC7063','#B2BABB','#45B39D','#BB8FCE','#3498DB','#5D6D7E','#52BE80');
+        $rand = random_int ( 0 , 10 );
         return $array[$rand];
     } 
 
@@ -215,25 +217,86 @@ class UserController extends Controller
 
     public function contacto()
     {
-        $c = user_contacto::where('user_id', Auth::user()->id)->first();
+        $c = Emprendimiento::where('user_id', Auth::user()->id)->first();
 
         if ($c) {
             return[
+                'nombre' => $c->nombre,
                 'contact' => $c->contacto,
                 'direccion' => $c->direccion,
                 'url_facebook' => $c->url_facebook,
                 'url_instagram' => $c->url_instagram,
-                'descripcion' => $c->descripcion_pyme,
+                'descripcion' => $c->descripcion,
                 'url_web' => $c->url_web
             ];
         }else{
             return[
+                'nombre' => '',
                 'contact' => '',
                 'direccion' => '',
                 'url_facebook' => '',
                 'url_instagram' => '',
                 'descripcion' => '',
                 'url_web' => ''
+            ];
+        }
+    }
+
+    public function datos_perfil()
+    {
+        $data = DB::select("SELECT 
+                                u.id user_id,
+                                u.nombre nombre_user,
+                                avatar,
+                                avatarback,
+                                email,
+                                active,
+                                rol_id,
+                                e.nombre nombre_emprendimiento,
+                                e.descripcion, 
+                                e.direccion,
+                                e.contacto,
+                                e.url_facebook,
+                                e.url_instagram,
+                                e.url_web,
+                                e.activo
+                            FROM users u
+                            left join emprendimiento e on 
+                            e.user_id = u.id where u.id =".Auth::user()->id);
+
+        if (count($data)>0) {
+            return [
+                'estado'=>'success',
+                'data'=>$data
+            ];
+        }
+    }
+    public function datos_perfil_by_user($id_user)
+    {
+        $data = DB::select("SELECT 
+                                u.id user_id,
+                                u.nombre nombre_user,
+                                avatar,
+                                avatarback,
+                                email,
+                                active,
+                                rol_id,
+                                e.nombre nombre_emprendimiento,
+                                e.descripcion, 
+                                e.direccion,
+                                e.contacto,
+                                e.url_facebook,
+                                e.url_instagram,
+                                e.url_web,
+                                e.activo
+                            FROM users u
+                            left join emprendimiento e on 
+                            e.user_id = u.id where u.id =".$id_user);
+
+        if (count($data)>0) {
+            return [
+                'estado'=>'success',
+                'data'=>$data
             ];
         }
     }
@@ -246,7 +309,7 @@ class UserController extends Controller
 
 
         $u = User::find(Auth::user()->id);
-        $c = user_contacto::where('user_id', Auth::user()->id)->first();
+        $c = Emprendimiento::where('user_id', Auth::user()->id)->first();
 
         if ($u) {
 
@@ -279,32 +342,37 @@ class UserController extends Controller
 
 
             $u->email = $r->email;
-            $u->nombre_pyme = $r->nombre_pyme;
-            $u->nombre_nick = $r->nombre_nick;
+            $u->nombre = $r->nombre_nick;
             if ($u->save()) {
                 $e_1 = true;
             }
         }
 
-        if ($c) {
-            $c->contacto = $r->contacto;
-            $c->direccion = $r->direccion;
-            $c->url_facebook = $r->url_facebook;
-            $c->url_instagram = $r->url_instagram;
-            $c->descripcion_pyme = $r->descripcion;
-            $c->url_web = $r->url_web;
-            if ($c->save()) {
-                $e_2 = true;
-            }
-        }else{
-            $c2 = new user_contacto;
-            $c2->user_id = Auth::user()->id;
-            $c2->contacto = $r->contacto;
-            $c2->direccion = $r->direccion;
-            $c2->url_facebook = $r->url_facebook;
-            $c2->url_instagram = $r->url_instagram;
-            if ($c2->save()) {
-                $e_2 = true;
+        if($r->rol == 1){
+            if ($c) {
+                $c->nombre = $r->nombre_pyme;
+                $c->contacto = $r->contacto;
+                $c->direccion = $r->direccion;
+                $c->url_facebook = $r->url_facebook;
+                $c->url_instagram = $r->url_instagram;
+                $c->descripcion = $r->descripcion;
+                $c->url_web = $r->url_web;
+                if ($c->save()) {
+                    $e_2 = true;
+                }
+            }else{
+                $c2 = new user_contacto;
+                $c2->nombre = $r->nombre;
+                $c2->user_id = Auth::user()->id;
+                $c2->contacto = $r->contacto;
+                $c2->direccion = $r->direccion;
+                $c2->url_facebook = $r->url_facebook;
+                $c2->url_instagram = $r->url_instagram;
+                $c2->url_web = $r->url_web;
+                $c2->descripcion = $r->descripcion;
+                if ($c2->save()) {
+                    $e_2 = true;
+                }
             }
         }
 
@@ -361,6 +429,65 @@ class UserController extends Controller
                 'respuesta' => $r
             ];
         }
+    }
+
+    public function crear_mi_emprendimiento(Request $r)
+    {
+        $verify = Emprendimiento::where('user_id', Auth::user()->id)->first();
+
+        if(!$verify){
+            
+     
+            $e = new Emprendimiento;
+            $e->user_id = Auth::user()->id;
+            $e->nombre = $r->nombre;
+            $e->descripcion = $r->descripcion;
+            $e->direccion = $r->direccion;
+            $e->contacto = $r->contacto;
+            $e->url_facebook = $r->url_facebook;
+            $e->url_instagram = $r->url_instagram;
+            $e->url_web = $r->url_web;
+            $e->categoria_pymes_id = $r->categoria;
+            $e->activo = 'S';
+
+            if ($e->save()) {
+                $u = User::find(Auth::user()->id);
+                $u->rol_id = 1;//emprendedor
+                $u->save();
+                return [
+                    'estado'=>'success',
+                    'mensaje'=>'Emprendimiento creado con exito, empieza a publicaro'
+                ];
+            }else{
+                return [
+                    'estado'=>'failed',
+                    'mensaje'=>'upps, ha ocurrido un problema'
+                ];
+            }
+        }else{
+            return [
+                    'estado'=>'failed',
+                    'mensaje'=>'upps, ya cuentas con un emprendimiento'
+                ];
+        }
+    }
+    public function publicador()
+    {
+        $u = User::find(Auth::user()->id);
+        $e = Emprendimiento::where('user_id', Auth::user()->id)->first();
+
+        $data = [];
+        if ($u) {
+            $data[0]['id'] = 1;
+            $data[0]['text'] = $u->nombre;
+        }
+
+        if ($e) {
+            $data[1]['id'] = 2;
+            $data[1]['text'] = $e->nombre;
+        }
+
+        return $data;
     }
 
     // public function login_facebook($r)

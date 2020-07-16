@@ -121,7 +121,7 @@
 
                         <br>
                         <label for="">Contraseña</label>
-                        <b-input v-model="pass"></b-input>
+                        <b-input type="password" v-model="pass"></b-input>
                         <br>
                         <b-button @click="registrar">Registrarme</b-button>
                     </div>
@@ -272,14 +272,14 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
 
       registrar() {
 
-        if($("#cat").val() == ''){
-          this.tipo = '';
-        }
+        // if($("#cat").val() == ''){
+        //   this.tipo = '';
+        // }
 
         var data = new FormData();
         data.append('nombre', this.nombre_nick);
-        data.append('pyme', this.pyme);
-        data.append('tipo', this.tipo);
+        // data.append('pyme', this.pyme);
+        // data.append('tipo', this.tipo);
         data.append('email', this.email);
         data.append('pass', this.pass)
 

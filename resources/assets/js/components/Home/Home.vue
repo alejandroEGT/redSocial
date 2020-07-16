@@ -6,14 +6,14 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
         <b-nav-item><img :src="yo.avatar" height="30" alt=""></b-nav-item>
         <b-nav-item active @click="ruta('pm_index')">Inicio</b-nav-item>
         <b-nav-item v-if="this.$auth.check()" @click="ruta('profile')">Mi perfil</b-nav-item>
-        <b-nav-item>Link</b-nav-item>
+        <b-nav-item v-if="this.$auth.check()" @click="ruta('publicar')">Publicar</b-nav-item>
         <b-nav-item>Another Link</b-nav-item>
         <b-nav-item @click="logout">Salir</b-nav-item>
         
       </b-nav>
     </nav>
 
-       <div style="background:#F4F6F6; margin-top:23px;">
+       <div style="background:white; margin-top:23px;">
          <b-container fluid>
          <router-view></router-view>
          </b-container>
@@ -400,5 +400,68 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
     padding: 0.5rem 1rem;
     color: white;
 }
+
+.mi-card{
+	border-radius: 15px 15px 15px 15px;
+	-moz-border-radius: 15px 15px 15px 15px;
+	-webkit-border-radius: 15px 15px 15px 15px;
+	border: 0px solid #000000;
+
+
+	-webkit-box-shadow: 0px 7px 14px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 7px 14px -6px rgba(0,0,0,0.75);
+	box-shadow: 0px 7px 14px -6px rgba(0,0,0,0.75);
+}
+
+ hr {
+    background-image: linear-gradient(90deg,#ff8a00,#e52e71);
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    
+}
+
+.btn-fw{
+	background: #A569BD;
+	color:white;
+	margin-bottom: 3px;
+	border: 1px solid #EB984E;
+}
+.btn-fw:hover{
+	background: #EC7063;
+	border: 1px solid #EB984E;
+	
+}
+
+.single-products {
+	position: relative;
+	}
+
+  .productinfo.text-center {
+    padding: 7px;
+}
+
+@media (min-width: 991px) {
+		.product-image-wrapper-scroll{
+			background: white;
+			width: 100%;
+			float:left;
+			/* border:2px solid #E5E8E8; */
+			overflow: hidden;
+			margin:2px;
+		
+		}
+
+		.product-image-wrapper{
+			background: white;
+			width: 25%;
+			float:left;
+			border:1px solid #E5E8E8;
+			overflow: hidden;
+			
+		}
+	}
 
 </style>
