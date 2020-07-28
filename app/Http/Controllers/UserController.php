@@ -394,8 +394,8 @@ class UserController extends Controller
 	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
 	        $rutaDB = $ruta . $nombreArchivo;
 
-	        // $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
-            $guardar = \Storage::disk('public')->put($ruta . $nombreArchivo, (string) file_get_contents($archivo));
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+            // $guardar = \Storage::disk('public')->put($ruta . $nombreArchivo, (string) file_get_contents($archivo));
             
             //  return response()->json($guardar);
              if ($guardar) {
