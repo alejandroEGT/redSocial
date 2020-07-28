@@ -47,7 +47,8 @@
         },
         methods:{
             get_emprendedores_mes(){
-				axios.get('api/emprendimientos_mes').then((res)=>{
+                var cant='ALL';
+				axios.get('api/emprendimientos_mes/'+cant).then((res)=>{
 					if(res.data.estado == 'success'){
 						this.e_mes = res.data.response;
 					}

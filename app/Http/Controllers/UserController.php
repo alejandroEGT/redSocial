@@ -325,11 +325,11 @@ class UserController extends Controller
 					    $borrar = Storage::delete($ruta);
                     }
                     
-                    $file = $this->guardarArchivo($r->logo,'avatar/');
+                    $file = $this->guardarArchivo($r->logo,'background/');
                     // dd($file);
 
                     if($file['estado'] == "success"){
-                            $u->avatar = 'storage/'.$file['archivo'];
+                            $u->avatarback = 'storage/'.$file['archivo'];
                     }else{
 
                             // $u->avatar = '--';

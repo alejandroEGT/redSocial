@@ -7,15 +7,37 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
       </b-nav>
       <nav class="fixed-top">
   
-      <b-nav style="background: rgb(176,58,46);
-background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small >
+      <!-- <b-nav style="background: rgb(176,58,46);background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small >
         <b-nav-item v-if="!this.$auth.check()" @click="ruta('index')" >Inicio</b-nav-item>
         <b-nav-item v-if="this.$auth.check()" @click="ruta('pm_index')" >Inicio</b-nav-item>
-        <b-nav-item v-if="!this.$auth.check()" @click="ruta('login')">Entrar como pyme</b-nav-item>
+        <b-nav-item v-if="!this.$auth.check()" @click="ruta('login')">Cuenta</b-nav-item>
         <b-nav-item v-if="!this.$auth.check()">Entrar como usuario</b-nav-item>
-        <!-- <b-nav-item>Another Link</b-nav-item>
-        <b-nav-item disabled>Disabled</b-nav-item> -->
-      </b-nav>
+       
+      </b-nav> -->
+      <b-navbar toggleable="lg" style="background: rgb(176,58,46);background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%); border-bottom: 5px solid #E67E22;">
+        <!-- <b-navbar-brand href="#">NavBar</b-navbar-brand> -->
+
+        <b-navbar-toggle target="nav-collapse1"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse1" is-nav>
+          <b-navbar-nav>
+            <b-nav-item v-if="!this.$auth.check()" @click="ruta('index')" >
+                <small style="color:white">Inicio</small>
+            </b-nav-item>
+            <b-nav-item v-if="!this.$auth.check()">
+                <small style="color:white">Emprendedores</small>
+              </b-nav-item>
+              <!-- <b-nav-item v-if="this.$auth.check()" @click="ruta('pm_index')" >Inicio</b-nav-item> -->
+            <b-nav-item v-if="!this.$auth.check()" @click="ruta('login')">
+              <small style="color:white">Cuenta</small>
+            </b-nav-item>
+              
+          </b-navbar-nav>
+
+          <!-- Right aligned nav items -->
+          <!--  -->
+        </b-collapse>
+      </b-navbar>
       </nav>
 
       

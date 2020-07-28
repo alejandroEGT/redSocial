@@ -203,6 +203,11 @@ class postear_a_alguienController extends Controller
         $data = Publicaciones::traer();
         return $data;
     }
+    public function traer_pm_publicaciones($categ)
+    {
+        $data = Publicaciones::traer_pm($categ);
+        return $data;
+    }
 
     public function galeria()
     {

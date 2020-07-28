@@ -15,8 +15,8 @@
 							<div class="product-image-wrapper-scroll">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img  style="width:80px; height:80px; border-radius: 10px;" :src="d.avatar" alt="" />
-										<h6>{{d.nombre}}</h6>
+										<img  style="width:60px; height:50px; border-radius: 10px;" :src="d.avatar" alt="" />
+										<h6>{{d.nombre+'kk'}}</h6>
 										<b-badge class="badgex">{{d.categoria}}</b-badge><br>
 										<p>{{d.contacto}}</p>
 															
@@ -41,7 +41,26 @@
 			</h5>
 			<!-- <hr> -->
 			<b-row>
-				<b-col xs="12" md="12">
+				<b-col md="3">
+					<b-navbar class="mi-card"  style="background: rgb(176,58,46);
+background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" toggleable="lg" >
+							<b-navbar-brand href="#"><small style="color:white">Anuncios destacados</small></b-navbar-brand>
+					</b-navbar>
+					<b-card class="mi-card" no-body>
+						<b-card-img src="https://cdn.sitly.com/blogs/es/2018/08/manualidades-con-tubos-de-cart%C3%B3n-para-ni%C3%B1os-animales.jpg"></b-card-img>
+						<b-card-text style="margin:5px;">
+							Manualidades hechas a mano si o no raza
+						</b-card-text>
+					</b-card>
+					<br>
+					<b-card class="mi-card" no-body>
+						<b-card-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT1o4ukpcKLFpH1y12Q-a8i5B6EbF1_kBIeew&usqp=CAU"></b-card-img>
+						<b-card-text style="margin:5px;">
+							Manualidades hechas a mano si o no raza 2.0
+						</b-card-text>
+					</b-card>
+				</b-col>
+				<b-col xs="12" md="9">
 					<b-navbar class="mi-card"  style="background: rgb(176,58,46);
 background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" toggleable="lg" >
 							<b-navbar-brand href="#">.</b-navbar-brand>
@@ -64,12 +83,32 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 							</b-collapse>
 					</b-navbar>
 
+					<div v-for="d in pm_publicaciones" :key="d.user_id">
 						
-						<b-card class="mi-card">
-							<div v-for="d in e_mes" :key="d.user_id" class="product-image-wrapper">
 								
 								<div class="single-products">
-									<b-card>
+									
+									<b-card no-body class="overflow-hidden mi-card">
+										<p style="margin:10px;"><b-avatar :src="d.avatarback" size="2rem"></b-avatar> <small style="color:#A569BD">{{d.nombre}}</small> - <small style="color:#ABB2B9" ><i class="far fa-clock"></i> {{ d.created_at }}</small></p>
+										<b-row no-gutters>
+											<b-col md="6">
+												<b-card-img :src="d.foto" alt="Image" class="rounded-0"></b-card-img>
+											</b-col>
+											<b-col md="6">
+												<b-card-body style="color:#4A235A" :title="d.texto">
+												<b-card-text>
+													
+													
+													<b-button class="float-center btn-fw" size="sm" variant="outline-dark">Guardar</b-button>
+												</b-card-text>
+											    </b-card-body>
+											</b-col>
+										</b-row>
+									</b-card>
+
+
+
+									<!-- <b-card>
 										<div class="text-center">
 											<img style="width:80px; height:80px; border-radius: 10px;" :src="d.avatar" alt="" />
 											<h6>{{d.nombre}}</h6>
@@ -79,15 +118,16 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 											
 											<b-button class="float-center btn-fw" size="sm" variant="outline-dark">Conocer</b-button>
 										</div>
-									</b-card>			
+									</b-card>			 -->
 								</div>
-								
-							</div>
-						</b-card>
-							
+						
+						<br>
+					</div>			
 							
 					
 				</b-col>
+
+				
 			</b-row>
 
 		</b-col>
@@ -154,7 +194,8 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 				e_mes:{},
 				categorias:{},
 
-				publicaciones:{}
+				publicaciones:{},
+				pm_publicaciones:{}
         		
 			}
 		},
@@ -169,6 +210,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 			this.get_emprendedores_mes();
 			this.get_categorias();
 			this.get_publicaciones();
+			this.get_pm_publicaciones();
 			//this.auto();
 		},
 		mounted(){
@@ -184,7 +226,8 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 		methods:{
 
 			get_emprendedores_mes(){
-				axios.get('api/emprendimientos_mes').then((res)=>{
+				var cant = 7;
+				axios.get('api/emprendimientos_mes/'+cant).then((res)=>{
 					if(res.data.estado == 'success'){
 						this.e_mes = res.data.response;
 					}
@@ -317,6 +360,14 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 			  axios.get('api/traer_publicaciones').then((res)=>{
 				  if(res.data.estado == 'success'){
 					  this.publicaciones = res.data.data;
+				  }
+			  })
+		  },
+		  get_pm_publicaciones(){
+			  var categ="todo";
+			  axios.get('api/traer_pm_publicaciones/'+categ).then((res)=>{
+				  if(res.data.estado == 'success'){
+					  this.pm_publicaciones = res.data.data;
 				  }
 			  })
 		  },

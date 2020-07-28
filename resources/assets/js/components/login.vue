@@ -1,7 +1,8 @@
 <template>
 
 <div>
-        <b-card no-body class="overflow-hidden" style="background:#F4F6F6; width: 100%;">
+        <b-card no-body class="overflow-hidden mi-card" style="background:white; width: 100%;">
+          <br><br>
           <b-row no-gutters>
             <b-col md="4">
               <b-card-img style="height:80%; width:80%;" src="https://i.pinimg.com/originals/0e/0a/54/0e0a54a90658ba6995488a35585642ee.gif" alt="Image" class="rounded-0"></b-card-img>
@@ -12,7 +13,7 @@
                   En este apartado te damos dos opciones, un registro de tu emprendimiento y un inicio a tu cuenta, comencemos!
                   <br><br>
                  
-                  <b-button v-b-modal.inicio size="lg" variant="outline-primary">Iniciar sesion</b-button>
+                  <b-button class="btn-fw" v-b-modal.inicio size="lg" variant="outline-primary">Iniciar sesion</b-button>
                   <b-modal id="inicio" title="Log in" hide-footer ok-only>
                     <div>
                      
@@ -66,7 +67,7 @@
 
 
 
-                  <b-button v-b-modal.registro size="lg" variant="outline-success">Crear cuenta</b-button>
+                  <b-button class="btn-fw2" v-b-modal.registro size="lg" variant="outline-success">Crear cuenta</b-button>
                   <b-modal id="registro" title="Crear cuenta" hide-footer ok-only>
                     <div>
                      <b-alert show variant="success"> <small> <i class="far fa-save"></i> Creat tu cuenta ahora, es gratis!</small></b-alert>
@@ -132,7 +133,7 @@
           </b-row>
         </b-card>
 
-        <b-card no-body class="overflow-hidden" style="background:#5D6D7E; color:white; width: 100%;">
+        <!-- <b-card no-body class="overflow-hidden mi-card" style="background:#A569BD; color:white; width: 100%;">
           <b-row no-gutters>
             <b-col md="8">
               <b-card-body title="Red de clientes">
@@ -150,7 +151,7 @@
         <b-card no-body class="overflow-hidden" style="background:#5499C7;color:white; width: 100%;">
           <b-row no-gutters>
             <b-col md="4">
-              <b-card-img style="height:80%; width:80%;" src="https://lh3.googleusercontent.com/proxy/04FgtZ6o3q9bPMOa7lSCHX83CzarZFzYvLxpPN56v1hA5oIat2xPFxHe2gE1L_PopdskLAPnSILjMLvJ1THocNOCQ5pISjCrfv61BIF_fCXrl2VkAkhOT3q6UTdjL3SeBmdMGxIBFQ" alt="Image" class="rounded-0"></b-card-img>
+              <b-card-img style="height:90%; width:90%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Man_Looking_at_Phone_Cartoon_Vector.svg/1200px-Man_Looking_at_Phone_Cartoon_Vector.svg.png" alt="Image" class="rounded-0"></b-card-img>
             </b-col>
             <b-col md="8">
               <b-card-body title="Público">
@@ -160,7 +161,7 @@
               </b-card-body>
             </b-col>
           </b-row>
-        </b-card>
+        </b-card> -->
        
        
 </div>   
@@ -497,6 +498,19 @@ import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-compone
 	border: 1px solid #EB984E;
 }
 .btn-fw:hover{
+	background: #EC7063;
+	border: 1px solid #EB984E;
+	
+}
+
+
+.btn-fw2{
+	background: #EC7063;
+	color:white;
+	margin-bottom: 3px;
+	border: 1px solid #EB984E;
+}
+.btn-fw2:hover{
 	background: #EC7063;
 	border: 1px solid #EB984E;
 	

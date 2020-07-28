@@ -1,16 +1,39 @@
 <template>
   <div>
     <nav class="fixed-top">
-    <b-nav style="background: rgb(176,58,46);
-background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);" small>
-        <b-nav-item><img :src="yo.avatar" height="30" alt=""></b-nav-item>
-        <b-nav-item active @click="ruta('pm_index')">Inicio</b-nav-item>
-        <b-nav-item v-if="this.$auth.check()" @click="ruta('profile')">Mi perfil</b-nav-item>
-        <b-nav-item v-if="this.$auth.check()" @click="ruta('publicar')">Publicar</b-nav-item>
-        <b-nav-item>Another Link</b-nav-item>
-        <b-nav-item @click="logout">Salir</b-nav-item>
-        
-      </b-nav>
+    <b-navbar toggleable="lg" style="background: rgb(176,58,46);background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%, rgba(155,89,182,1) 31%, rgba(236,112,99,1) 86%, rgba(231,76,60,1) 99%);">
+        <b-navbar-brand href="#">
+          <b-nav-item><img :src="yo.avatar" height="30" alt=""></b-nav-item>
+        </b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse1"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse1" is-nav>
+          <b-navbar-nav>
+            
+            <b-nav-item active @click="ruta('pm_index')">
+              <small style="color:white">Inicio</small>
+            </b-nav-item>
+
+            <b-nav-item v-if="this.$auth.check()" @click="ruta('profile')">
+              <small style="color:white">Mi perfil</small>
+            </b-nav-item>
+            <b-nav-item v-if="this.$auth.check()" @click="ruta('publicar')">
+              <small style="color:white">Publicar</small>
+
+              </b-nav-item>
+            <b-nav-item>
+              <small style="color:white">Another Link
+              </small>
+            </b-nav-item>
+            <b-nav-item @click="logout">
+              <small style="color:white">Salir</small>
+
+            </b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+    </b-navbar>
+      
     </nav>
 
        <div style="background:white; margin-top:23px;">

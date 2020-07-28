@@ -101,8 +101,8 @@
 									<label for="">Email:</label>
 									<label><b>{{ datos.email }}</b></label>
 									<br>
-									<label for="">Dirección:</label>
-									<label for=""><b>{{datos.direccion}}</b></label>
+									<label v-if="datos.rol_id==1" >Dirección:</label>
+									<label v-if="datos.rol_id==1"><b>{{datos.direccion}}</b></label>
 								</b-col>
 
 								<b-col xs="6" md="6" >
