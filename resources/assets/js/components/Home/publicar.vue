@@ -86,7 +86,12 @@ export default{
                 data1.append('texto', this.texto);
                 data1.append('foto', this.img_empresa);
                 axios.post('api/publicar_post_empresa', data1).then((res)=>{
-
+                    if(res.data.estado == 'success'){
+                        alert(res.data.mensaje)
+                    }else{
+                        alert(res.data.mensaje)
+                        console.log(res.data);
+                    }
                 });
             }else{
                 const data={

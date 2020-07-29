@@ -153,7 +153,7 @@ class postear_a_alguienController extends Controller
         $validator = Validator::make($r->all(), [
             'empresa' => 'required',
             'texto' => 'required|max:255',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:6048',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ],
         [
             'foto.required' => 'The :attribute field is required.',

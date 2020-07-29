@@ -71,7 +71,7 @@
                             
                                     <div class="text-center">
                                         <img style="width:80px; height:80px;" :src="d.avatar" alt="" />
-                                        <h6>{{d.nombre_pyme}}</h6>
+                                        <h6>{{d.nombre}}</h6>
                                         <b-badge class="badgex">{{d.categoria}}</b-badge><br>
                                         <p>{{d.contacto}}</p>
                                                             
