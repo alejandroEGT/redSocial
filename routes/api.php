@@ -31,6 +31,11 @@ Route::get('traer_pm_publicaciones/{categoria}','postear_a_alguienController@tra
 Route::get('auth/datos_perfil/{id}','UserController@datos_perfil_by_user');
 Route::get('galeria/{id}','postear_a_alguienController@galeria_by_user');
 
+Route::get('emprendedores/{nombre}','PublicController@emprendedores');
+Route::get('todos_emprendedores','PublicController@todos_emprendedores');
+Route::get('emprendimientos/{categoria}','PublicController@categoria_emprendedores');
+
+
 
 Route::group(['middleware' => 'jwt.auth'], function(){
   Route::get('auth/user', 'AuthController@user');

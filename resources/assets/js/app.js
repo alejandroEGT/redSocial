@@ -62,6 +62,9 @@ import Viewer from 'v-viewer'
 
 Vue.use(Viewer)
 
+import ScrollLoader from 'vue-scroll-loader'
+Vue.use(ScrollLoader)
+
 require('vue2-autocomplete-js/dist/style/vue2-autocomplete.css')
 
 //import VueTimeago from 'vue-timeago'
