@@ -22,8 +22,8 @@
               <small style="color:white">Publicar</small>
 
               </b-nav-item>
-            <b-nav-item>
-              <small style="color:white">Another Link
+            <b-nav-item v-if="this.$auth.check()" @click="ruta('pm_publicacion_usuarios')">
+              <small style="color:white">Publicaciones de usuarios
               </small>
             </b-nav-item>
             <b-nav-item @click="logout">
@@ -485,6 +485,31 @@
 			overflow: hidden;
 			
 		}
+
+    
+    .btn-fw32{
+      background: #F39C12;
+      color:white;
+      margin-bottom: 3px;
+      border: 1px solid #EB984E;
+    }
+    .btn-fw32:hover{
+      background: #DC7633;
+      border: 1px solid #EB984E;
+      
+    }
+
+    .btn-fw_vermas{
+      background: #F39C12;
+      color:white;
+      margin-bottom: 3px;
+      border: 1px solid #EB984E;
+    }
+    .btn-fw_vermas:hover{
+      background: #DC7633;
+      border: 1px solid #EB984E;
+      
+    }
 	}
 
 </style>

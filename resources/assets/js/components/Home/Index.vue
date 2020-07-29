@@ -67,13 +67,13 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 							overflow-y: scroll;
 							scrollbar-width: thin;" >
 					
-					<div v-if="d < pm_publicaciones.length" v-for="d in pm__publicaciones" :key="d.user_id">
+					<div v-if="d <= pm_publicaciones.length" v-for="d in pm__publicaciones" :key="d.user_id">
 						
 								
 								<div class="single-products">
 									
 									<b-card no-body class="overflow-hidden mi-card">
-										<p style="margin:10px;"><b-avatar :src="pm_publicaciones[d-1].avatarback" size="2rem"></b-avatar> <small style="color:#A569BD">{{pm_publicaciones[d-1].nombre}}</small> - <small style="color:#ABB2B9" ><i class="far fa-clock"></i> {{ pm_publicaciones[d].created_at }}</small></p>
+										<p style="margin:10px;"><b-avatar :src="pm_publicaciones[d-1].avatarback" size="2rem"></b-avatar> <small style="color:#A569BD">{{pm_publicaciones[d-1].nombre}}</small> - <small style="color:#ABB2B9" ><i class="far fa-clock"></i> {{ pm_publicaciones[d-1].created_at }}</small></p>
 										<b-row no-gutters>
 											<b-col md="6">
 												<b-card-img :src="pm_publicaciones[d-1].foto" alt="Image" class="rounded-0"></b-card-img>
@@ -83,7 +83,8 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 												<b-card-text>
 													
 													
-													<b-button class="float-center btn-fw" size="sm" variant="outline-dark">Guardar</b-button>
+													<b-button class="float-center btn-fw" size="sm" variant="outline-dark">Favoritos</b-button>
+													<b-button @click="conocer(pm_publicaciones[d-1].user_id)" class="float-center btn-fw32" size="sm" variant="warning" style="color:white">Ver mas publicaciones</b-button>
 												</b-card-text>
 											    </b-card-body>
 											</b-col>
@@ -108,7 +109,10 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 						<br>
 					</div>	
 						<div v-if="pm__publicaciones < pm_publicaciones.length || pm_publicaciones.length > pm__publicaciones">
-						<b-button @click="mostrar_mas">Ver mas.. <b-spinner v-if="more" small></b-spinner>  </b-button>
+						<center><button class="btn btn-fw" @click="mostrar_mas">Ver mas.. <b-spinner v-if="more" small></b-spinner>  </button></center>
+					</div>
+					<div v-if="!(pm__publicaciones < pm_publicaciones.length || pm_publicaciones.length > pm__publicaciones)">
+						<center>No hay mas publicaciones</b-button></center>
 					</div>	
 				</div>	
 						

@@ -13,6 +13,7 @@ import Amigos from "./components/Home/amigos";
 import Profile from "./components/Home/profile";
 import Publicar from "./components/Home/publicar";
 import Emprendimiento from "./components/Home/emprendedor_perfil";
+import publicacion_usuarios from "./components/Home/publicacion_usuarios"
 
 let routes = [
 
@@ -28,6 +29,8 @@ let routes = [
         {path: '/index', component: Index, name: 'index' },
         { path: '/ver_mas_emprendedores_mes', component: ver_mas_emprendedores_mes, name: 'ver_mas_emprendedores_mes' },
         { path: '/emprendimiento/:id', component: Emprendimiento, name: 'emprendimiento' },
+        { path: '/publicacion_usuarios', component: publicacion_usuarios, name: 'publicacion_usuarios' },
+        
         {path: '/login',name: 'login',component: Login,meta: { auth: false }},
         {path: '/registro',name: 'registro',component: Registro,meta: { auth: false}},
         {path: '/terminos',name: 'terminos',component: Terminos,meta: { auth: false }},
@@ -51,6 +54,7 @@ let routes = [
         { path: '/profile', component: Profile, name: 'Profile'},
         { path: '/publicar', component: Publicar, name: 'Publicar' },
         { path: '/pm_emprendimiento/:id', component: Emprendimiento, name: 'pm_emprendimiento' },
+        { path: '/pm_publicacion_usuarios', component: publicacion_usuarios, name: 'publicacion_usuarios' },
     ]
 },
 {

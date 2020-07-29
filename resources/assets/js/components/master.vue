@@ -24,6 +24,12 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
             <b-nav-item v-if="!this.$auth.check()" @click="ruta('index')" >
                 <small style="color:white">Inicio</small>
             </b-nav-item>
+            <b-nav-item v-if="!this.$auth.check()" @click="ruta('publicacion_usuarios')" >
+                <small style="color:white">Publicaciones de usuarios</small>
+            </b-nav-item>
+            <b-nav-item v-if="!this.$auth.check()" @click="ruta('publicacion_usuariosss')" >
+                <small style="color:white">Publicaciones de emprendedores</small>
+            </b-nav-item>
             <b-nav-item v-if="!this.$auth.check()">
                 <small style="color:white">Emprendedores</small>
               </b-nav-item>
