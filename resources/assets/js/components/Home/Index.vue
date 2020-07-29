@@ -63,7 +63,7 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 				<b-col xs="12" md="9">
 					<!-- aqui algo arriba -->
 				<div id="mi-scroll" style="width: 100%;
-							height: 750px;
+							height: 850px;
 							overflow-y: scroll;
 							scrollbar-width: thin;" >
 					
