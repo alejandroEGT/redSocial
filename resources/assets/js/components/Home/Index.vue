@@ -414,12 +414,18 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 				
 		  },
 		  get_pm_publicaciones(){
-			  var categ="todo";
-			  axios.get('api/traer_pm_publicaciones/'+categ).then((res)=>{
-				  if(res.data.estado == 'success'){
-					  this.pm_publicaciones = res.data.data;
-				  }
-			  })
+			
+			if(this.isMobile()){
+				  this.device = true;
+			  }else{
+				  this.device = false;
+				var categ="todo";
+				axios.get('api/traer_pm_publicaciones/'+categ).then((res)=>{
+					if(res.data.estado == 'success'){
+						this.pm_publicaciones = res.data.data;
+					}
+				})
+			  }
 		  },
 
 		  conocer(id){
