@@ -73,13 +73,13 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 								<div class="single-products">
 									
 									<b-card no-body class="overflow-hidden mi-card">
-										<p style="margin:10px;"><b-avatar :src="pm_publicaciones[d].avatarback" size="2rem"></b-avatar> <small style="color:#A569BD">{{pm_publicaciones[d].nombre}}</small> - <small style="color:#ABB2B9" ><i class="far fa-clock"></i> {{ pm_publicaciones[d].created_at }}</small></p>
+										<p style="margin:10px;"><b-avatar :src="pm_publicaciones[d-1].avatarback" size="2rem"></b-avatar> <small style="color:#A569BD">{{pm_publicaciones[d-1].nombre}}</small> - <small style="color:#ABB2B9" ><i class="far fa-clock"></i> {{ pm_publicaciones[d].created_at }}</small></p>
 										<b-row no-gutters>
 											<b-col md="6">
-												<b-card-img :src="pm_publicaciones[d].foto" alt="Image" class="rounded-0"></b-card-img>
+												<b-card-img :src="pm_publicaciones[d-1].foto" alt="Image" class="rounded-0"></b-card-img>
 											</b-col>
 											<b-col md="6">
-												<b-card-body style="color:#4A235A" :title="pm_publicaciones[d].texto">
+												<b-card-body style="color:#4A235A" :title="pm_publicaciones[d-1].texto">
 												<b-card-text>
 													
 													
@@ -133,16 +133,16 @@ background: linear-gradient(90deg, rgba(176,58,46,1) 0%, rgba(155,89,182,1) 31%,
 				<div v-if="pu < publicaciones.length"  v-for="pu in commentsToShow" :key="pu">
 					<b-card class="mi-card">
 						<b-row>
-							<b-col xs="2" md="3"><b-avatar :src="publicaciones[pu].avatar"></b-avatar></b-col>
-							<b-col xs="10" md="9"><b>{{publicaciones[pu].nombre}}</b></b-col>
+							<b-col xs="2" md="3"><b-avatar :src="publicaciones[pu-1].avatar"></b-avatar></b-col>
+							<b-col xs="10" md="9"><b>{{publicaciones[pu-1].nombre}}</b></b-col>
 						</b-row>
 
 						<b-row>
 							<b-col xs="12" md="12"><br>
-								{{publicaciones[pu].texto}}
+								{{publicaciones[pu-1].texto}}
 							</b-col>
 						</b-row>
-						<small class="float-right" style="color:#B2BABB">{{pu.created_at}}</small>
+						<small class="float-right" style="color:#B2BABB">{{publicaciones[pu-1].created_at}}</small>
 					</b-card>
 					<br>
 				</div>
